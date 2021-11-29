@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+
+	<article class="container-intro">
+		<h1>{{ page.title }}</h1>
+		{{ page.body|richtext }}
+	</article>
+
+	<article class="container-header">
+		{{ page.bodyHeader|richtext }}
+	</article>
+
+	<article class="container-words_cloud">
+		{{ page.wordsCloud|richtext }}
+	</article>
+	
+	<article class="container-projects">
+		{% comment %} content of projets_list model {% endcomment %}
+		{% for projetContaineur in projets_section %}
+			<p>{{ projetContaineur.projetTxt |richtext }}</p>
+		{% endfor %}
+
+		<div class="container-project">
+			{% for projet in projets_list %}
+				<h4>{{ projet.title }}</h4>
+				<p>{{ projet.body|richtext }}</p>
+			{% endfor %}
+		</div>
+	</article>
+
+	<article class="container-team">
+		{{ page.team|richtext }}
+		{% for user in equipe_list %}
+		<p>{{ user.nom_user }}</p>
+		<p>{{ user.description_user|richtext }}</p>
+		<p>{{ user.external_link }}</p>
+	{% endfor %}
+	</article>
+
+	<article class="container-contact">
+		{{ page.contact|richtext }}
+	</article>
+
+	<article class="container-footer">
+		{{ page.footer|richtext }}
+	</article>
+
+{% endblock %}

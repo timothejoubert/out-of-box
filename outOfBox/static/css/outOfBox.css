@@ -1,0 +1,47 @@
+/* poppins */
+/* @font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/Black-Black.otf") format("otf");
+    font-weight: 800;
+} */
+
+
+:root{
+    --dark-color: #222222;
+    --light-color: #eeeeee;
+
+    --primary-color: #6f15ff;
+    --second-color: #c84a3f;
+    --third-color: #ecef4a;
+
+    --width-default: 1px;
+    --border-: solid var(--dark-color) var(--width-default);
+}
+
+/***********/
+/* COMMUNS */
+/***********/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+h1, h2, h3{
+    font-family: "Poppins", sans-serif;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+li{
+    list-style: none;
+}
+
+article{
+	padding: 30px 50px;
+	border: 1px var(--dark-color) solid;
+}
