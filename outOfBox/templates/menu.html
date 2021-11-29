@@ -1,0 +1,20 @@
+{% load menu_tags wagtailcore_tags  %}
+
+<nav>
+
+	{% comment %} <div class="logo">
+		<a href="#">
+			<h1>Out of box</h1>              
+		</a>
+	</div> {% endcomment %}
+
+	<ul class="main-nav">
+		{% for item in menu_items %}
+			<li class="{{ item.active_class }}">
+				<a href="#{{ item.handle }}">{{ item.text }}</a>
+				{% comment %} <a href="#{{ item.href }}">{{ item.text }}</a> {% endcomment %}
+			</li>
+		{% endfor %}
+	</ul>
+
+</nav>

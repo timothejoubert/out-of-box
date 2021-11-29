@@ -1,53 +1,130 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags  wagtailimages_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
 
-	<article class="container-intro">
-		<h1>{{ page.title }}</h1>
-		{{ page.body|richtext }}
-	</article>
+	<header id="accueil">
+		{{ page.title_header|richtext }}
 
-	<article class="container-header">
-		{{ page.bodyHeader|richtext }}
-	</article>
+		{% if page.img_header %}
+			{% image page.img_header original as img %}
+			<div class="container-img_header">
+				<img src="{{ img.url }}" alt="img.title">
+			</div>
+		{% endif %}
+	</header>
 
-	<article class="container-words_cloud">
-		{{ page.wordsCloud|richtext }}
-	</article>
-	
-	<article class="container-projects">
-		{% comment %} content of projets_list model {% endcomment %}
-		{% for projetContaineur in projets_section %}
-			<p>{{ projetContaineur.projetTxt |richtext }}</p>
-		{% endfor %}
+
+	<article class="container-projects" id="projets">
+
+		<div class="article_intro">
+			{{ page.title_projets|richtext }}
+		</div>
 
 		<div class="container-project">
 			{% for projet in projets_list %}
-				<h4>{{ projet.title }}</h4>
-				<p>{{ projet.body|richtext }}</p>
+				<div class="container-project_item">
+					<p>{{ projet.projet_nom }}</p>
+					{% image projet.projet_image width-300 as img %}
+						<div class="container-project_img">
+							<img src="{{ img.url }}" alt="img.title">
+						</div>
+					<p>{{ projet.projet_description|richtext }}</p>
+					<p>{{ projet.projet_link }}</p>
+				</div>
 			{% endfor %}
 		</div>
 	</article>
 
-	<article class="container-team">
-		{{ page.team|richtext }}
-		{% for user in equipe_list %}
-		<p>{{ user.nom_user }}</p>
-		<p>{{ user.description_user|richtext }}</p>
-		<p>{{ user.external_link }}</p>
-	{% endfor %}
+	<article class="container-words" id="wordscloud">
+
+		<div class="article_intro">
+			{{ page.title_wordsCloud|richtext }}
+		</div>
+
+		<div class="container-words_cloud">
+			{% for word in word_list %}
+				<p>{{ word.mot }}</p>
+			{% endfor %}
+		</div>
 	</article>
 
-	<article class="container-contact">
-		{{ page.contact|richtext }}
+	<article class="container-clients" id="clients">
+
+		<div class="container-client">
+			{% for client in client_list %}
+
+				{% image client.image_client width-150 as img %}
+				<div class="container-client_item">
+					<img src="{{ img.url }}" alt="img.title">
+				</div>
+
+			{% endfor %}
+		</div>
+	</article>
+	
+
+	<article class="container-team" id="equipe">
+
+		<div class="article_intro">
+			{{ page.title_team|richtext }}
+		</div>
+
+		<div class="container-users">
+			{% for user in equipe_list %}
+				<div class="container-user">
+					
+					{% image user.image_user width-400 as img %}
+					<div class="container-img-user">
+						<img src="{{ img.url }}" alt="img.title">
+					</div>
+					<div class="container-user_info">
+						<p>{{ user.nom_user }}</p>
+						<p>{{ user.description_user|richtext }}</p>
+						{% if user.external_link %}
+							<div class="container-user_link">
+								<a href="{{ user.external_link }}" target="_blank">
+									{{ user.external_link }}
+								</a>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 	</article>
 
-	<article class="container-footer">
-		{{ page.footer|richtext }}
+	<article class="container-contact" id="contact">
+		{{ page.title_contact|richtext }}
+	</article>
+
+	<article class="container-footer" id="footer">
+
+		<div class="article_intro">
+			{{ page.title_footer|richtext }}
+		</div>
+		
+		<div class="container-footer_info">
+		{% for footer in footer_list %}
+			<div class="container-footer_item">
+				
+				{% image footer.logo_contact width-100 as img %}
+				<div class="container-footer_logo">
+					<img src="{{ img.url }}" alt="img.title">
+				</div>
+				<p>{{ footer.info_contact|richtext }}</p>
+				{% comment %} 
+					
+				<p>{{ footer.projet_description|richtext }}</p>
+				<p>{{ footer.projet_link }}</p> {% endcomment %}
+			</div>
+		{% endfor %}
+		<p>2021© Out of box - tous droits réservés - <a href="#">mentions légales</a></p> 
+		</div>
+
 	</article>
 
 {% endblock %}

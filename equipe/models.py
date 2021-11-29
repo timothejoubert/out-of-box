@@ -1,17 +1,15 @@
 from django.db import models
-from django.db.models.fields import TextField
 
 from modelcluster.fields import ParentalKey
 from wagtail.core.models import Page, Orderable
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core import blocks
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.images.blocks import ImageChooserBlock
-
 
 
 class Equipe(Page):
+    parent_page_types = ['home.HomePage']
+
     description_principale = RichTextField(
         features=['bold', 'italic', 'link'], null=True, blank=True
 	)
@@ -32,7 +30,6 @@ class Equipe(Page):
         ),
     ]
 
-
 class ContentUser(Orderable):
     page = ParentalKey("Equipe", related_name="content_user")
 
@@ -42,13 +39,16 @@ class ContentUser(Orderable):
     # annee_conf = models.CharField(max_length=200, null=True, blank=True)
     image_user = models.ForeignKey(
         "wagtailimages.Image",
-        null=True, blank=False, on_delete=models.SET_NULL, related_name="+"
+        null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
     )
-    external_link = models.CharField(max_length=100, null=True, blank=True)
+	
+    external_link = models.URLField(null=True, blank=True)
+	# external_link_slug = models.CharField(max_length=100, null=True, blank=True)
 
     panels = [
         FieldPanel('nom_user', classname="title"),
         FieldPanel('description_user', classname="full"),
         ImageChooserPanel("image_user"),
         FieldPanel('external_link', classname="full"),
+        # FieldPanel('external_link_slug', classname="full"),
     ]

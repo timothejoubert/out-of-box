@@ -1,4 +1,4 @@
-{% load static wagtailuserbar %}
+{% load static wagtailuserbar menu_tags %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -27,7 +27,9 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-
+        
+        {% main_menu show_multiple_levels=False template="menu.html" use_absolute_page_urls=True %}
+        
         {% block content %}{% endblock %}
 
         {# Global javascript #}
