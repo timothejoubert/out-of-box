@@ -1,0 +1,32 @@
+
+
+@font-face {
+	font-family: "Anybody";
+	src: local("Anybody"), url("/static/fonts/Anybody[slnt,wdth,wght].ttf")
+	  format("truetype");
+	font-display: block;
+	font-style: normal italic;
+	font-weight: 100 900;
+	font-stretch: 10% 400%;
+	font-style: oblique -10 0; 
+	font-display: swap;
+}
+  
+@font-face {
+	font-family: "Darker-Grotesque";
+	font-weight: 800;
+	src: url('/static/fonts/DarkerGrotesque-Black.ttf') format('truetype');
+	font-display: swap;
+  }
+  @font-face {
+	font-family: "Darker-Grotesque";
+	font-weight: 600;
+	src: url('/static/fonts/DarkerGrotesque-Bold.ttf') format('truetype');
+	font-display: swap;
+  }
+  @font-face {
+	font-family: "Darker-Grotesque";
+	font-weight: 400;
+	src: url('/static/fonts/DarkerGrotesque-Regular.ttf') format('truetype');
+	font-display: swap;
+  }

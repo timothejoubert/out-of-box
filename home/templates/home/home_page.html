@@ -27,13 +27,18 @@
 		<div class="container-project">
 			{% for projet in projets_list %}
 				<div class="container-project_item">
-					<p>{{ projet.projet_nom }}</p>
 					{% image projet.projet_image width-300 as img %}
-						<div class="container-project_img">
-							<img src="{{ img.url }}" alt="img.title">
-						</div>
-					<p>{{ projet.projet_description|richtext }}</p>
-					<p>{{ projet.projet_link }}</p>
+					<div class="container-project_img">
+						<img src="{{ img.url }}" alt="img.title">
+						<span class="click_project">
+							<svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.849199 22.8075L0.115084 23.5416L1.58331 25.0099L2.31743 24.2757L0.849199 22.8075ZM24.9826 1.18052C24.9826 0.607136 24.5178 0.142321 23.9444 0.142321H14.6007C14.0273 0.142321 13.5625 0.607136 13.5625 1.18052C13.5625 1.75389 14.0273 2.21871 14.6007 2.21871H22.9062V10.5243C22.9062 11.0976 23.371 11.5625 23.9444 11.5625C24.5178 11.5625 24.9826 11.0976 24.9826 10.5243V1.18052ZM2.31743 24.2757L24.6785 1.91463L23.2103 0.446401L0.849199 22.8075L2.31743 24.2757Z"/></svg>
+						</span>
+					</div>
+					<div class="container-project_info">
+						<h2>{{ projet.projet_nom }}</h2>
+						<p>{{ projet.projet_description|richtext }}</p>
+						{% comment %} <p>{{ projet.projet_link }}</p> {% endcomment %}
+					</div>
 				</div>
 			{% endfor %}
 		</div>
@@ -47,7 +52,9 @@
 
 		<div class="container-words_cloud">
 			{% for word in word_list %}
-				<p>{{ word.mot }}</p>
+				<div class="container-word_item">
+					<h4>{{ word.mot }}</h4>
+				</div>
 			{% endfor %}
 		</div>
 	</article>
