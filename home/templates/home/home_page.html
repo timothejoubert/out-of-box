@@ -7,14 +7,23 @@
 {% block content %}
 
 	<header id="accueil">
-		{{ page.title_header|richtext }}
+		{% comment %} {{ page.title_header|richtext }} {% endcomment %}
 
-		{% if page.img_header %}
-			{% image page.img_header original as img %}
-			<div class="container-img_header">
-				<img src="{{ img.url }}" alt="img.title">
+		<div class="header-headeline">
+			<div class="firstline">
+				<h2>À la recherche</h2>
 			</div>
-		{% endif %}
+			<div class="secondline">
+				<h2>de l’inattendu</h2>
+			</div>
+		</div>
+
+		<div class="container-img_header">
+			<video poster="/static/assets/header-img.jpg" autoplay muted loop id="myVideo">
+				<source src="/static/assets/header-vid4.mp4" type="video/mp4">
+			</video>
+		</div>
+
 	</header>
 
 
@@ -25,30 +34,67 @@
 		</div>
 
 		<div class="container-project">
-			{% for projet in projets_list %}
-				<div class="container-project_item">
-					{% image projet.projet_image width-300 as img %}
+
+			{% for projet in projet_pages %}
+
+			<div class="container-project_full">
+				<div class="container-project_item" data-open="modal{{projet.id}}">
+					{% image projet.projet_image width-300 as img300 %}
 					<div class="container-project_img">
-						<img src="{{ img.url }}" alt="img.title">
+						<img src="{{ img300.url }}" alt="{{img300.title}}">
 						<span class="click_project">
 							<svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.849199 22.8075L0.115084 23.5416L1.58331 25.0099L2.31743 24.2757L0.849199 22.8075ZM24.9826 1.18052C24.9826 0.607136 24.5178 0.142321 23.9444 0.142321H14.6007C14.0273 0.142321 13.5625 0.607136 13.5625 1.18052C13.5625 1.75389 14.0273 2.21871 14.6007 2.21871H22.9062V10.5243C22.9062 11.0976 23.371 11.5625 23.9444 11.5625C24.5178 11.5625 24.9826 11.0976 24.9826 10.5243V1.18052ZM2.31743 24.2757L24.6785 1.91463L23.2103 0.446401L0.849199 22.8075L2.31743 24.2757Z"/></svg>
 						</span>
 					</div>
 					<div class="container-project_info">
-						<h2>{{ projet.projet_nom }}</h2>
+						<h3>{{ projet.projet_nom }}</h3>
 						<p>{{ projet.projet_description|richtext }}</p>
-						{% comment %} <p>{{ projet.projet_link }}</p> {% endcomment %}
 					</div>
 				</div>
+
+				<div class="{% cycle 'modal' 'modal modal-right' %}" id="modal{{projet.id}}" data-animation={% cycle 'slideInOutLeft' 'slideInOutRight' %}>
+					<div class="modal-dialog">
+					  <div class="modal-top">
+						  <h3>{{ projet.projet_nom }}</h3>
+							<button class="close-modal" aria-label="close modal" data-close>
+								<svg id="cross-project" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M22.7818 2.2182L2.77393 22.2261"/>
+									<path d="M22.7817 22.2261L2.2181 2.2182"/>
+								</svg>
+							</button>
+					  </div>
+
+					  <div class="modal-content">
+						<p>{{ projet.projet_description_complete|richtext }}</p>
+						{% image projet.projet_image width-500 as img500 %}
+						{% image projet.projet_image width-50 as img50 %}
+						<div class="modal-img">
+							<div class="modal-img-main">
+								<img src="{{ img500.url }}" alt="{{img500.title}}">
+							</div>
+							<div class="container-img_gallery">
+								<img src="{{ img50.url }}" alt="{{img50.title}}">
+								<img src="{{ img50.url }}" alt="{{img50.title}}">
+								<img src="{{ img50.url }}" alt="{{img50.title}}">
+							</div>
+						</div>
+						{% if projet.projet_link %}
+							<a href={{projet.projet_link}} target"_blank">{{ projet.projet_link }}</a>
+						{% endif %}
+					  </div>
+					</div>
+				</div>
+			</div>
+
 			{% endfor %}
 		</div>
 	</article>
 
 	<article class="container-words" id="wordscloud">
 
-		<div class="article_intro">
+		{% comment %} <div class="article_intro">
 			{{ page.title_wordsCloud|richtext }}
-		</div>
+		</div> {% endcomment %}
 
 		<div class="container-words_cloud">
 			{% for word in word_list %}
@@ -88,49 +134,75 @@
 					<div class="container-img-user">
 						<img src="{{ img.url }}" alt="img.title">
 					</div>
+
 					<div class="container-user_info">
-						<p>{{ user.nom_user }}</p>
-						<p>{{ user.description_user|richtext }}</p>
 						{% if user.external_link %}
-							<div class="container-user_link">
-								<a href="{{ user.external_link }}" target="_blank">
-									{{ user.external_link }}
-								</a>
-							</div>
+							<a href="{{ user.external_link }}" target="_blank">
+								<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.82129 4.56965L0.731765 5.65917C0.284952 6.10599 0.0339355 6.712 0.0339355 7.34388C0.0339355 7.97577 0.284952 8.58178 0.731765 9.02859C1.17858 9.47541 1.78459 9.72642 2.41647 9.72642C3.04836 9.72642 3.65437 9.47541 4.10118 9.02859L5.55282 7.57616C5.82226 7.30669 6.02312 6.97651 6.13855 6.61334C6.25398 6.25017 6.2806 5.86461 6.21619 5.48902C6.15178 5.11344 5.99821 4.75878 5.76837 4.45483C5.53853 4.15087 5.23913 3.90649 4.8953 3.74219L4.42995 4.20754C4.3827 4.25487 4.34161 4.30796 4.30765 4.36557C4.5733 4.44193 4.81443 4.58631 5.00718 4.78443C5.19994 4.98254 5.33765 5.22753 5.4067 5.49518C5.47576 5.76282 5.47377 6.04386 5.40093 6.3105C5.32809 6.57714 5.18692 6.82015 4.99138 7.01552L3.54054 8.46716C3.24252 8.76517 2.83833 8.93259 2.41687 8.93259C1.99541 8.93259 1.59122 8.76517 1.2932 8.46716C0.995187 8.16914 0.827763 7.76494 0.827763 7.34349C0.827763 6.92203 0.995187 6.51783 1.2932 6.21982L1.92293 5.59088C1.83408 5.25793 1.79976 4.91279 1.82129 4.56886V4.56965Z" fill="black"/>
+									<path d="M3.30751 3.08404C3.03808 3.35351 2.83721 3.68369 2.72178 4.04686C2.60636 4.41003 2.57973 4.79559 2.64414 5.17118C2.70856 5.54676 2.86213 5.90142 3.09197 6.20537C3.32181 6.50933 3.62121 6.75371 3.96504 6.91801L4.58048 6.30178C4.31123 6.22956 4.06574 6.08775 3.86866 5.89059C3.67159 5.69343 3.52988 5.44788 3.45777 5.17861C3.38566 4.90933 3.3857 4.62582 3.45788 4.35656C3.53005 4.0873 3.67183 3.84179 3.86895 3.64468L5.3198 2.19304C5.61781 1.89503 6.02201 1.7276 6.44346 1.7276C6.86492 1.7276 7.26912 1.89503 7.56713 2.19304C7.86515 2.49106 8.03257 2.89525 8.03257 3.31671C8.03257 3.73817 7.86515 4.14237 7.56713 4.44038L6.9374 5.06932C7.02634 5.40284 7.06049 5.74828 7.03905 6.09134L8.12857 5.00182C8.57538 4.55501 8.8264 3.949 8.8264 3.31711C8.8264 2.68522 8.57538 2.07921 8.12857 1.6324C7.68176 1.18559 7.07575 0.93457 6.44386 0.93457C5.81197 0.93457 5.20596 1.18559 4.75915 1.6324L3.30751 3.08404Z" fill="black"/>
+								</svg>
 						{% endif %}
+						{% if user.nom_user %}
+						<p class="team_name">{{ user.nom_user }}</p>
+						{% endif %}
+						{% if user.nom_user %}
+						<p class="team_job">{{ user.role_user }}</p>
+						{% endif %}
+						{% if user.external_link %}
+							</a>
+						{% endif %}
+						</a>
 					</div>
+
 				</div>
 			{% endfor %}
 		</div>
 	</article>
 
-	<article class="container-contact" id="contact">
-		{{ page.title_contact|richtext }}
-	</article>
-
 	<article class="container-footer" id="footer">
 
-		<div class="article_intro">
+		{% comment %} <div class="article_intro">
 			{{ page.title_footer|richtext }}
-		</div>
+		</div> {% endcomment %}
 		
 		<div class="container-footer_info">
-		{% for footer in footer_list %}
-			<div class="container-footer_item">
-				
-				{% image footer.logo_contact width-100 as img %}
-				<div class="container-footer_logo">
-					<img src="{{ img.url }}" alt="img.title">
+			<div class="container-footer_left">
+				<div class="container-footer_left-contact">
+					<div class="footer-contact">
+						{% for footer in footer_list %}
+							<div class="container-footer_item">
+								
+								{% image footer.logo_contact width-100 as img %}
+								<div class="container-footer_logo">
+									<img src="{{ img.url }}" alt="img.title">
+								</div>
+								<p>{{ footer.info_contact|richtext }}</p>
+								{% comment %} 
+									
+								<p>{{ footer.projet_description|richtext }}</p>
+								<p>{{ footer.projet_link }}</p> {% endcomment %}
+							</div>
+						{% endfor %}
+					</div>
+					<div class="footer-message">
+						<p>Envie d'en savoir plus ?</p>
+						<p>Dites-nous tout ou passez nous voir !</p>
+					</div>
 				</div>
-				<p>{{ footer.info_contact|richtext }}</p>
-				{% comment %} 
-					
-				<p>{{ footer.projet_description|richtext }}</p>
-				<p>{{ footer.projet_link }}</p> {% endcomment %}
+				<div class="footer-copyright">
+					<p>2021© Out of box - tous droits réservés - <a href="#">mentions légales</a></p> 
+				</div>
 			</div>
-		{% endfor %}
-		<p>2021© Out of box - tous droits réservés - <a href="#">mentions légales</a></p> 
+			<div class="container-footer_map">
+				<div class="mapouter">
+					<div class="gmap_canvas">
+						<iframe width="450" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=46%20Quai%20Joseph%20Gillet,%2069004%20Lyon&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+					</div>
+				</div>
+			</div>
 		</div>
+
 
 	</article>
 

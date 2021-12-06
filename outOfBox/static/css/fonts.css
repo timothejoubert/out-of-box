@@ -20,13 +20,37 @@
   }
   @font-face {
 	font-family: "Darker-Grotesque";
+	font-weight: 700;
+	src: url('/static/fonts/DarkerGrotesque-ExtraBold.ttf') format('truetype');
+	font-display: swap;
+  }
+  @font-face {
+	font-family: "Darker-Grotesque";
+	font-weight: 650;
+	src: url('/static/fonts/DarkerGrotesque-SemiBold.ttf') format('truetype');
+	font-display: swap;
+  }
+  @font-face {
+	font-family: "Darker-Grotesque";
 	font-weight: 600;
 	src: url('/static/fonts/DarkerGrotesque-Bold.ttf') format('truetype');
 	font-display: swap;
   }
   @font-face {
 	font-family: "Darker-Grotesque";
+	font-weight: 500;
+	src: url('/static/fonts/DarkerGrotesque-Medium.ttf') format('truetype');
+	font-display: swap;
+  }
+  @font-face {
+	font-family: "Darker-Grotesque";
 	font-weight: 400;
 	src: url('/static/fonts/DarkerGrotesque-Regular.ttf') format('truetype');
+	font-display: swap;
+  }
+  @font-face {
+	font-family: "Darker-Grotesque";
+	font-weight: 200;
+	src: url('/static/fonts/DarkerGrotesque-Light.ttf') format('truetype');
 	font-display: swap;
   }

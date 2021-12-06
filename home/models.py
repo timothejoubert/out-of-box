@@ -5,18 +5,17 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-from projets.models import ProjetsList
-from projets.models import ProjectItem
 
+from projetPage.models import ProjectItem
 from equipe.models import ContentUser
 from wordsCloud.models import listWords
-
 from clients.models import clientItem
 from footer.models import Footer
 
+
 class HomePage(Page):
     # template = "home/home_page.html"
-    # max_count = 0
+    max_count = 1
     parent_page_types = []
 
     title_header = RichTextField(null=True, blank=True)
@@ -27,7 +26,6 @@ class HomePage(Page):
     title_wordsCloud = RichTextField(null=True, blank=True)
     title_projets = RichTextField(null=True, blank=True)
     title_team = RichTextField(null=True, blank=True)
-    title_contact = RichTextField(null=True, blank=True)
     title_footer = RichTextField(null=True, blank=True)
 
     content_panels = Page.content_panels + [
@@ -36,7 +34,6 @@ class HomePage(Page):
         FieldPanel('title_projets', classname="full"),
         FieldPanel('title_wordsCloud', classname="full"),
         FieldPanel('title_team', classname="full"),
-        FieldPanel('title_contact', classname="full"),
         FieldPanel('title_footer', classname="full"),
     ]
 
@@ -44,16 +41,13 @@ class HomePage(Page):
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
 
-        context['projet_model'] = ProjetsList.objects.all()
-        context['projets_list'] = ProjectItem.objects.all()
-
+        context['projet_pages'] = ProjectItem.objects.all()
+        
         context['equipe_list'] = ContentUser.objects.all()
-
         context['word_list'] = listWords.objects.all()
-
         context['client_list'] = clientItem.objects.all()
-
         context['footer_list'] = Footer.objects.all()
 
-
+        print(context['projet_pages'])
+        
         return context

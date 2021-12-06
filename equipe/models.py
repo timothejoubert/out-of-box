@@ -34,8 +34,7 @@ class ContentUser(Orderable):
     page = ParentalKey("Equipe", related_name="content_user")
 
     nom_user = models.CharField(max_length=100, null=True, blank=True)
-    description_user = RichTextField(
-        features=['bold', 'italic', 'link'], null=True, blank=True)
+    role_user = models.CharField(max_length=100, null=True, blank=True)
     # annee_conf = models.CharField(max_length=200, null=True, blank=True)
     image_user = models.ForeignKey(
         "wagtailimages.Image",
@@ -47,7 +46,7 @@ class ContentUser(Orderable):
 
     panels = [
         FieldPanel('nom_user', classname="title"),
-        FieldPanel('description_user', classname="full"),
+        FieldPanel('role_user', classname="full"),
         ImageChooserPanel("image_user"),
         FieldPanel('external_link', classname="full"),
         # FieldPanel('external_link_slug', classname="full"),
