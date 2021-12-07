@@ -15,6 +15,7 @@ db.sqlite3
 # venv
 /bin
 /lib
+pyvenv.cfg
 
 
 # Python and others

@@ -1,34 +1,53 @@
-# mysite_nginx.conf
+# vim:sw=4 ts=4 et:
+#
+# This is a sample nginx configuration for a Wagtail application running under
+# uWSGI.
 
-# the upstream component nginx needs to connect to
-upstream django {
-    # server unix:///path/to/your/mysite/mysite.sock; # for a file socket
-    server 127.0.0.1:5001; # for a web port socket (we'll use this first)
-}
-
-# configuration of the server
 server {
-    # the port your site will be served on
-    listen      5000;
-    # the domain name it will serve for
+    # We don't set 'root' here, because we send location / to uWSGI, so
+    # nothing ends up at nginx's default handler.
+
+    listen 80;
     server_name outofbox.screen-club.com; # substitute your machine's IP address or FQDN
-    charset     utf-8;
 
-    # max upload size
-    client_max_body_size 75M;   # adjust to taste
+    error_log /var/log/nginx/mywagtail.org_error.log;
+    access_log /var/log/nginx/mywagtail.org_access.log;
 
-    # Django media
-    location /media  {
-        alias /var/www/vhosts/outofbox/media;  # your Django project's media files - amend as required
+    # Maximum file upload size.
+    client_max_body_size 64M;
+
+    # Enable content compression for text types.
+    gzip on;
+    gzip_types text/plain text/css application/x-javascript image/svg+xml;
+    gzip_comp_level 1;
+    gzip_disable msie6;
+    gzip_http_version 1.0;
+    gzip_proxied any;
+    gzip_vary on;
+
+    location /static/ {
+        access_log off;
+        expires 3600;
+        alias /var/www/vhosts/outofbox/static/;
     }
 
-    location /static {
-        alias /var/www/vhosts/outofbox/static; # your Django project's static files - amend as required
+    # Set a longer expiry for CACHE/, because the filenames are unique.
+    location /static/CACHE/ {
+        access_log off;
+        expires 864000;
+        alias /var/www/vhosts/outofbox/static/CACHE/;
     }
 
-    # Finally, send all non-media requests to the Django server.
+    # Only serve /media/images/ by default, not e.g. original_images/.
+    location /media/images/ {
+        expires 864000;
+        alias /var/www/vhosts/outofbox/media/images/;
+    }
+
     location / {
-        uwsgi_pass  django;
-        include     /var/www/vhosts/outofbox/uwsgi_params; # the uwsgi_params file you installed
+        include uwsgi_params;
+        uwsgi_pass unix:/var/www/vhosts/outofbox/outofbox.sock;
+        break;
     }
 }
+
