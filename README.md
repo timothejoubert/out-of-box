@@ -1,6 +1,4 @@
 # Out Of Box - Wagtail 
-## _Portfolio_
-
 [Timothé joubert](https://timothejoubert.com)
 
 ## Features
