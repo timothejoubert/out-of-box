@@ -1,0 +1,28 @@
+[Unit]
+Description=out of box app
+
+# Requirements
+Requires=network.target
+
+# Dependency ordering
+After=network.target
+
+[Service]
+TimeoutStartSec=0
+RestartSec=10
+Restart=always
+
+# path to app
+WorkingDirectory=/var/www/vhosts/outofbox
+# the user that you want to run app by
+User=ubuntu
+
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+# Main process
+ExecStart=/var/www/vhosts/outofbox/bin/uwsgi --wsgi-file outOfBox/wsgi.py --chmod-socket=666 --socket /var/www/vhosts/outofbox/outofbox.sock --processes 4 --threads 2
+
+[Install]
+WantedBy=multi-user.target
