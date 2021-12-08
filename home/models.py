@@ -5,7 +5,6 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-
 from projetPage.models import ProjectItem
 from equipe.models import ContentUser
 from wordsCloud.models import listWords

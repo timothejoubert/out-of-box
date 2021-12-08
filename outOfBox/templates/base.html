@@ -18,6 +18,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/simple-lightbox.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/outOfBox.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
@@ -28,17 +30,20 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+        
         {% wagtailuserbar %}
-        
-        {% main_menu show_multiple_levels=False template="menu.html" use_absolute_page_urls=True %}
-        
-        {% block content %}{% endblock %}
-
+        <div id="main-container" class="loader-active">
+            {% main_menu show_multiple_levels=False template="menu.html" use_absolute_page_urls=True %}
+            
+            {% block content %}{% endblock %}
+        </div>
         {# Global javascript #}
         <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js"></script>
 
         <script type="text/javascript" src="{% static 'js/outOfBox.js' %}"></script>
-
+        <script type="text/javascript" src="{% static 'js/simple-lightbox.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
+        
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}

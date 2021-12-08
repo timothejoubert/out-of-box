@@ -10,7 +10,7 @@ class ProjetPage(Page):
     parent_page_types = ['projets.ProjetsList']
 
     content_panels = Page.content_panels + [
-        InlinePanel("project_item", classname="full"),
+        InlinePanel("project_item"),
     ]
 
 

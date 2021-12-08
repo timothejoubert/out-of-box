@@ -1,0 +1,24 @@
+
+/* WordCloud */
+ul#id_list_words-FORMS{
+	display: flex;
+	flex-wrap: wrap;
+}
+#id_list_words-FORMS > li {
+	max-width: 400px;
+	margin: 0 10px 10px 10px;
+	padding: 1em 10em 1em 1em;
+}
+#id_list_words-FORMS .fields > li, #id_list_words-FORMS .fields .col12{
+	padding: 0;
+}
+#id_list_words-FORMS li input:not([type="submit"]), #id_list_words-FORMS li label{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/* equipe */
+#id_content_user-FORMS input:not([type="submit"]){
+	padding-top: 10px;
+	padding-bottom: 10px;
+}

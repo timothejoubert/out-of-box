@@ -95,9 +95,33 @@
 		font-size: 4rem;
 		line-height: 4.5rem;
 	}
+	div.container-project_item > a{
+		flex-direction: column;
+	}
+	.main-nav li:not(#nav-logo){
+		display: none;
+	}
+	.container-footer_map, .mapouter, .gmap_canvas, .container-footer_map iframe {
+		width: 100%;
+	}
+	
 }
 @media only screen and (max-width: 600px) {
-	article, #footer {
+	article, #footer, #wordscloud {
 		padding: 150px 10px;
+	}
+	#projets{
+		padding: 150px 50px;
+		overflow-x: hidden;
+	}
+	.container-words_cloud h4{
+		font-size: calc(var(--distLetter) * 0.8rem + 0.8rem);
+	}
+	.secondline h2{
+		font-size: 3rem;
+	}
+	.firstline h2{
+		font-size: 2rem;
+		line-height: 0.5rem;
 	}
 }

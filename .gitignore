@@ -6,6 +6,9 @@
 db.sqlite3
 
 /env/*
+
+/out-of-box-assets
+
 # Django project
 /media/
 /static/

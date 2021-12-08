@@ -1,5 +1,6 @@
 
 window.addEventListener("DOMContentLoaded", (event) => {
+
 var topScroll = window.pageYOffset || document.documentElement.scrollTop;
 
 const header = document.getElementById("wordscloud").getBoundingClientRect().height + document.getElementById("wordscloud").getBoundingClientRect().top;
@@ -8,7 +9,6 @@ const nav = document.getElementsByTagName("nav")[0].getBoundingClientRect().heig
 const handleScroll = () => {
 	topScroll = window.pageYOffset;
 	// document.documentElement.style.setProperty('--scrollValue', topScroll);
-	// console.log(topScroll);
 	if(topScroll > header - nav/2){
 		document.querySelector(".main-nav").classList.add("dark-color");
 	}else{
@@ -20,8 +20,6 @@ window.addEventListener("scroll", handleScroll);
 
 
 const allImage = document.querySelectorAll('.container-project_img');
-let oddImg = [];
-let evenImg = [];
 allImage.forEach( (el, i) => {
 	if(i % 2 === 0){
 		addParallax(el, 'odd');
@@ -39,43 +37,7 @@ function addParallax(els, order){
 }
 
 
-const openEls = document.querySelectorAll("[data-open]");
-const closeEls = document.querySelectorAll("[data-close]");
-const isVisible = "is-visible";
 
-for (const el of openEls) {
-  el.addEventListener("click", function() {
-	  if(!document.getElementsByTagName("body")[0].classList.contains("no-scroll")){
-		const modalId = this.dataset.open;
-		document.getElementById(modalId).classList.add(isVisible);
-		document.getElementsByTagName("body")[0].classList.add("no-scroll");
-	  }
-  });
-}
-
-for (const el of closeEls) {
-  el.addEventListener("click", function() {
-    this.parentElement.parentElement.parentElement.classList.remove(isVisible);
-	document.getElementsByTagName("body")[0].classList.remove("no-scroll");
-  });
-}
-
-document.addEventListener("click", e => {
-	console.log(e.target, e.target !== document.querySelector(".modal.is-visible"));
-  if (e.target !== document.querySelector(".modal.is-visible") && !e.target.matches(".container-project_item, .container-project_item *")) {
-	  console.log("close nav")
-    document.querySelector(".modal.is-visible").classList.remove(isVisible);
-	document.getElementsByTagName("body")[0].classList.remove("no-scroll");
-  }
-});
-
-document.addEventListener("keyup", e => {
-  // if we press the ESC
-  if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
-    document.querySelector(".modal.is-visible").classList.remove(isVisible);
-	document.getElementsByTagName("body")[0].classList.remove("no-scroll");
-  }
-});
 
 function clamp(number, min, max) {
 	return Math.max(min, Math.min(number, max));
@@ -117,3 +79,9 @@ const detectFont = () => keyWords.forEach( txt => {
 window.addEventListener("scroll", detectFont);
 
 });
+
+document.querySelector("#myVideo")?.addEventListener("canplay", () => setTimeout( () => {videoLoad()}, 1000) );
+
+function videoLoad(){
+	console.log("load finish")
+}

@@ -23,9 +23,9 @@ class Equipe(Page):
         ),
         MultiFieldPanel(
             [
-				InlinePanel("content_user"),
+				InlinePanel("content_user", label="un équipier"),
             ],
-            heading="Galerie de projet",
+            heading="Les différents profiles",
             classname="collapsible"
         ),
     ]
@@ -33,21 +33,24 @@ class Equipe(Page):
 class ContentUser(Orderable):
     page = ParentalKey("Equipe", related_name="content_user")
 
-    nom_user = models.CharField(max_length=100, null=True, blank=True)
-    role_user = models.CharField(max_length=100, null=True, blank=True)
+    nom_user = models.CharField(max_length=100, null=True, blank=True, verbose_name="Nom")
+    role_user = models.CharField(max_length=100, null=True, blank=True , verbose_name="Job")
     # annee_conf = models.CharField(max_length=200, null=True, blank=True)
     image_user = models.ForeignKey(
         "wagtailimages.Image",
-        null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
+        null=True, blank=True, on_delete=models.SET_NULL, related_name="+", verbose_name="Photo"
     )
 	
-    external_link = models.URLField(null=True, blank=True)
+    external_link = models.URLField(null=True, blank=True, verbose_name="Lien réseau")
 	# external_link_slug = models.CharField(max_length=100, null=True, blank=True)
 
     panels = [
-        FieldPanel('nom_user', classname="title"),
-        FieldPanel('role_user', classname="full"),
+        FieldPanel('nom_user', classname="col6"),
+        FieldPanel('role_user', classname="col6"),
         ImageChooserPanel("image_user"),
         FieldPanel('external_link', classname="full"),
         # FieldPanel('external_link_slug', classname="full"),
     ]
+
+    # class Meta:
+    #         icon = 'user'

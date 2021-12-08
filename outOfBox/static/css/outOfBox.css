@@ -4,7 +4,9 @@
     src: url("../assets/fonts/Black-Black.otf") format("otf");
     font-weight: 800;
 } */
-
+.nav-wrapper, .nav-wrapper .inner{
+  background-color: red!important;
+}
 
 :root{
     --dark-color: #161616;
@@ -181,7 +183,7 @@ header{
     max-width: 800px;
     margin: 0 auto;
 }
-.container-project_item{
+.container-project_item > a{
     display: flex;
     align-items: center;
     margin: 75px 0;
