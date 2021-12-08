@@ -164,17 +164,19 @@ header {
 .container-projects {
   background-color: var(--dark-color);
   color: var(--light-color-6);
+  max-width: 900px;
+  margin: 0 auto;
 }
 .container-project_item > a{
     display: flex;
     align-items: center;
     margin: 75px 0;
 }
-.container-project_full:nth-child(even) {
+.container-project_full:nth-child(even) a {
   align-self: flex-end;
   flex-direction: row-reverse;
 }
-.container-project_full:nth-child(even) .container-project_info {
+.container-project_full:nth-child(even) a .container-project_info {
   text-align: right;
 }
 

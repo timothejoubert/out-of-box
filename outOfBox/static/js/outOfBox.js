@@ -16,7 +16,7 @@ const handleScroll = () => {
 	}
 }
 
-window.addEventListener("scroll", handleScroll);
+// window.addEventListener("scroll", handleScroll);
 
 
 const allImage = document.querySelectorAll('.container-project_img');
