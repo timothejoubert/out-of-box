@@ -7,16 +7,20 @@
 Install and clone the repo using virtual environnement. See deploy section above
 
 `python manage.py makemigrations `
+
 `python manage.py migrate `
+
 `python manage.py runserver`
+
 `python manage.py collectstatic`
+
 
 ## Tech
 
 Install new App :
 python manage.py startapp [name]
 
-##How to install on Ubuntu and deploy
+## How to install on Ubuntu and deploy
 
 1.  Install nginx and uwsgi your server
 
@@ -28,9 +32,13 @@ python manage.py startapp [name]
 4.  Create a virtual environment using Python and install the required dependencies
 
     `python -venv /var/www/vhosts/outofbox`
+
     `cd /var/www/vhosts/outofbox`
+
     `source bin/activate`
+
     `pip install -r requirements.txt`
+
 
 5.  After this point, you can verify that everything works and perform migrations if needed
 
@@ -51,3 +59,10 @@ python manage.py startapp [name]
 9.  Update your DNS to point to your server IP address, and run uWGSI (using socket) to verify the setup.
 
     `uwsgi --socket outofbox.sock --wsgi-file outOfBox/wsgi.py --chmod-socket=666`
+10. Create a service and enable it to make the app run forever and [copy file from here](https://github.com/timothejoubert/out-of-box/blob/main/configs/outofbox.service "copy file from here") 
+
+    `sudo nano /etc/systemd/system/outofbox.service`
+
+    `sudo systemctl enable outofbox.service`
+
+    `sudo systemctl start outofbox.service`
