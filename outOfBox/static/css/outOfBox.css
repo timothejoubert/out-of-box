@@ -439,7 +439,7 @@ p.team_job {
 
 /* contact */
 #footer {
-  padding: 50px;
+  padding: 50px 150px 50px 50px;
 }
 .container-footer_info {
   display: flex;
