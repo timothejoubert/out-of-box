@@ -85,3 +85,16 @@ document.querySelector("#myVideo")?.addEventListener("canplay", () => setTimeout
 function videoLoad(){
 	console.log("load finish")
 }
+
+
+
+// second nav
+
+const burger = document.querySelector(".burger-icon");
+const mainNav = document.querySelector(".main-nav")
+
+burger.addEventListener("click", toggleNav);
+
+function toggleNav(){
+	mainNav.classList.toggle("hide");
+}
