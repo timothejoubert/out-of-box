@@ -13,6 +13,10 @@ class ProjetPage(Page):
         InlinePanel("project_item"),
     ]
 
+    class Meta:
+        verbose_name = "template de page projet"
+
+
 
 class ProjectItem(Orderable):
     page = ParentalKey("ProjetPage", related_name="project_item")

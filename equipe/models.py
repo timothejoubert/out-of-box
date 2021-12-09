@@ -9,6 +9,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 class Equipe(Page):
     parent_page_types = ['home.HomePage']
+    max_count = 1
 
     description_principale = RichTextField(
         features=['bold', 'italic', 'link'], null=True, blank=True

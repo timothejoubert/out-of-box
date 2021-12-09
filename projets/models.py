@@ -9,6 +9,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 class ProjetsList(Page):
     parent_page_types = ['home.HomePage']
+    subpage_types = ['projetPage.ProjetPage']
     max_count = 1
 
     projetTxt = RichTextField(max_length=100, null=True, blank=True)
@@ -16,3 +17,11 @@ class ProjetsList(Page):
     content_panels = Page.content_panels + [        
         FieldPanel('projetTxt', classname="full"),
     ]
+
+    # def get_context(self, request):
+    #     context = super(ProjetsList, self).get_context(request)
+
+    #     context['projet_pages'] = ProjetPage.objects.all()
+    #     print(ProjetPage.objects.all())
+
+    #     return context

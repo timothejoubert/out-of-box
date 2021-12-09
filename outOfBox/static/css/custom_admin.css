@@ -22,3 +22,9 @@ ul#id_list_words-FORMS{
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
+
+
+/* remove "btn visualiser en direct" => wrong url path  */
+.messages .success a:first-child{
+	display: none;
+}

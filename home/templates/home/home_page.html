@@ -29,14 +29,14 @@
 
 	<article class="container-projects" id="projets">
 
-		<div class="article_intro">
+		{% comment %} <div class="article_intro">
 			{{ page.title_projets|richtext }}
-		</div>
+		</div> {% endcomment %}
 
 		<div class="container-project">
-
+			
 			{% for projet in projet_pages %}
-
+			{% if projet.projet_nom %}
 			<div class="container-project_full">
 				<div class="container-project_item" data-open="modal{{projet.id}}">
 					{% image projet.projet_image width-300 as img300 %}
@@ -88,8 +88,9 @@
 					</div>
 				</div> {% endcomment %}
 			</div>
-
+			{% endif %}
 			{% endfor %}
+			
 		</div>
 	</article>
 
@@ -123,11 +124,11 @@
 	</article>
 	
 
-	{% comment %} <article class="container-team" id="equipe">
+	<article class="container-team" id="equipe">
 
-		<div class="article_intro">
+		{% comment %} <div class="article_intro">
 			{{ page.title_team|richtext }}
-		</div>
+		</div> {% endcomment %}
 
 		<div class="container-users">
 			{% for user in equipe_list %}
@@ -161,7 +162,7 @@
 				</div>
 			{% endfor %}
 		</div>
-	</article> {% endcomment %}
+	</article> 
 
 	<article class="container-footer" id="footer">
 

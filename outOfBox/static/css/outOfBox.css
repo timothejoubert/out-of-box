@@ -77,9 +77,17 @@ article {
 /* nav */
 nav {
   position: fixed;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   padding: 20px 30px;
   z-index: 10;
+}
+.logo > a{
+  display: flex;
+}
+.logo svg{
+  margin-right: 10px;
 }
 .main-nav {
   display: flex;

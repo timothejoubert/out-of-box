@@ -8,6 +8,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 class clientsList(Page):
     parent_page_types = ['home.HomePage']
+    max_count = 1
 
     content_panels = Page.content_panels + [
         InlinePanel('client_item'),
