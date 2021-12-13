@@ -200,6 +200,7 @@ header {
   bottom: 100px;
   width: 90vw;
 }
+
 .firstline h2 {
   font-size: 3rem;
   font-weight: 400;
@@ -248,7 +249,7 @@ header {
 .container-project_item > a{
     display: flex;
     align-items: center;
-    margin: 75px 0;
+    margin: 120px 0;
 }
 .container-project_full:nth-child(even) a {
   align-self: flex-end;
@@ -456,6 +457,7 @@ p.team_job {
 .container-footer_left-contact {
   display: flex;
   align-items: center;
+  flex: 1;
 }
 .container-footer_logo {
   padding-bottom: 10px;
@@ -671,3 +673,33 @@ p.team_job {
     transform: rotate(0deg);
   }
 }
+
+
+
+
+
+
+
+
+
+/* animation reveal*/
+.reveal, .reveal-delay{
+  transition: all 0.7s cubic-bezier(0.5,0,0,1);
+}
+
+.reveal[data-reveal="fade-up"], .reveal[data-reveal="fade-up"] .reveal-delay{
+  opacity: 0;
+  transform: translateY(50px);
+}
+.reveal-visible[data-reveal="fade-up"], .reveal-visible[data-reveal="fade-up"] .reveal-delay{
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.reveal[data-reveal="scale-up"] .reveal-delay{
+  transform: scale(0.95);
+}
+.reveal-visible[data-reveal="scale-up"] .reveal-delay{
+  transform: scale(1);
+}
+

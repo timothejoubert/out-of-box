@@ -28,10 +28,10 @@
 
 		<div class="header-headeline">
 			<div class="firstline">
-				<h2>À la recherche</h2>
+				<h2 class="reveal" data-reveal="fade-up">À la recherche</h2>
 			</div>
 			<div class="secondline">
-				<h2>de l’inattendu</h2>
+				<h2 class="reveal" data-reveal="fade-up">de l’inattendu</h2>
 			</div>
 		</div>
 
@@ -54,7 +54,7 @@
 			
 			{% for projet in projet_pages %}
 			{% if projet.projet_nom %}
-			<div class="container-project_full">
+			<div class="container-project_full reveal" data-reveal="fade-up">
 				<div class="container-project_item" data-open="modal{{projet.id}}">
 					{% image projet.projet_image width-300 as img300 %}
 					{% image projet.projet_image original as img %}
@@ -128,11 +128,11 @@
 
 	<article class="container-clients" id="clients">
 
-		<div class="container-client">
+		<div class="container-client reveal" data-reveal="fade-up">
 			{% for client in client_list %}
 
 				{% image client.image_client width-150 as img %}
-				<div class="container-client_item">
+				<div class="container-client_item reveal-delay">
 					<img src="{{ img.url }}" alt="img.title">
 				</div>
 
@@ -147,9 +147,9 @@
 			{{ page.title_team|richtext }}
 		</div> {% endcomment %}
 
-		<div class="container-users">
+		<div class="container-users reveal" data-reveal="scale-up">
 			{% for user in equipe_list %}
-				<div class="container-user">
+				<div class="container-user reveal-delay">
 					
 					{% image user.image_user width-400 as img %}
 					<div class="container-img-user">

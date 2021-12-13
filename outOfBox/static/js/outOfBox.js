@@ -80,21 +80,78 @@ window.addEventListener("scroll", detectFont);
 
 });
 
-document.querySelector("#myVideo")?.addEventListener("canplay", () => setTimeout( () => {videoLoad()}, 1000) );
 
+
+
+//convert to span
+const spanConverter = ( container ) => {
+	const [...letters] = container.innerHTML;
+	container.innerHTML= "";
+	letters.map( (letter, i) => {
+		const span = document.createElement('span');
+		span.classList.add("reveal-delay");
+		span.innerHTML = letter;
+		container.appendChild(span);
+	})
+}
+const firstLine = document.querySelector(".firstline h2");
+const secondline = document.querySelector(".secondline h2");
+spanConverter(firstLine);
+spanConverter(secondline);
+
+//video is ready
+document.querySelector("#myVideo")?.addEventListener("canplay", () => setTimeout( () => {videoLoad()}, 1000) );
 function videoLoad(){
-	console.log("load finish")
+	console.log("load finish");
 }
 
-
-
 // second nav
-
 const burger = document.querySelector(".burger-icon");
 const mainNav = document.querySelector(".main-nav")
-
 burger.addEventListener("click", toggleNav);
-
 function toggleNav(){
 	mainNav.classList.toggle("hide");
 }
+
+
+
+
+// apparition el transi
+const ratio = 0.9;
+const options = {
+	root: null,
+	rootMargin: '0px',
+	threshold: ratio
+}
+
+const handleIntersect = function(entries, observer) {
+	entries.forEach( (entry) => {
+		const el = entry.target;
+		//console.log(entry.boundingClientRect.top > entry.boundingClientRect.height);
+		
+		if(entry.intersectionRatio > ratio){
+			el.classList.add('reveal-visible');
+			el.querySelectorAll('.reveal-delay').forEach( (item, i) => {
+				item.style.transitionDelay = i * 30 + "ms";
+			});
+			// observer.unobserve(el);
+		}
+		// else{
+		// 	el.classList.remove('reveal-visible');
+		// }
+	});
+}
+
+if(!!window.IntersectionObserver){
+	const observer = new IntersectionObserver(handleIntersect, options);
+	document.querySelectorAll('.reveal').forEach( (el) => {
+		observer.observe(el);
+	});
+}else{
+	console.log("IntersectionObserver not supported");
+	document.querySelectorAll('.reveal').forEach( (el) => {
+		el.classList.add("reveal-visible")
+	});
+}
+
+
