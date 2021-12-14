@@ -6,6 +6,10 @@
 
 {% block content %}
 
+	<div class="anim-loader" style="display:none">
+
+	</div>
+
 	<div id="second-nav">
 		<div class="burger-icon">
 			<span class="rect-burger"></span>
@@ -34,9 +38,20 @@
 				<h2 class="reveal" data-reveal="fade-up">de l’inattendu</h2>
 			</div>
 		</div>
-
+		{% comment %} <svg width="470" height="400" id="path-svg" >
+			<defs>
+			  <clipPath id="myClip">
+				<polygon points="0% 0%, 0% 100%, 30% 100%, 30% 0%, 35% 0%,
+					35% 100%, 65% 100%, 65% 0%,
+					70% 0%, 70% 70%, 100% 70%, 100% 0%,
+					100% 100%, 70% 100%, 70% 75%, 100% 75%,
+					100% 0%"/>
+			  </clipPath>
+			</defs>
+		  </svg> {% endcomment %}
 		<div class="container-img_header">
-			<video poster="/static/assets/header-img.jpg" autoplay muted loop id="myVideo">
+
+			<video poster="/static/assets/header-img.jpg" autoplay muted loop id="myVideo" >
 				<source src="/static/assets/header-vid4.mp4" type="video/mp4">
 			</video>
 		</div>

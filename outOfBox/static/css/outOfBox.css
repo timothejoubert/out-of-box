@@ -96,7 +96,7 @@ nav {
   gap: 20px;
   transition: transform 300ms;
 }
-.main-nav.hide {
+.hide .main-nav {
   transform: translate(150%);
 }
 .main-nav a {
@@ -216,7 +216,41 @@ header {
   border-bottom: 2px solid var(--light-color);
 }
 .container-img_header {
+  --first-height: 0%;
+  --second-height: 0%;
+  --third-width: 100%;
   overflow: hidden;
+}
+.container-img_header video{
+
+  clip-path: polygon(
+    /* left rectangle */
+    0% 0%,
+    /* left bottom */
+    0% var(--first-height), 
+    /* right bottom */
+    30% var(--first-height), 
+    /* top right */
+    30% 0%, 
+
+    35% 0%, 
+    35% var(--second-height),  
+    65% var(--second-height),  
+    65% 0%, 
+    
+    /* x y */
+    var(--third-width) 0%,
+    var(--third-width) 70%,
+    100% 70%,
+    100% 0%,
+
+    100% 100%,
+    var(--third-width) 100%,
+    var(--third-width) 75%,
+    100% 75%,
+
+    100% 0%
+  );
 }
 #myVideo {
   position: relative;
@@ -226,7 +260,7 @@ header {
   /* left: 50%; */
   /* min-width: 100%;
     min-height: 100%; */
-  width: 100vw;
+  width: calc(100vw - 100px);
   height: 100vh;
   object-fit: cover;
   /* transform: translateX(-50%) translateY(-50%); */
@@ -703,3 +737,48 @@ p.team_job {
   transform: scale(1);
 }
 
+
+
+/* clip path header */
+#path-svg{
+  position: fixed;
+}
+.anim-loader{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 50vw;
+  max-width: 470px;
+  height: 400px;
+  transform: translate(-50%, -50%);
+  z-index: 110;
+  background-color: var(--light-color);
+  clip-path: polygon(
+    /* left rectangle */
+    0% 0%,
+    /* left bottom */
+    0% 100%, 
+    /* right bottom */
+    30% 100%,
+    /* top right */
+    30% 0%, 
+
+    35% 0%,
+    35% 100%,
+    65% 100%,
+    65% 0%,
+
+    /* x y */
+    70% 0%,
+    70% 70%,
+    100% 70%,
+    100% 0%,
+
+    100% 100%,
+    70% 100%,
+    70% 75%,
+    100% 75%,
+
+    100% 0%
+  );
+}

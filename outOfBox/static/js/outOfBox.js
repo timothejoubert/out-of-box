@@ -107,13 +107,12 @@ function videoLoad(){
 
 // second nav
 const burger = document.querySelector(".burger-icon");
-const mainNav = document.querySelector(".main-nav")
+const mainNav = document.querySelector("nav")
 burger.addEventListener("click", toggleNav);
+
 function toggleNav(){
 	mainNav.classList.toggle("hide");
 }
-
-
 
 
 // apparition el transi
@@ -134,11 +133,11 @@ const handleIntersect = function(entries, observer) {
 			el.querySelectorAll('.reveal-delay').forEach( (item, i) => {
 				item.style.transitionDelay = i * 30 + "ms";
 			});
-			// observer.unobserve(el);
+			observer.unobserve(el);
 		}
-		// else{
-		// 	el.classList.remove('reveal-visible');
-		// }
+		else{
+			el.classList.remove('reveal-visible');
+		}
 	});
 }
 
@@ -155,3 +154,62 @@ if(!!window.IntersectionObserver){
 }
 
 
+
+// animation 
+function lerp (start, end, amt){
+	return (1-amt)*start+amt*end
+  }
+
+function firstLineAnim(el){
+	let grow = 0;
+	for(let i = 0; i < 100; i++){
+		grow++;
+		el.style.setProperty('--first-height', lerp(grow, 100, 0.0001) +'%');
+	}
+	// while(grow < 100){
+	// 	grow = grow + 0.001;
+	// 	el.style.setProperty('--first-height', grow +'%');
+	// }
+}
+
+// setTimeout( () => {
+// 	firstLineAnim();
+	
+// }, 1000);
+
+function clamp(number, min, max) {
+	return Math.max(min, Math.min(number, max));
+}
+
+const clip = document.querySelector(".container-img_header");
+let loop = null;
+let progress = 0;
+let progress2 = 0;
+let progress3 = 100;
+
+const frame = () => {
+	if (progress >= 100 && progress2 >= 100 && progress3 <= 70) {
+		cancelAnimationFrame(loop);
+        rafID = null;
+		return;
+	}
+	if(progress <= 100){
+		progress+=2;
+		clip.style.setProperty('--first-height', progress+'%');
+	} 
+	if(progress2 <= 100 ){
+		progress2+=4;
+		clip.style.setProperty('--second-height', progress2 +'%');
+	}
+	if(progress3 >= 70){
+		progress3-=1;
+		clip.style.setProperty('--third-width', progress3 +'%');
+	} 
+	loop = requestAnimationFrame(frame); 
+};
+
+window.addEventListener("DOMContentLoaded", (event) => {
+	setTimeout( () => {
+		loop = requestAnimationFrame(frame);
+	}, 1000);
+});
