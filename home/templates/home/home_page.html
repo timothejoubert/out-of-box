@@ -4,17 +4,13 @@
 
 {% block body_class %}template-homepage{% endblock %}
 
-{% block content %}
-
-	<div class="anim-loader" style="display:none">
-
-	</div>
+	{% block content %}
 
 	<div id="second-nav">
 		<div class="burger-icon">
 			<span class="rect-burger"></span>
 		</div>
-		<div class="reseaux-icon">
+		<div class="reseaux-icon" style="opacity:0;">
 			<a href="https://www.linkedin.com/company/agence-outofbox/" target="_blank" class="container-icon">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
 			</a>
@@ -32,25 +28,14 @@
 
 		<div class="header-headeline">
 			<div class="firstline">
-				<h2 class="reveal" data-reveal="fade-up">À la recherche</h2>
+				<h2>À la recherche</h2>
 			</div>
 			<div class="secondline">
-				<h2 class="reveal" data-reveal="fade-up">de l’inattendu</h2>
+				<h2>de l’inattendu</h2>
 			</div>
 		</div>
-		{% comment %} <svg width="470" height="400" id="path-svg" >
-			<defs>
-			  <clipPath id="myClip">
-				<polygon points="0% 0%, 0% 100%, 30% 100%, 30% 0%, 35% 0%,
-					35% 100%, 65% 100%, 65% 0%,
-					70% 0%, 70% 70%, 100% 70%, 100% 0%,
-					100% 100%, 70% 100%, 70% 75%, 100% 75%,
-					100% 0%"/>
-			  </clipPath>
-			</defs>
-		  </svg> {% endcomment %}
-		<div class="container-img_header">
 
+		<div class="container-img_header">
 			<video poster="/static/assets/header-img.jpg" autoplay muted loop id="myVideo" >
 				<source src="/static/assets/header-vid4.mp4" type="video/mp4">
 			</video>
@@ -86,39 +71,6 @@
 						</div>
 					</a>
 				</div>
-
-				{% comment %} <div class="{% cycle 'modal' 'modal modal-right' %}" id="modal{{projet.id}}" data-animation={% cycle 'slideInOutLeft' 'slideInOutRight' %}>
-					<div class="modal-dialog">
-					  <div class="modal-top">
-						  <h3>{{ projet.projet_nom }}</h3>
-							<button class="close-modal" aria-label="close modal" data-close>
-								<svg id="cross-project" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M22.7818 2.2182L2.77393 22.2261"/>
-									<path d="M22.7817 22.2261L2.2181 2.2182"/>
-								</svg>
-							</button>
-					  </div>
-
-					  <div class="modal-content">
-						<p>{{ projet.projet_description_complete|richtext }}</p>
-						{% image projet.projet_image width-500 as img500 %}
-						{% image projet.projet_image width-50 as img50 %}
-						<div class="modal-img">
-							<div class="modal-img-main">
-								<img src="{{ img500.url }}" alt="{{img500.title}}">
-							</div>
-							<div class="container-img_gallery">
-								<img src="{{ img50.url }}" alt="{{img50.title}}">
-								<img src="{{ img50.url }}" alt="{{img50.title}}">
-								<img src="{{ img50.url }}" alt="{{img50.title}}">
-							</div>
-						</div>
-						{% if projet.projet_link %}
-							<a href={{projet.projet_link}} target"_blank">{{ projet.projet_link }}</a>
-						{% endif %}
-					  </div>
-					</div>
-				</div> {% endcomment %}
 			</div>
 			{% endif %}
 			{% endfor %}
@@ -143,7 +95,7 @@
 
 	<article class="container-clients" id="clients">
 
-		<div class="container-client reveal" data-reveal="fade-up">
+		<div class="container-client reveal" data-reveal="fade-up" child-delay="30">
 			{% for client in client_list %}
 
 				{% image client.image_client width-150 as img %}
@@ -155,16 +107,15 @@
 		</div>
 	</article>
 	
-
 	<article class="container-team" id="equipe">
 
 		{% comment %} <div class="article_intro">
 			{{ page.title_team|richtext }}
 		</div> {% endcomment %}
 
-		<div class="container-users reveal" data-reveal="scale-up">
+		<div class="container-users reveal" data-reveal="scale-up" child-delay="70">
 			{% for user in equipe_list %}
-				<div class="container-user reveal-delay">
+				<div class="container-user reveal-delay" >
 					
 					{% image user.image_user width-400 as img %}
 					<div class="container-img-user">

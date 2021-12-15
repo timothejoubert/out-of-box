@@ -87,13 +87,15 @@
 	.header-headeline{
 		left: 20px;
 	}
-	.firstline h2 {
+	.firstline h2 span{
 		font-size: 2.2rem;
-		line-height: 1.5rem;
+		line-height: 2rem;
+		padding: calc(var(--space) * 4px);
 	}
-	.secondline h2 {
+	.secondline h2 span{
 		font-size: 4rem;
 		line-height: 4.5rem;
+		padding: calc(var(--space) * 8px);
 	}
 	.container-project_full div.container-project_item > a{
 		flex-direction: column-reverse;
@@ -110,7 +112,7 @@
 		transform: translateX(0);
 		margin: 20px;
 	}
-	#second-nav{
+	.loading_stop #second-nav{
 		top: 20px;
 		right: 20px;
 		height: unset;
@@ -167,10 +169,10 @@
 	}
 
 	.hide ~ #second-nav .burger-icon{
-		background-color: var(--dark-color);
+		background-color: var(--light-color);
 	}
 	.hide ~ #second-nav .rect-burger, .hide ~ #second-nav .rect-burger::after{
-		background-color: var(--light-color);
+		background-color: var(--dark-color);
 	}
 	.hide ~ #second-nav .reseaux-icon{
 		transform: translateX(100vw);
@@ -211,7 +213,9 @@
 	#myVideo{
 		width: 100vw;
 	}
-	
+	article, #footer, #wordscloud{
+		padding: 150px 30px
+	}
 }
 @media  (max-height:720px){
 	#second-nav .reseaux-icon{
@@ -225,12 +229,17 @@
 	.container-words_cloud h4{
 		font-size: calc(var(--distLetter) * 0.8rem + 0.8rem);
 	}
-	.secondline h2{
+	.secondline h2 span{
 		font-size: 3rem;
+		padding: calc(var(--space) * 5px);
 	}
-	.firstline h2{
+	.firstline h2 span{
 		font-size: 2rem;
-		line-height: 0.5rem;
+		line-height: 1.6rem;
+		padding: calc(var(--space) * 3px);
+	}
+	#projets{
+		padding: 120px 10px;
 	}
 }
 @media only screen and (max-width: 400px) {

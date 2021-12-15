@@ -37,7 +37,7 @@ body {
   background-color: var(--dark-color);
   color: var(--light-color);
 }
-body.no-scroll {
+body.no_scroll {
   height: 100vh;
   overflow: hidden;
 }
@@ -83,6 +83,9 @@ nav {
   width: 100%;
   padding: 20px 130px 20px 30px;
   z-index: 10;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 500ms, opacity 500ms;
 }
 .logo > a{
   display: flex;
@@ -127,15 +130,17 @@ nav {
   position: fixed;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: space-between;
   right: 0;
   top: 0;
   width: 100px;
   height: 100vh;
-  padding: 25px 0;
+  padding: 0;
   border-left: 1px solid var(--light-color-2);
   background-color: var(--dark-color);
+  transform: translateX(100%);
+  /* overflow: hidden; */
+  transition: transform 500ms, padding 500ms;
 }
 .burger-icon{
   position: relative;
@@ -192,25 +197,36 @@ header {
   width: 100%;
   height: 100vh;
   background-color: var(--dark-color);
+  z-index: 1;
 }
 .header-headeline {
   position: absolute;
   z-index: 5;
   left: 50px;
   bottom: 100px;
-  width: 90vw;
+  /* width: 90vw; */
 }
-
-.firstline h2 {
+.header-headeline h2{
+  overflow: hidden;
+  display: flex;
+}
+.header-headeline h2 span{
+  transform: translateY(100%);
+  --space: 0;
+}
+.firstline h2 span{
+  display: block;
   font-size: 3rem;
   font-weight: 400;
+  padding: calc(var(--space) * 6px);
   color: var(--light-color);
   line-height: 2.5rem;
 }
-.secondline h2 {
-  display: inline-block;
+.secondline h2 span{
+  /* display: inline-block; */
   font-size: 6rem;
   font-weight: 600;
+  padding: calc(var(--space)* 10px);
   color: var(--light-color);
   line-height: 5.5rem;
   border-bottom: 2px solid var(--light-color);
@@ -240,14 +256,14 @@ header {
     
     /* x y */
     var(--third-width) 0%,
-    var(--third-width) 70%,
-    100% 70%,
+    var(--third-width) 60%,
+    100% 60%,
     100% 0%,
 
     100% 100%,
     var(--third-width) 100%,
-    var(--third-width) 75%,
-    100% 75%,
+    var(--third-width) 65%,
+    100% 65%,
 
     100% 0%
   );
@@ -256,16 +272,9 @@ header {
   position: relative;
   right: 0;
   bottom: 0;
-  /* top: 50%; */
-  /* left: 50%; */
-  /* min-width: 100%;
-    min-height: 100%; */
-  width: calc(100vw - 100px);
+  width: 100vw;
   height: 100vh;
   object-fit: cover;
-  /* transform: translateX(-50%) translateY(-50%); */
-  /* object-fit: cover; */
-  /* z-index: -1; */
 }
 .container-img_header img {
   width: 100%;
@@ -526,206 +535,31 @@ p.team_job {
   height: 250px;
 }
 
-/* modal */
-.modal {
-  position: fixed;
-  top: 82px;
-  left: 0;
-  width: 700px;
-  height: 100vh;
-  background: var(--dark-color);
-  cursor: pointer;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.35s ease-in;
-  z-index: 100;
+
+
+/* animation header*/
+.loading_stop #second-nav{
+  transform: translateX(0);
+  padding: 25px 0;
 }
-.modal.modal-right {
-  left: inherit;
-  right: 0;
-}
-.modal.is-visible {
-  visibility: visible;
+.loading_stop nav{
+  transform: translateY(0);
   opacity: 1;
 }
-
-.modal-dialog {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: var(--light-color);
-  overflow: auto;
-  cursor: default;
-  z-index: 100;
+.loading_stop .header-headeline h2 span{
+  transform: translateY(0);
 }
-.modal-dialog * {
-  color: var(--dark-color);
-}
-.modal-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--dark-color);
-  padding: 10px 20px 10px 50px;
-}
-
-.modal-top h3 {
-  font-size: 1.5rem;
-}
-.close-modal {
-  display: flex;
-  cursor: pointer;
-  border: none;
-  padding: 5px;
-  background-color: inherit;
-}
-.close-modal:hover {
-  background-color: inherit;
-}
-#cross-project path {
-  stroke: var(--dark-color);
-  stroke-width: 3px;
-}
-.modal-content {
-  padding: 10px 100px 10px 50px;
-}
-.modal p + p {
-  margin-top: 1rem;
-}
-.modal-img {
-  display: flex;
-  justify-content: space-between;
-}
-.modal-img img {
-  width: 100%;
-}
-.modal-img-main {
-  width: 85%;
-}
-.container-img_gallery {
-  display: flex;
-  flex-direction: column;
-  width: 10%;
-}
-.container-img_gallery img + img {
-  margin-top: 10px;
-}
-
-/* ANIMATIONS
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-[data-animation] .modal-dialog {
-  opacity: 0;
-  transition: all 0.5s ease-in-out;
-}
-
-[data-animation].is-visible .modal-dialog {
-  opacity: 1;
-  transition-delay: 0.2s;
-}
-
-[data-animation="slideInOutDown"] .modal-dialog {
-  transform: translateY(100%);
-}
-
-[data-animation="slideInOutTop"] .modal-dialog {
-  transform: translateY(-100%);
-}
-
-[data-animation="slideInOutLeft"] .modal-dialog {
-  transform: translateX(-100%);
-}
-
-[data-animation="slideInOutRight"] .modal-dialog {
-  transform: translateX(100%);
-}
-
-[data-animation="zoomInOut"] .modal-dialog {
-  transform: scale(0.2);
-}
-
-[data-animation="rotateInOutDown"] .modal-dialog {
-  transform-origin: top left;
-  transform: rotate(-1turn);
-}
-
-[data-animation="mixInAnimations"].is-visible .modal-dialog {
-  animation: mixInAnimations 2s 0.2s linear forwards;
-}
-
-[data-animation="slideInOutDown"].is-visible .modal-dialog,
-[data-animation="slideInOutTop"].is-visible .modal-dialog,
-[data-animation="slideInOutLeft"].is-visible .modal-dialog,
-[data-animation="slideInOutRight"].is-visible .modal-dialog,
-[data-animation="zoomInOut"].is-visible .modal-dialog,
-[data-animation="rotateInOutDown"].is-visible .modal-dialog {
-  transform: none;
-}
-
-@keyframes mixInAnimations {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  10% {
-    transform: translateX(0);
-  }
-
-  20% {
-    transform: rotate(20deg);
-  }
-
-  30% {
-    transform: rotate(-20deg);
-  }
-
-  40% {
-    transform: rotate(15deg);
-  }
-
-  50% {
-    transform: rotate(-15deg);
-  }
-
-  60% {
-    transform: rotate(10deg);
-  }
-
-  70% {
-    transform: rotate(-10deg);
-  }
-
-  80% {
-    transform: rotate(5deg);
-  }
-
-  90% {
-    transform: rotate(-5deg);
-  }
-
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-
-
-
-
-
-
-
 
 /* animation reveal*/
 .reveal, .reveal-delay{
   transition: all 0.7s cubic-bezier(0.5,0,0,1);
 }
 
-.reveal[data-reveal="fade-up"], .reveal[data-reveal="fade-up"] .reveal-delay{
+.reveal[data-reveal="fade-up"]{
   opacity: 0;
   transform: translateY(50px);
 }
-.reveal-visible[data-reveal="fade-up"], .reveal-visible[data-reveal="fade-up"] .reveal-delay{
+.reveal-visible[data-reveal="fade-up"]{
   opacity: 1;
   transform: translateY(0px);
 }
@@ -733,9 +567,10 @@ p.team_job {
 .reveal[data-reveal="scale-up"] .reveal-delay{
   transform: scale(0.95);
 }
-.reveal-visible[data-reveal="scale-up"] .reveal-delay{
+.reveal.reveal-visible[data-reveal="scale-up"] .reveal-delay{
   transform: scale(1);
 }
+
 
 
 
