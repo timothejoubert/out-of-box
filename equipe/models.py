@@ -43,13 +43,14 @@ class ContentUser(Orderable):
     )
 	
     external_link = models.URLField(null=True, blank=True, verbose_name="Lien réseau")
-	# external_link_slug = models.CharField(max_length=100, null=True, blank=True)
+    # email_link = models.CharField(max_length=100, default='mon mail', null=True, blank=True, verbose_name="Email")
 
     panels = [
         FieldPanel('nom_user', classname="col6"),
         FieldPanel('role_user', classname="col6"),
         ImageChooserPanel("image_user"),
-        FieldPanel('external_link', classname="full"),
+        FieldPanel('external_link', classname="col6"),
+        # FieldPanel('email_link', classname="col6"),
         # FieldPanel('external_link_slug', classname="full"),
     ]
 

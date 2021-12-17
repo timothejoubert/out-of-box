@@ -4,10 +4,10 @@
 }
 
 /* WordCloud */
-ul#id_list_words-FORMS {
+/* ul#id_list_words-FORMS {
   display: flex;
   flex-wrap: wrap;
-}
+} */
 #id_list_words-FORMS > li {
   max-width: 400px;
   margin: 0 10px 10px 10px;

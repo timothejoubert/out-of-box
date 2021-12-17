@@ -1,41 +1,7 @@
 
-//header
-const clip = document.querySelector(".container-img_header");
-let loop = null;
-let progress = 0;
-let progress2 = 0;
-let progress3 = 100;
-
-const frame = () => {
-	if (progress >= 100 && progress2 >= 100 && progress3 <= 70) {
-		cancelAnimationFrame(loop);
-		videoAnimEnd();
-        rafID = null;
-		return;
-	}
-	if(progress <= 100){
-		progress+=2;
-		clip.style.setProperty('--first-height', progress+'%');
-	} 
-	if(progress2 <= 100 ){
-		progress2+=4;
-		clip.style.setProperty('--second-height', progress2 +'%');
-	}
-	if(progress3 >= 70){
-		progress3-=1;
-		clip.style.setProperty('--third-width', progress3 +'%');
-	} 
-	loop = requestAnimationFrame(frame); 
-};
-
-function videoAnimEnd(){
-	document.querySelector("#main-container").classList.add("loading_stop");
-	document.getElementsByTagName("body")[0].classList.remove("no_scroll");
-
-}
 
 
-//convert to span
+//convert tagline header to span
 const firstLine = document.querySelector(".firstline h2");
 const secondline = document.querySelector(".secondline h2");
 const spanConverter = ( container ) => {
@@ -43,9 +9,7 @@ const spanConverter = ( container ) => {
 	container.innerHTML= "";
 	letters.forEach( (letter, i) => {
 		const span = document.createElement('span');
-		console.log(letter.length, letter)
 		if(/\s/.test(letter)){
-			console.log("espace")
 			span.style.setProperty('--space', 1);
 		}
 		span.classList.add("reveal-delay");
@@ -55,14 +19,30 @@ const spanConverter = ( container ) => {
 	})
 }
 
+//animation header
+const loaderWp = document.querySelector("#loader_logo");
 
+function startLoad(){
+	setTimeout( () => {
+		loaderWp.classList.remove("start");
+		videoAnimEnd();
+	}, 1000)
+}
+
+function videoAnimEnd(){
+	document.querySelector("#main-container").classList.add("loading_stop");
+	firstLine.classList.add("reveal-visible");
+	secondline.classList.add("reveal-visible");
+	document.getElementsByTagName("body")[0].classList.remove("no_scroll");
+}
+
+//animation for all section 
 function reveal(e){
 	const reveals = e.currentTarget.nodesReveal;
 	reveals.forEach( el => {
 		var windowHeight = window.innerHeight;
 		var revealPoint = 100;
 		var revealTop = el.getBoundingClientRect().top;
-		// console.log(el, revealTop, windowHeight - revealPoint);
 		if(revealTop < windowHeight - revealPoint){
 			el.classList.add("reveal-visible");
 		}else{
@@ -79,7 +59,7 @@ function reveal(e){
 	})
 }
 
-
+const video = document.getElementById("myVideo");
 //load function after loading 
 window.addEventListener("DOMContentLoaded", (e) => {
 	console.log(e.type);
@@ -89,12 +69,16 @@ window.addEventListener("DOMContentLoaded", (e) => {
 	spanConverter(secondline);
 
 	//header animation
-	setTimeout( () => {
-		document.querySelector(".reseaux-icon").style.opacity = 1;
-		loop = requestAnimationFrame(frame);
-		firstLine.classList.add("reveal-visible");
-		secondline.classList.add("reveal-visible");
-	}, 1000);
+	document.querySelector(".reseaux-icon").style.opacity = 1;
+	
+	loaderWp.classList.add("start");
+
+	console.log("wait for video ready");
+	video.addEventListener('loadeddata', function() {
+		console.log(video.readyState);
+		startLoad();
+	}, false)
+	
 
 	//init animation for all section 
 	window.nodesReveal = document.querySelectorAll(".reveal");
