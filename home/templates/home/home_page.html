@@ -44,10 +44,34 @@
 			</div>
 		</div>
 
-		<div class="container-img_header">
-			<video poster="/static/assets/header-img.jpg" autoplay muted loop id="myVideo" >
-				<source src="/static/assets/header-vid4.mp4" type="video/mp4">
-			</video>
+		<div class="container-img_header carousel-container">
+			<div class="carousel-item-wp item fade">
+				<video poster="/static/assets/header-img.jpg" autoplay muted loop id="firstVid">
+					<source src="/static/assets/header-vid1.mp4" type="video/mp4">
+				</video>
+			</div>
+			<div class="carousel-item-wp item fade">
+				<video poster="/static/assets/header-img.jpg" autoplay muted loop>
+					<source src="/static/assets/header-vid2.mp4" type="video/mp4">
+				</video>
+			</div>
+			<div class="carousel-item-wp item fade">
+				<video poster="/static/assets/header-img.jpg" autoplay muted loop>
+					<source src="/static/assets/header-vid3.mp4" type="video/mp4">
+				</video>
+			</div>
+			<div class="switch-wp">
+				<a class="prev switch-vid">
+					<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+						<path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/>
+					</svg>
+				</a>
+				<a class="next switch-vid">
+					<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+						<path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/>
+					</svg>
+				</a>
+			</div>
 		</div>
 
 	</header>

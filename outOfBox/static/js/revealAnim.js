@@ -30,6 +30,7 @@ function startLoad(){
 }
 
 function videoAnimEnd(){
+	document.querySelector(".reseaux-icon").style.opacity = 1;
 	document.querySelector("#main-container").classList.add("loading_stop");
 	firstLine.classList.add("reveal-visible");
 	secondline.classList.add("reveal-visible");
@@ -59,7 +60,7 @@ function reveal(e){
 	})
 }
 
-const video = document.getElementById("myVideo");
+const video = document.getElementById("firstVid");
 //load function after loading 
 window.addEventListener("DOMContentLoaded", (e) => {
 	console.log(e.type);
@@ -69,7 +70,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
 	spanConverter(secondline);
 
 	//header animation
-	document.querySelector(".reseaux-icon").style.opacity = 1;
 	
 	loaderWp.classList.add("start");
 

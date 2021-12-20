@@ -84,6 +84,15 @@
 	}
 }
 @media only screen and (max-width: 700px) {
+	#loader_logo{
+		width: 150px;
+	}
+	.switch-wp{
+		left: 70px;
+	}
+	.dots{
+		left: 20px;
+	}
 	.header-headeline{
 		left: 20px;
 	}
@@ -137,12 +146,12 @@
 	}
 	#second-nav .reseaux-icon, #second-nav .backtop-icon{
 		position: absolute;
-		left: 0;
+		left: 100vw;
 	}
 	#second-nav .reseaux-icon{
 		flex-direction: row;
 		justify-content: center;
-		left: calc(-100vw + 80px);
+		left: 0;
 		right: -20px;
 		top: 45vh;
 		width: 100vw;
@@ -160,16 +169,14 @@
 	#second-nav .backtop-icon{
 		display: none;
 	}
-
 	.hide ~ #second-nav .burger-icon{
 		background-color: var(--light-color);
 	}
 	.hide ~ #second-nav .rect-burger, .hide ~ #second-nav .rect-burger::after{
 		background-color: var(--dark-color);
 	}
-	.hide ~ #second-nav .reseaux-icon{
-		transform: translateX(100vw);
-		transition-delay: 0ms;
+	nav:not(.hide) ~ #second-nav .reseaux-icon{
+		transform: translateX(calc(-100vw + 80px));
 	}
 	nav{
 		padding: 0;
@@ -219,18 +226,6 @@
 		top: 324px !important;
 	}
 }
-@media only screen and (max-width: 500px) {
-	.container-project_item > a{
-		height: 170px;
-		width: 170px;
-	}
-	.container-words_cloud{
-		flex-direction: column;
-	}
-	.container-word_item{
-		width: 100%;
-	}
-}
 @media only screen and (max-width: 600px) {
 	.container-users{
 		grid-template-columns: repeat(2, 1fr);
@@ -254,8 +249,28 @@
 		padding: 120px 10px;
 	}
 }
+@media only screen and (max-width: 500px) {
+	.container-project_item > a{
+		height: 170px;
+		width: 170px;
+	}
+	.container-words_cloud{
+		flex-direction: column;
+	}
+	.container-word_item{
+		width: 100%;
+	}
+}
 @media only screen and (max-width: 400px) {
 	.logo a svg{
 		display: none;
+	}
+	.container-project_item > a {
+		height: 150px;
+		width: 150px;
+		border-radius: 0;
+	}
+	.container-project{
+		gap: 0;
 	}
 }
