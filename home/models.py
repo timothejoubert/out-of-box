@@ -5,7 +5,7 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-from projetPage.models import ProjectItem
+from projetPage.models import ProjetPage
 # from projetPage.models import ProjetPage
 from equipe.models import ContentUser
 from wordsCloud.models import listWords
@@ -45,7 +45,7 @@ class HomePage(Page):
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
 
-        context['projet_pages'] = ProjectItem.objects.all()
+        context['projet_pages'] = ProjetPage.objects.all()
         # context['projet_pages'] = ProjetPage.objects.all()
         context['equipe_list'] = ContentUser.objects.all()
         context['word_list'] = listWords.objects.all()

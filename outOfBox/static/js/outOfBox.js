@@ -43,6 +43,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	function closeNav(){
 		mainNav.classList.add("hide");
 	}
+
+	//equipe hover
+	const cardEquipeInfo = document.querySelectorAll(".container-user_info");
+	function hideCardInfo(){
+		if(window.innerWidth > 700){
+			cardEquipeInfo.forEach( (el) => {
+				const infoHeight = el.querySelector(".user_info_hide").offsetHeight;
+				el.style.transform = `translateY(${infoHeight}px)`;
+			})
+		}
+	}
+	hideCardInfo();
+	window.addEventListener("resize", hideCardInfo);
 });
 
 

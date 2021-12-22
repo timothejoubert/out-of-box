@@ -9,18 +9,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 class ProjetPage(Page):
     parent_page_types = ['projets.ProjetsList']
 
-    content_panels = Page.content_panels + [
-        InlinePanel("project_item"),
-    ]
-
-    class Meta:
-        verbose_name = "template de page projet"
-
-
-
-class ProjectItem(Orderable):
-    page = ParentalKey("ProjetPage", related_name="project_item")
-
     projet_nom = models.CharField(max_length=100, null=True, blank=True)
     projet_description = RichTextField(
         features=['bold', 'italic', 'link'], null=True, blank=True)
@@ -32,11 +20,21 @@ class ProjectItem(Orderable):
     )
     projet_link = models.CharField(max_length=100, null=True, blank=True)
 
-    panels = [
-        FieldPanel('projet_nom'),
-        FieldPanel('projet_description'),
-        FieldPanel('projet_description_complete'),
-        ImageChooserPanel("projet_image"),
-        FieldPanel('projet_link'),
+    content_panels = Page.content_panels + [
+        MultiFieldPanel(
+            [
+            FieldPanel('projet_nom'),
+            FieldPanel('projet_description'),
+            FieldPanel('projet_description_complete'),
+            ImageChooserPanel("projet_image"),
+            FieldPanel('projet_link'),
+            ],
+            heading="Informations du projet",
+            classname="collapsible"
+        )
     ]
+
+    class Meta:
+        verbose_name = "template de page projet"
+
 

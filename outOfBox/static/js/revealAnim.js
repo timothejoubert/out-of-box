@@ -20,16 +20,24 @@ const spanConverter = ( container ) => {
 }
 
 //animation header
+const video = document.getElementById("firstVid");
 const loaderWp = document.querySelector("#loader_logo");
 
 function startLoad(){
-	setTimeout( () => {
+	setTimeout( () => {		
 		loaderWp.classList.remove("start");
 		videoAnimEnd();
 	}, 1000)
 }
 
 function videoAnimEnd(){
+	if(window.innerWidth > 700){
+		video.play().then( () => {
+			console.log("video is playing");
+		  }).catch((error) => {
+			console.log("error, video is not playing " + error);
+		});
+	}
 	document.querySelector(".reseaux-icon").style.opacity = 1;
 	document.querySelector("#main-container").classList.add("loading_stop");
 	firstLine.classList.add("reveal-visible");
@@ -60,7 +68,7 @@ function reveal(e){
 	})
 }
 
-const video = document.getElementById("firstVid");
+
 //load function after loading 
 window.addEventListener("DOMContentLoaded", (e) => {
 	console.log(e.type);
