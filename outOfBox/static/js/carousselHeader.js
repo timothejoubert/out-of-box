@@ -3,31 +3,25 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.querySelector(".btn_play_mobile").addEventListener("click", currentItemClick);
 
 	document.querySelectorAll(".carousel-container").forEach((carousel) => {
-	//   insertNumbers(carousel);
-  
-	//   carousel.querySelector(".prev").addEventListener("click", (e) => {
-	// 	minusItem(carousel);
-	//   });
-		
+		//insertNumbers(carousel);
+		//carousel.querySelector(".prev").addEventListener("click", (e) => {minusItem(carousel); });
 
-	  carousel.querySelector(".next").addEventListener("click", () => {
-		plusItem(carousel);
-	  });
-  
-	  insertDots(carousel);
-  
-	  carousel.querySelectorAll(".dot").forEach((dot) => {
-		dot.addEventListener("click", (e) => {
-		  let item = Array.prototype.indexOf.call(
-			e.target.parentNode.children,
-			e.target
-		  );
-  
-		  showItems(carousel, item);
+		carousel.querySelector(".next").addEventListener("click", () => {
+			plusItem(carousel);
 		});
-	  });
-  
-	  showItems(carousel, 0);
+	
+		insertDots(carousel);
+		showItems(carousel, 0);
+	
+		carousel.querySelectorAll(".dot").forEach((dot) => {
+			dot.addEventListener("click", (e) => {
+				let item = Array.prototype.indexOf.call(
+					e.target.parentNode.children,
+					e.target
+				);
+				showItems(carousel, item);
+			});
+		});
 	});
   });
   
@@ -76,14 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	const myItm = [...document.querySelectorAll(".carousel-container .item")].findIndex(
 		(item) => item.style.display == "block"
   	);
-	console.log(myItm !== undefined);
 	myItm !== undefined ? document.getElementsByTagName("video")[myItm].play() : console.log("can't find current vid to play");
   	
 }
 
   function currentItem(carousel) {
 	  return [...carousel.querySelectorAll(".item")].findIndex(
-	  (item) => item.style.display == "block"
+	  (item) => item.style.display == "block" 
 	);
   }
 
@@ -91,12 +84,19 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (carousel.querySelectorAll(".item")[currentItem(carousel)] != undefined)
 		carousel.querySelectorAll(".item")[currentItem(carousel)].style.display = "none";
 		carousel.querySelectorAll(".item")[item].style.display = "block";
-		if(window.innerWidth > 700){
-			carousel.getElementsByTagName("video")[currentItem(carousel)].currentTime = 0;
-			carousel.getElementsByTagName("video")[currentItem(carousel)].play();
-		}
+
+	if (carousel.querySelectorAll(".item")[currentItem(carousel)] != undefined && window.innerWidth > 700){
+		let currentVid = carousel.querySelectorAll(".item")[currentItem(carousel)].querySelector("video");
+		currentVid.currentTime = 0;
+		currentVid.play();
+	}
+
 	if (carousel.querySelector(".dot.active") != null)
 		carousel.querySelector(".dot.active").classList.remove("active");
 		carousel.querySelectorAll(".dot")[item].classList.add("active");
+
+		carousel.querySelectorAll(".item")[currentItem(carousel)].querySelector("video").addEventListener('ended', (e) => {
+			console.log("switch video when current end", e.target);
+			plusItem(carousel);
+		})
   }
-  

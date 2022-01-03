@@ -38,29 +38,32 @@
 
 		<div class="header-headeline">
 			<div class="firstline">
-				<h2>À la recherche</h2>
+				<h2>Out of Box</h2>
 			</div>
 			<div class="secondline">
-				<h2>de l’inattendu</h2>
+				<h2>agence conseil en stratégie de communication</h2>
+				<h2>depuis 2006.</h2>
 			</div>
 		</div>
 		<div class="btn_play_mobile">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z"/></svg>
 		</div>
 		<div class="container-img_header carousel-container">
-
-			<div class="carousel-item-wp item fade">
-				<video poster="/static/assets/header-img.jpg" muted loop id="firstVid">
+			{% for video in videos_header %}
+				<p>{{video}}</p>
+			{% endfor %}
+			<div class="carousel-item-wp item">
+				<video poster="/static/assets/header-img.jpg" muted id="firstVid">
 					<source src="/static/assets/header-vid1.mp4" type="video/mp4">
 				</video>
 			</div>
-			<div class="carousel-item-wp item fade">
-				<video poster="/static/assets/header-img.jpg" muted loop>
+			<div class="carousel-item-wp item">
+				<video poster="/static/assets/header-img.jpg" muted>
 					<source src="/static/assets/header-vid2.mp4" type="video/mp4">
 				</video>
 			</div>
-			<div class="carousel-item-wp item fade">
-				<video poster="/static/assets/header-img.jpg" muted loop>
+			<div class="carousel-item-wp item">
+				<video poster="/static/assets/header-img.jpg" muted>
 					<source src="/static/assets/header-vid3.mp4" type="video/mp4">
 				</video>
 			</div>
@@ -83,12 +86,7 @@
 
 	<article class="container-projects" id="projets">
 
-		{% comment %} <div class="article_intro">
-			{{ page.title_projets|richtext }}
-		</div> {% endcomment %}
-
-		<div class="container-project">
-			
+		<div class="container-project">		
 			{% for projet in projet_pages %}
 			{% if projet.projet_nom %}
 			<div class="container-project_item reveal" data-reveal="fade-up" data-open="modal{{projet.id}}">
@@ -135,7 +133,7 @@
 
 				{% image client.image_client width-150 as img %}
 				<div class="container-client_item reveal" data-reveal="fade-up">
-					<img src="{{ img.url }}" alt="img.title">
+					<img src="{{ img.url }}" alt="img.title" title={{ client.nom_entreprise }}>
 				</div>
 
 			{% endfor %}

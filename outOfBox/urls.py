@@ -7,7 +7,7 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
-
+from django.conf.urls.static import static
 urlpatterns = [
     path('django-admin/', admin.site.urls),
 
@@ -15,7 +15,7 @@ urlpatterns = [
     path('documents/', include(wagtaildocs_urls)),
 
     path('search/', search_views.search, name='search'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = urlpatterns + [
     # For anything not caught by a more specific rule above, hand over to

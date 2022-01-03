@@ -20,7 +20,7 @@ class ProjetPage(Page):
     )
     projet_link = models.CharField(max_length=100, null=True, blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = [
         MultiFieldPanel(
             [
             FieldPanel('projet_nom'),

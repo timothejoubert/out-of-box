@@ -96,12 +96,12 @@
 	.header-headeline{
 		left: 20px;
 	}
-	.firstline h2 span{
-		font-size: 2.2rem;
+	.secondline h2 span{
+		font-size: 1.8rem;
 		line-height: 2rem;
 		padding: calc(var(--space) * 4px);
 	}
-	.secondline h2 span{
+	.firstline h2 span{
 		font-size: 4rem;
 		line-height: 4.5rem;
 		padding: calc(var(--space) * 8px);
@@ -244,13 +244,15 @@
 	.container-words_cloud h4{
 		font-size: calc(var(--distLetter) * 0.8rem + 0.8rem);
 	}
-	.secondline h2 span{
+	.firstline h2 span{
 		font-size: 3rem;
 		padding: calc(var(--space) * 5px);
 	}
-	.firstline h2 span{
-		font-size: 2rem;
-		line-height: 1.6rem;
+	.secondline{
+		margin: 10px 0;
+	}
+	.secondline h2 span{
+		font-size: 1.5rem;
 		padding: calc(var(--space) * 3px);
 	}
 	#projets{

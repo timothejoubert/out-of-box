@@ -3,7 +3,7 @@
 
 //convert tagline header to span
 const firstLine = document.querySelector(".firstline h2");
-const secondline = document.querySelector(".secondline h2");
+const secondline = document.querySelectorAll(".secondline h2");
 const spanConverter = ( container ) => {
 	const [...letters] = container.innerHTML;
 	container.innerHTML= "";
@@ -41,7 +41,9 @@ function videoAnimEnd(){
 	document.querySelector(".reseaux-icon").style.opacity = 1;
 	document.querySelector("#main-container").classList.add("loading_stop");
 	firstLine.classList.add("reveal-visible");
-	secondline.classList.add("reveal-visible");
+	secondline.forEach( (el) => {
+		el.classList.add("reveal-visible");
+	})
 	document.getElementsByTagName("body")[0].classList.remove("no_scroll");
 }
 
@@ -74,8 +76,10 @@ window.addEventListener("DOMContentLoaded", (e) => {
 	console.log(e.type);
 
 	//init tagline span
+	secondline.forEach( (el) => {
+		spanConverter(el);
+	});
 	spanConverter(firstLine);
-	spanConverter(secondline);
 
 	//header animation
 	
@@ -83,7 +87,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
 	console.log("wait for video ready");
 	video.addEventListener('loadeddata', function() {
-		console.log(video.readyState);
 		startLoad();
 	}, false)
 	

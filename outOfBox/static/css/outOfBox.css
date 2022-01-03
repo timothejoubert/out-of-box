@@ -275,23 +275,28 @@ header {
   transform: translateY(100%);
   --space: 0;
 }
+
 .firstline h2 span{
-  display: block;
-  font-size: 3rem;
-  font-weight: 400;
-  padding: calc(var(--space) * 6px);
-  color: var(--light-color);
-  line-height: 2.5rem;
-}
-.secondline h2 span{
   /* display: inline-block; */
   font-size: 6rem;
   font-weight: 600;
   padding: calc(var(--space)* 10px);
   color: var(--light-color);
   line-height: 5.5rem;
-  border-bottom: 2px solid var(--light-color);
+  /* border-bottom: 2px solid var(--light-color); */
 }
+.secondline{
+  margin: 20px 0;
+}
+.secondline h2 span{
+  display: block;
+  font-size: 2rem;
+  font-weight: 400;
+  padding: calc(var(--space) * 4px);
+  color: var(--light-color);
+  line-height: 2.5rem;
+}
+
 .container-img_header {
   overflow: hidden;
   height: 100%;
@@ -379,13 +384,17 @@ header {
   bottom: 20px;
   left: 50px;
 }
-
+.item.switch{
+  animation: fade 300ms ease-in-out;
+}
 @keyframes fade {
   from {
-    opacity: 0.5;
+    /* opacity: 1; */
+    transform: translateX(100%);
   }
   to {
-    opacity: 1;
+    /* opacity: 0.1; */
+    transform: translateX(0%);
   }
 }
 
@@ -406,8 +415,8 @@ header {
   display: block;
   position: relative;
   border-radius: var(--border-radius);
-  height: 180px;
-  width: 200px;
+  height: 175px;
+  width: 350px;
   overflow: hidden;
 }
 .container-project_img {
@@ -563,7 +572,7 @@ p.team_name {
   display: inline-block;
   text-transform: uppercase;
   font-weight: 600;
-  padding: 5px 0;
+  padding: 2px 0;
 }
 .user_reseaux{
   padding-bottom: 7px;
@@ -619,6 +628,10 @@ p.team_job {
 }
 .container-client_item img {
   width: 100%;
+  transition: transform 200ms ease-in-out;
+}
+.container-client_item:hover img {
+  transform: scale(1.1);
 }
 
 /* contact */

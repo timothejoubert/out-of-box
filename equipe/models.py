@@ -14,7 +14,7 @@ class Equipe(Page):
     description_principale = RichTextField(
         features=['bold', 'italic', 'link'], null=True, blank=True
 	)
-    content_panels = Page.content_panels + [
+    content_panels = [
         MultiFieldPanel(
             [
                 FieldPanel('description_principale', classname="full"),
