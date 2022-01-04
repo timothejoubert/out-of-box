@@ -11,9 +11,21 @@ class wordsCloud(Page):
     parent_page_types = ['home.HomePage']
     max_count = 1
 
+    all_words = RichTextField(null=True, blank=True)
+
     content_panels = [
+        FieldPanel('all_words', classname="full"),
         InlinePanel('list_words'),
     ]
+    
+    def word_count(self):
+        count = len(self.all_words.split())
+        for block in self.all_words:
+            count += len(str(block.value).split())
+
+        return count
+
+    	
 
 class listWords(Orderable):
     page = ParentalKey(wordsCloud, related_name='list_words')
