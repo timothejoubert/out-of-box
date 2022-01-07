@@ -55,7 +55,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		}
 	}
 	document.fonts.ready.then(function () {
-		console.log('Futura state: ' + document.fonts.check('1em Futura-PT'));  // true
+		// console.log('Futura state: ' + document.fonts.check('1em Futura-PT'));  // true
 		hideCardInfo();
 	});
 	

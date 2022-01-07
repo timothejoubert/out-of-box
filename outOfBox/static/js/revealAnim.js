@@ -20,7 +20,7 @@ const spanConverter = ( container ) => {
 }
 
 //animation header
-const video = document.querySelector(".carousel-container .item video");
+const video = document.querySelector(".carousel-container video");
 const loaderWp = document.querySelector("#loader_logo");
 
 function startLoad(){

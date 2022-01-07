@@ -267,6 +267,9 @@ header {
   bottom: 100px;
   /* width: 90vw; */
 }
+.loading_stop .header-headeline{
+  opacity: 1!important;
+}
 .header-headeline h2{
   overflow: hidden;
   display: flex;

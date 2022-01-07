@@ -1,105 +1,3 @@
-// document.addEventListener("DOMContentLoaded", () => {
-
-// 	document.querySelector(".btn_play_mobile").addEventListener("click", currentItemClick);
-
-// 	document.querySelectorAll(".carousel-container").forEach((carousel) => {
-// 		//insertNumbers(carousel);
-// 		//carousel.querySelector(".prev").addEventListener("click", (e) => {minusItem(carousel); });
-
-// 		carousel.querySelector(".next").addEventListener("click", () => {
-// 			plusItem(carousel);
-// 		});
-	
-// 		insertDots(carousel);
-// 		showItems(carousel, 0);
-	
-// 		carousel.querySelectorAll(".dot").forEach((dot) => {
-// 			dot.addEventListener("click", (e) => {
-// 				let item = Array.prototype.indexOf.call(
-// 					e.target.parentNode.children,
-// 					e.target
-// 				);
-// 				showItems(carousel, item);
-// 			});
-// 		});
-// 	});
-//   });
-  
-//   function insertNumbers(carousel) {
-// 	const length = carousel.querySelectorAll(".item").length;
-// 	for (let i = 0; i < length; i++) {
-// 	  const nmbr = document.createElement("div");
-// 	  nmbr.classList.add("numbertext");
-// 	  nmbr.innerText = i + 1 + " / " + length;
-  
-// 	  carousel.querySelectorAll(".item")[i].append(nmbr);
-// 	}
-//   }
-  
-//   function insertDots(carousel) {
-// 	const dots = document.createElement("div");
-// 	dots.classList.add("dots");
-  
-// 	carousel.append(dots);
-  
-// 	carousel.querySelectorAll(".item").forEach((elem) => {
-// 	  const dot = document.createElement("div");
-// 	  dot.classList.add("dot");
-  
-// 	  carousel.querySelector(".dots").append(dot);
-// 	});
-//   }
-  
-//   function plusItem(carousel) {
-// 	let item = currentItem(carousel);
-// 	carousel.querySelectorAll(".item")[item].nextElementSibling.classList.contains("item")
-// 	  ? showItems(carousel, item + 1)
-// 	  : showItems(carousel, 0);
-//   }
-  
-//   function minusItem(carousel) {
-// 	let item = currentItem(carousel);
-  
-// 	carousel.querySelectorAll(".item")[item].previousElementSibling != null
-// 	  ? showItems(carousel, item - 1)
-// 	  : showItems(carousel, carousel.querySelectorAll(".item").length - 1);
-//   }
-  
-//   function currentItemClick() {
-// 	console.log("play vid on mobile");
-// 	const myItm = [...document.querySelectorAll(".carousel-container .item")].findIndex(
-// 		(item) => item.style.display == "block"
-//   	);
-// 	myItm !== undefined ? document.getElementsByTagName("video")[myItm].play() : console.log("can't find current vid to play");
-  	
-// }
-
-//   function currentItem(carousel) {
-// 	  return [...carousel.querySelectorAll(".item")].findIndex(
-// 	  (item) => item.style.display == "block" 
-// 	);
-//   }
-
-//   function showItems(carousel, item) {
-// 	if (carousel.querySelectorAll(".item")[currentItem(carousel)] != undefined)
-// 		carousel.querySelectorAll(".item")[currentItem(carousel)].style.display = "none";
-// 		carousel.querySelectorAll(".item")[item].style.display = "block";
-
-// 	if (carousel.querySelectorAll(".item")[currentItem(carousel)] != undefined && window.innerWidth > 700){
-// 		let currentVid = carousel.querySelectorAll(".item")[currentItem(carousel)].querySelector("video");
-// 		currentVid.currentTime = 0;
-// 		currentVid.play();
-// 	}
-
-// 	if (carousel.querySelector(".dot.active") != null)
-// 		carousel.querySelector(".dot.active").classList.remove("active");
-// 		carousel.querySelectorAll(".dot")[item].classList.add("active");
-
-// 		carousel.querySelectorAll(".item")[currentItem(carousel)].querySelector("video").addEventListener('ended', (e) => {
-// 			console.log("switch video when current end", e.target);
-// 			plusItem(carousel);
-// 		})
-//   }
 
 !(function(d){
 var itemClassName = "carousel-item-wp";
@@ -154,6 +52,7 @@ function initDots(slide){
 	});
 	dots[slide].classList.add("active");
 }
+
 function moveCarouselTo(slide) {
 	if(!moving) {
 	disableInteraction();
@@ -199,22 +98,17 @@ function moveCarouselTo(slide) {
 }
 function loadVid(slide){
 	initDots(slide);
+	clearTimeout(timerEnd);
 	let currentVid = items[slide].querySelector("video");
-	let switchTimer = currentVid.duration % 60 * 1000;
+	let switchTimer = currentVid.duration % 60 * 1000 -200;
 	currentVid.currentTime = 0;
 	currentVid.play();
 
-	// console.log("1",timerEnd);
-	clearTimeout(timerEnd);
-	// console.log("2",timerEnd);
 	timerEnd = setTimeout(moveNext, switchTimer);
-	// console.log("3", timerEnd)
-	
-
 }
 
 function moveNext() {
-	// console.log("next vid, current slide:", slide);
+	console.log("next vid, current slide:", slide);
 	if (!moving) {
 		if (slide === (totalItems - 1)) {
 			slide = 0;
@@ -237,14 +131,22 @@ function movePrev() {
 
 // Initialise carousel
 function initCarousel() {
-	setInitialClasses();
-	insertDots();
-	setEventListeners();
-	
-	loadVid(slide);
+	// if one or multiple vid
+	if(items.length > 1){
+		setInitialClasses();
+		insertDots();
+		setEventListeners();
+		loadVid(slide);
+	}else{
+		document.querySelector(".switch-wp").style.display = "none";
+		let currentVid = items[slide].querySelector("video");
+		items[slide].className = itemClassName + " active";
+		currentVid.currentTime = 0;
+		currentVid.loop = true;
+		currentVid.play();
+	}
 
 	moving = false;
-
 }
 
 // make it rain
