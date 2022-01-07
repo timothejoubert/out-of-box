@@ -22,7 +22,7 @@
 /* COMMUNS */
 /***********/
 * {
-  font-family: "Darker-Grotesque", sans-serif;
+  font-family: "Futura-PT","Darker-Grotesque", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -52,7 +52,7 @@ h6,
 a,
 p,
 span {
-  font-family: "Darker-Grotesque", sans-serif;
+  font-family: "Futura-PT", "Darker-Grotesque", sans-serif;
 }
 
 h3 {
@@ -93,6 +93,7 @@ nav {
   display: flex;
 }
 .logo svg{
+  width: 42px;
   margin-right: 10px;
 }
 .main-nav {
@@ -271,7 +272,6 @@ header {
   display: flex;
 }
 .header-headeline h2 span{
-  opacity: 0;
   transform: translateY(100%);
   --space: 0;
 }
@@ -284,6 +284,7 @@ header {
   color: var(--light-color);
   line-height: 5.5rem;
   /* border-bottom: 2px solid var(--light-color); */
+  opacity: 0;
 }
 .secondline{
   margin: 20px 0;
@@ -295,6 +296,7 @@ header {
   padding: calc(var(--space) * 4px);
   color: var(--light-color);
   line-height: 2.5rem;
+  opacity: 0;
 }
 
 .container-img_header {
@@ -406,19 +408,25 @@ header {
   color: var(--light-color-6);
   max-width: 1400px;
   margin: 0 auto;
+  padding-bottom: 400px;
 }
 .container-project{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 100px 40px;
+}
+.container-project_item{
+  position: relative;
+  --index: 0;
+  /* top: calc(var(--index)*30px); */
 }
 .container-project_item > a{
   display: block;
   position: relative;
   border-radius: var(--border-radius);
-  height: 175px;
-  width: 350px;
+  height: 150px;
+  width: 300px;
   overflow: hidden;
 }
 .container-project_img {
@@ -484,40 +492,37 @@ header {
   fill: var(--dark-color);
 }
 /* words */
-.container-words_cloud {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  /* height: 80vh; */
+.container-words_cloud{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+
+  margin: 100px auto 20px auto;
+  max-width: 950px;
+  gap: 70px 60px;
+}
+.container-word_item:nth-child(4n+1):nth-last-child(-n+4),
+.container-word_item:nth-child(4n+1):nth-last-child(-n+4) ~ .container-word_item {
+  grid-column: span 2;
 }
 .container-word_item{
-  width: 50%;
+  /* width: min-content; */
+  justify-self: center;
+  /* flex-basis: 30%; */
+}
+.container-word_item > h4{
+  font-family: "anybody", 'Barlow GX';
+  font-size: 2rem;
+  font-variation-settings: 'wght' 200, 'wdth' 100;
+  cursor: default;
   text-align: center;
-  padding: 20px 10px;
+  white-space: nowrap;
+  opacity: 0.4;
+  transition: all 800ms;
 }
-.container-word_item:nth-child(odd){
-  text-align: right;
-}
-.container-word_item:nth-child(even){
-  text-align: left;
-}
-/* .container-word_item{
-  flex: 1;
-} */
-.container-words_cloud h4 {
-  font-family: "anybody", "Darker-Grotesque", sans-serif;
-  /* font-size: 1.2rem; */
-  font-size: calc(var(--distLetter) * 0.5rem + 1.2rem);
-  /* transform: skew(
-    calc(var(--skewLetter) * 3deg),
-    calc(var(--skewLetter) * -3deg)
-  ); */
-  opacity: calc(var(--distLetter) + 0.2);
-  font-variation-settings: "wght" calc(var(--distLetter) * 400 + 200),
-    "wdth" calc(var(--distLetter) * 30 + 100);
-  /* font-weight: calc(var(--distLetter)*600 + 200); */
-  /* transition: all 100ms ease-in-out; */
+.container-word_item:hover h4{
+  opacity: 1;
+  font-variation-settings: 'wght' 600, 'wdth' 120;
 }
 
 /* team */
@@ -530,6 +535,20 @@ header {
 }
 .container-user {
   overflow: hidden;
+}
+.container-user.horizontal{
+  grid-column: span 2;
+}
+.container-user.vertical{
+  grid-row: span 2;
+}
+.container-user.vertical .container-img-user{
+  height: 100%;
+  max-height: 500px;
+}
+.container-user.vertical img{
+  height: 100%;
+  object-fit: cover;
 }
 .container-user:hover .container-img-user::after {
   background-color: rgba(0, 0, 0, 0.2);
@@ -599,8 +618,8 @@ p.team_job {
 .user_reseaux p:hover{
   opacity: 1;
 }
-.user_reseaux p:nth-child(2){
-  margin-left: 10px;
+.user_reseaux > a{
+  margin-right: 10px;
 }
 .container-user_info path {
   stroke: var(--dark-color);
@@ -672,11 +691,11 @@ p.team_job {
   margin-left: 100px;
 }
 #gmap_canvas {
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%) invert(1);
+  -moz-filter: grayscale(100%) invert(1);
+  -ms-filter: grayscale(100%) invert(1);
+  -o-filter: grayscale(100%) invert(1);
+  filter: grayscale(100%) invert(1);
 }
 .mapouter {
   position: relative;

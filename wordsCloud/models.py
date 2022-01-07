@@ -13,7 +13,7 @@ class wordsCloud(Page):
 
     all_words = RichTextField(null=True, blank=True)
 
-    content_panels = [
+    content_panels = Page.content_panels + [
         FieldPanel('all_words', classname="full"),
         InlinePanel('list_words'),
     ]

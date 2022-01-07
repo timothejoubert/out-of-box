@@ -38,7 +38,7 @@
 
 		<div class="header-headeline">
 			<div class="firstline">
-				<h2>Out of Box</h2>
+				<h2>OutofBox</h2>
 			</div>
 			<div class="secondline">
 				<h2>agence conseil en stratégie de communication</h2>
@@ -73,13 +73,31 @@
 
 	</header>
 
+	<article class="container-words" id="wordscloud">
+
+		{% comment %} <div class="article_intro">
+			{{ page.title_wordsCloud|richtext }}
+		</div> {% endcomment %}
+
+		{% comment %} <div class="article_intro">
+			{{ word_list.count }}
+		</div>  {% endcomment %}
+
+		<div class="container-words_cloud">
+			{% for word in word_list %}
+				<div class="container-word_item reveal" data-reveal="fade-up">
+					<h4>{{ word.mot }}</h4>
+				</div>
+			{% endfor %}
+		</div>
+	</article>
 
 	<article class="container-projects" id="projets">
 
 		<div class="container-project">		
 			{% for projet in projet_pages %}
 			{% if projet.projet_nom %}
-			<div class="container-project_item reveal" data-reveal="fade-up" data-open="modal{{projet.id}}">
+			<div class="container-project_item reveal" data-reveal="fade-up" data-open="modal{{projet.id}}" style="--index: {{ forloop.counter }}">
 				{% image projet.projet_image width-500 as img500 %}
 				{% image projet.projet_image original as img %}
 				<a href={{img.url}} title="{{ projet.projet_description|richtext }}">
@@ -101,25 +119,6 @@
 		</div>
 	</article>
 
-	<article class="container-words" id="wordscloud">
-
-		{% comment %} <div class="article_intro">
-			{{ page.title_wordsCloud|richtext }}
-		</div> {% endcomment %}
-
-		<div class="article_intro">
-			{{ word_list.count }}
-		</div> 
-
-		<div class="container-words_cloud">
-			{% for word in word_list %}
-				<div class="container-word_item">
-					<h4>{{ word.mot }}</h4>
-				</div>
-			{% endfor %}
-		</div>
-	</article>
-
 	<article class="container-clients" id="clients">
 
 		<div class="container-client">
@@ -138,7 +137,7 @@
 
 		<div class="container-users reveal">
 			{% for user in equipe_list %}
-				<div class="container-user reveal" data-reveal="fade-up" >
+				<div class="container-user reveal {{user.card_size}}" data-reveal="fade-up" >
 					
 					{% image user.image_user width-400 as img %}
 					<div class="container-img-user">

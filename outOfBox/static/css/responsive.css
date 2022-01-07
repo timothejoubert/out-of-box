@@ -1,4 +1,13 @@
+
 @media only screen and (max-width: 1200px)  {
+	.container-words_cloud{
+		grid-template-columns: repeat(3, 1fr);
+		max-width: 600px;
+	  }
+	  .container-word_item:nth-child(3n+1):nth-last-child(-n+3),
+	  .container-word_item:nth-child(3n+1):nth-last-child(-n+3) ~ .container-word_item {
+		grid-column: inherit;
+	  }
 	.container-footer_info{
 		flex-direction: column-reverse;
 		flex-wrap: wrap;
@@ -28,12 +37,28 @@
 }
 
 @media only screen and (max-width: 1100px) {
+	.container-project, .container-words_cloud{
+		gap: 20px;
+	}
+	.container-words_cloud h4{
+		font-size: 1.7rem;
+	}
+	.container-projects{
+		padding-bottom: 200px;
+	}
 	.container-users {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		justify-content: center;
 		/* max-width: inherit;
 		width: 100%; */
+	}
+	.container-user.vertical, .container-user.horizontal {
+		grid-row: inherit;
+		grid-column: inherit;
+	}
+	.container-user.vertical .container-img-user{
+		max-height: 200px;
 	}
 	.container-img-user{
 		max-height: 200px;
@@ -41,8 +66,6 @@
 	.footer-contact, .footer-message {
 		width: 100%;
 	}
-}
-@media only screen and (max-width: 1100px) {
 	.container-users {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -54,6 +77,7 @@
 		max-height: 200px;
 	}
 }
+
 @media only screen and (max-width: 900px) {
 	.modal{
 		/* width: calc(100vw - 30px); */
@@ -83,12 +107,28 @@
 		margin-top: inherit;
 	}
 }
+@media only screen and (max-width: 830px) {
+	.container-project_item{
+		width: 47%;
+	}
+	.container-project_item > a{
+		width: 100%;
+	}
+	.container-words_cloud h4{
+		font-size: 1.4rem;
+	}
+}
+@media  (max-height:720px){
+	#second-nav .reseaux-icon{
+		top: 324px !important;
+	}
+}
 @media only screen and (max-width: 700px) {
 	#loader_logo{
 		width: 150px;
 	}
 	.switch-wp{
-		left: 70px;
+		left: 20px;
 	}
 	.dots{
 		left: 20px;
@@ -97,7 +137,7 @@
 		left: 20px;
 	}
 	.secondline h2 span{
-		font-size: 1.8rem;
+		font-size: 1.4rem;
 		line-height: 2rem;
 		padding: calc(var(--space) * 4px);
 	}
@@ -216,33 +256,40 @@
 	article, #footer, #wordscloud{
 		padding: 150px 30px
 	}
-	.container-project_item > a{
-		height: 200px;
-		width: 200px;
+	.container-user{
+		display: flex;
+		flex-direction: column;
 	}
 	.container-user_info{
 		transform: translateY(0)!important;
 		position: relative;
+		justify-content: flex-start;
+		flex:1;
 	}
 	.loading_stop .btn_play_mobile{
 		display: block;
 		opacity: 1;
 	}
 }
-@media  (max-height:720px){
-	#second-nav .reseaux-icon{
-		top: 324px !important;
-	}
-}
+
 @media only screen and (max-width: 600px) {
+	.container-project{
+		gap: 10px;
+	}
+	.container-project_item{
+		width: 48%;
+	}
+	.container-project_item > a{
+		height: 120px;
+	}
 	.container-users{
 		grid-template-columns: repeat(2, 1fr);
 	}
+	.container-user_info .user_reseaux > a{
+		display: block;
+	}
 	article, #footer, #wordscloud {
 		padding: 150px 10px;
-	}
-	.container-words_cloud h4{
-		font-size: calc(var(--distLetter) * 0.8rem + 0.8rem);
 	}
 	.firstline h2 span{
 		font-size: 3rem;
@@ -252,20 +299,16 @@
 		margin: 10px 0;
 	}
 	.secondline h2 span{
-		font-size: 1.5rem;
-		padding: calc(var(--space) * 3px);
+		font-size: 1.2rem;
+		padding: calc(var(--space) * 2px);
 	}
 	#projets{
 		padding: 120px 10px;
 	}
 }
 @media only screen and (max-width: 500px) {
-	.container-project_item > a{
-		height: 170px;
-		width: 170px;
-	}
 	.container-words_cloud{
-		flex-direction: column;
+		grid-template-columns: repeat(2, 1fr);
 	}
 	.container-word_item{
 		text-align: center!important;
@@ -273,17 +316,34 @@
 	.container-word_item{
 		width: 100%;
 	}
+	.container-project_item > a{
+		height: 100px;
+	}
+}
+@media only screen and (max-width: 420px) {
+	.secondline h2 span{
+		font-size: 1rem;
+		line-height: 1.5rem;
+	}
 }
 @media only screen and (max-width: 400px) {
 	.logo a svg{
 		display: none;
 	}
 	.container-project_item > a {
-		height: 150px;
-		width: 150px;
 		border-radius: 0;
 	}
-	.container-project{
-		gap: 0;
+	.container-client{
+		gap: 20px 0;
+	}
+	.container-client_item{
+		width: 50%;
+	}
+	.container-words_cloud {
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.secondline h2 span{
+		font-size: 0.8rem;
+		font-weight: 300;
 	}
 }

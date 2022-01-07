@@ -34,6 +34,14 @@ class Equipe(Page):
 class ContentUser(Orderable):
     page = ParentalKey("Equipe", related_name="content_user")
 
+    CARD_SIZE = [
+        ('square', 'square'),
+        ('horizontal', 'horizontal'),
+        ('vertical', 'vertical'),
+    ]
+
+    card_size = models.CharField(max_length=10, null=True, choices=CARD_SIZE, default='square')
+
     nom_user = models.CharField(max_length=100, null=True, blank=True, verbose_name="Nom")
     role_user = models.CharField(max_length=100, null=True, blank=True , verbose_name="Job")
     # annee_conf = models.CharField(max_length=200, null=True, blank=True)
@@ -46,6 +54,7 @@ class ContentUser(Orderable):
     email_link = models.CharField(max_length=100, default='###@gmail.com', null=True, blank=True)
 
     panels = [
+        FieldPanel('card_size'),
         FieldPanel('nom_user', classname="col6"),
         FieldPanel('role_user', classname="col6"),
         ImageChooserPanel("image_user"),

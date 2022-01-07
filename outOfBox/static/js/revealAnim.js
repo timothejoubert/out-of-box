@@ -95,6 +95,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
 	window.nodesReveal = document.querySelectorAll(".reveal");
 	window.addEventListener("scroll", reveal);
 
+
+
 });
 
 
