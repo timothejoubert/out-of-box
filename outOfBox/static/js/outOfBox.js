@@ -43,6 +43,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	function closeNav(){
 		mainNav.classList.add("hide");
 	}
+	const linksMenu = document.querySelectorAll("nav a");
+	function closeNavOnClick(){
+		linksMenu.forEach(link => {
+			if(window.innerWidth < 700){
+				link.addEventListener("click", closeNav);
+			}else{
+				link.removeEventListener("click", closeNav);
+			}
+		})
+	}
+	closeNavOnClick();
+	window.addEventListener("resize", closeNavOnClick);
 
 	//equipe hover
 	const cardEquipeInfo = document.querySelectorAll(".container-user_info");

@@ -35,12 +35,16 @@ class HomePage(Page):
     max_count = 1
     parent_page_types = []
 
-    title_header = RichTextField(null=True, blank=True)
+    title_tagline = models.CharField(max_length=40, null=True, blank=True)
+    line_1_tagline = models.CharField(max_length=80,null=True, blank=True)
+    line_2_tagline = models.CharField(max_length=80,null=True, blank=True)
 
     content_panels = [
         MultiFieldPanel(
             [
-                FieldPanel('title_header', classname="full"),
+                FieldPanel('title_tagline', classname="full"),
+                FieldPanel('line_1_tagline', classname="full"),
+                FieldPanel('line_2_tagline', classname="full"),
             ],
             heading="Informations principale",
             classname="collapsible collapsed"

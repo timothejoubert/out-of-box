@@ -38,11 +38,11 @@
 
 		<div class="header-headeline" style="opacity:0;">
 			<div class="firstline">
-				<h2>OutofBox</h2>
+				<h2>{{page.title_tagline}}</h2>
 			</div>
 			<div class="secondline">
-				<h2>agence conseil en stratégie de communication</h2>
-				<h2>depuis 2006.</h2>
+				<h2>{{page.line_1_tagline}}</h2>
+				<h2>{{page.line_2_tagline}}</h2>
 			</div>
 		</div>
 		<div class="btn_play_mobile">
@@ -51,7 +51,7 @@
 		<div class="container-img_header carousel-container">
 			{% for video in page.videos_header.all %}
 				<div class="carousel-item-wp item">
-					<video poster="{{video.video_header.tumbnail}}" muted>
+					<video poster="{{video.video_header.file_thumb}}" muted>
 						<source src="{{video.video_header.url}}" type="video/mp4">
 					</video>
 				</div>
@@ -180,22 +180,22 @@
 					<div class="footer-contact">
 						{% for footer in footer_list %}
 							<div class="container-footer_item">
-								
 								{% image footer.logo_contact width-100 as img %}
 								<div class="container-footer_logo">
 									<img src="{{ img.url }}" alt="img.title">
 								</div>
 								<p>{{ footer.info_contact|richtext }}</p>
-								{% comment %} 
-									
-								<p>{{ footer.projet_description|richtext }}</p>
-								<p>{{ footer.projet_link }}</p> {% endcomment %}
 							</div>
 						{% endfor %}
 					</div>
 					<div class="footer-message">
-						<p>Envie d'en savoir plus ?</p>
-						<p>Dites-nous tout ou passez nous voir !</p>
+						{% for footer in footer_list %}
+							{%if footer.info_contact_second %}
+								<p>{{ footer.info_contact_second|richtext }}</p>
+							{% endif %}
+						{% endfor %}
+						{% comment %} <p>Envie d'en savoir plus ?</p>
+						<p>Dites-nous tout ou passez nous voir !</p> {% endcomment %}
 					</div>
 				</div>
 				<div class="footer-copyright">

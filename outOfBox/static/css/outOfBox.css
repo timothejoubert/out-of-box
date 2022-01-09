@@ -91,6 +91,7 @@ nav {
 }
 .logo > a{
   display: flex;
+  align-items: center;
 }
 .logo svg{
   width: 42px;
