@@ -73,7 +73,6 @@ function reveal(e){
 
 //load function after loading 
 window.addEventListener("DOMContentLoaded", (e) => {
-	console.log(e.type);
 
 	//init tagline span
 	secondline.forEach( (el) => {
@@ -82,7 +81,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
 	spanConverter(firstLine);
 
 	//header animation
-	
 	loaderWp.classList.add("start");
 
 	console.log("wait for video ready");
@@ -94,8 +92,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
 	//init animation for all section 
 	window.nodesReveal = document.querySelectorAll(".reveal");
 	window.addEventListener("scroll", reveal);
-
-
 
 });
 

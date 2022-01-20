@@ -54,6 +54,7 @@ function initDots(slide){
 }
 
 function moveCarouselTo(slide) {
+	console.log("function moveCarouselTo");
 	if(!moving) {
 	disableInteraction();
 	var newPrevious = slide - 1,
@@ -96,19 +97,22 @@ function moveCarouselTo(slide) {
 	// }
 	}
 }
+
 function loadVid(slide){
+	console.log("function load vid");
 	initDots(slide);
 	clearTimeout(timerEnd);
-	let currentVid = items[slide].querySelector("video");
-	let switchTimer = currentVid.duration % 60 * 1000 -200;
+
+	const currentVid = items[slide].querySelector("video");
 	currentVid.currentTime = 0;
 	currentVid.play();
-
-	timerEnd = setTimeout(moveNext, switchTimer);
+	const timer = currentVid.duration % 60 * 1000;
+	console.log("prepare to switch in ", timer, "ms")
+	timerEnd = setTimeout(moveNext, timer);
 }
 
 function moveNext() {
-	console.log("next vid, current slide:", slide);
+	console.log("function moveNext slide");
 	if (!moving) {
 		if (slide === (totalItems - 1)) {
 			slide = 0;
@@ -150,6 +154,16 @@ function initCarousel() {
 }
 
 // make it rain
-initCarousel();
+let waitLoaded = async () => { 
+	return await document.querySelector("#main-container").classList.contains("loading_stop");
+};
+waitLoaded().then(() => {
+	initCarousel();
+});
+
+
 
 }(document));
+
+
+
