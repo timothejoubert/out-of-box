@@ -95,23 +95,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	window.addEventListener("resize", rdPosProjet);
 
 
-	//random pos words
-	// const words = document.querySelectorAll(".container-word_item");
-
-	// function randomWords(){
-	// 	words.forEach( (word) => {
-	// 		if(window.innerWidth > 1100){
-	// 			const left = Math.random() * 30;
-	// 			const top = Math.random() * 80;
-	// 			const rdScale = Math.random() + 0.7;
-	// 			word.style.transform = `translate(${left}px, ${top}px) scale(${rdScale})`
-	// 		}else{
-	// 			word.style.transform = `inherit`
-	// 		}
-	// 	})
-	// }
-	// randomWords();
-	// window.addEventListener("resize", randomWords);
 	function mapRange(value, a, b, c, d) {
 		value = (value - a) / (b - a);
 		return c + value * (d - c);
@@ -126,21 +109,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	  words.map( (word, i) => {
 		let fontS = randomInt(1, 4);
 		let weight = randomInt(100, 900);
-		let width = randomInt(50, 200);
+		let width = randomInt(60, 160);
 		var separator = document.createElement('span')
 		separator.innerHTML = " - ";
 		word.after(separator);
-		//word.style.transform = `scale(${scl})`;
 		word.style.fontSize = `${fontS}rem`;
 		word.style.fontVariationSettings = `'wght' ${weight}, 'wdth' ${width}`;
-		//console.log(fontS);
-		//22 188
-		//200 500
 	  })
 	});
 	
 	window.addEventListener('mousemove', (e) => {
-
 	  words.map( (word, i) => {
 		let size = parseFloat(word.style.fontSize) * 2;
 		word.style.transform = `translate(

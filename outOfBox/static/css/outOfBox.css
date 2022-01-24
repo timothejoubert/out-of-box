@@ -262,6 +262,7 @@ header {
   z-index: 1;
 }
 .header-headeline {
+  mix-blend-mode: difference;
   position: absolute;
   z-index: 5;
   left: 50px;
@@ -473,7 +474,7 @@ header {
 /* words */
 .container-words{
   overflow: hidden;
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 200px auto 0 auto;
 }
 .container-words_cloud{

@@ -51,8 +51,8 @@
 		<div class="container-img_header carousel-container">
 			<div class="swiper-wrapper">
 			{% for video in page.videos_header.all %}
-				<div class="carousel-item-wp item swiper-slide">
-					<video poster="{{video.video_header.file_thumb}}" muted>
+				<div class="carousel-item-wp item swiper-slide" data-swiper-autoplay="{{video.video_header.duration|floatformat:"0"}}000">
+					<video poster="/media/{{video.video_header.thumbnail}}" muted>
 						<source src="{{video.video_header.url}}" type="video/mp4">
 					</video>
 				</div>
