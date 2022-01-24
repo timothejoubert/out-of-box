@@ -84,9 +84,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
 	loaderWp.classList.add("start");
 
 	console.log("wait for video ready");
-	video.addEventListener('loadeddata', function() {
+	//video.addEventListener('loadeddata', function() {
 		startLoad();
-	}, false)
+	//}, false)
 	
 
 	//init animation for all section 

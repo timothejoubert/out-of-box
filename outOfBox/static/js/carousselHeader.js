@@ -149,7 +149,6 @@ function initCarousel() {
 		currentVid.loop = true;
 		currentVid.play();
 	}
-
 	moving = false;
 }
 

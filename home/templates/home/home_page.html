@@ -49,26 +49,32 @@
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z"/></svg>
 		</div>
 		<div class="container-img_header carousel-container">
+			<div class="swiper-wrapper">
 			{% for video in page.videos_header.all %}
-				<div class="carousel-item-wp item">
+				<div class="carousel-item-wp item swiper-slide">
 					<video poster="{{video.video_header.file_thumb}}" muted>
 						<source src="{{video.video_header.url}}" type="video/mp4">
 					</video>
 				</div>
 			{% endfor %}
-
-			<div class="switch-wp">
-				<a class="prev switch-vid">
-					<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-						<path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/>
-					</svg>
-				</a>
-				<a class="next switch-vid">
-					<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-						<path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/>
-					</svg>
-				</a>
 			</div>
+			<div class="switch-wp">
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+
+			{% comment %} <div class="switch-wp">
+				<a class="prev switch-vid switch-vid-prev">
+					<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+						<path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/>
+					</svg>
+				</a>
+				<a class="next switch-vid switch-vid-next">
+					<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+						<path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/>
+					</svg>
+				</a>
+			</div> {% endcomment %}
 		</div>
 
 	</header>

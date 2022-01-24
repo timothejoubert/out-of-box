@@ -1,9 +1,5 @@
 
 @media only screen and (max-width: 1200px)  {
-	.container-words_cloud{
-		grid-template-columns: repeat(3, 1fr);
-		max-width: 600px;
-	  }
 	  .container-word_item:nth-child(3n+1):nth-last-child(-n+3),
 	  .container-word_item:nth-child(3n+1):nth-last-child(-n+3) ~ .container-word_item {
 		grid-column: inherit;
@@ -39,9 +35,6 @@
 @media only screen and (max-width: 1100px) {
 	.container-project, .container-words_cloud{
 		gap: 20px;
-	}
-	.container-words_cloud h4{
-		font-size: 1.7rem;
 	}
 	.container-projects{
 		padding-bottom: 200px;
@@ -307,15 +300,6 @@
 	}
 }
 @media only screen and (max-width: 500px) {
-	.container-words_cloud{
-		grid-template-columns: repeat(2, 1fr);
-	}
-	.container-word_item{
-		text-align: center!important;
-	}
-	.container-word_item{
-		width: 100%;
-	}
 	.container-project_item > a{
 		height: 100px;
 	}
