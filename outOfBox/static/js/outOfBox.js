@@ -110,8 +110,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   let words = [...document.querySelectorAll(".container-words_cloud h4")];
 
-  const minSize = window.innerWidth > 700 ? 3 : 0.25;
-  const maxSize = window.innerWidth > 700 ? 8 : 1.5;
+  const minSize = window.innerWidth > 700 ? 3 : 1;
+  const maxSize = window.innerWidth > 700 ? 8 : 3;
   const blurScale = window.innerWidth > 700 ? 2 : 0.0;
   function initWordStyle() {
     words.map((word, i) => {
@@ -152,8 +152,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   let mouseX = 0.0,
     mouseY = 0.0;
   let blurRate = 0.92;
-  let pageX = 0,
-    pageY = 0;
+  let pageX = window.innerWidth * 0.5,
+    pageY = window.innerHeight * 0.5;
 
   let time = 0;
   const animate = () => {
@@ -191,7 +191,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   animate();
 
   const setPagePos = (event) => {
-    pageX = event.layerX ? event.layerX : event.pageX;
+    pageX = event.layerX ? window.innerWidth - event.layerX : event.pageX;
     pageY = event.layerY ? event.layerY : event.pageY;
   };
   document
