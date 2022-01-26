@@ -53,7 +53,7 @@
 			{% for video in page.videos_header.all %}
 				<div class="carousel-item-wp item swiper-slide" >
 					<video poster="/media/{{video.video_header.thumbnail}}" muted {% if page.videos_header.all.count < 2 %}loop{%endif%} >
-						<source src="{{video.video_header.url}}" type="video/mp4">
+						<source src="{{video.video_header.url}}#t=0.001" type="video/mp4">
 					</video>
 				</div>
 			{% endfor %}
