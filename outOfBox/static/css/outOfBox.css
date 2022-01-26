@@ -427,7 +427,7 @@ header {
   color: var(--light-color-6);
   max-width: 1400px;
   margin: 0 auto;
-  padding-bottom: 400px;
+  padding-bottom: 200px;
 }
 .container-project {
   display: flex;
