@@ -51,17 +51,19 @@
 		<div class="container-img_header carousel-container">
 			<div class="swiper-wrapper">
 			{% for video in page.videos_header.all %}
-				<div class="carousel-item-wp item swiper-slide" data-swiper-autoplay="{{video.video_header.duration|floatformat:"0"}}000">
-					<video poster="/media/{{video.video_header.thumbnail}}" muted>
+				<div class="carousel-item-wp item swiper-slide" >
+					<video poster="/media/{{video.video_header.thumbnail}}" muted {% if page.videos_header.all.count < 2 %}loop{%endif%} >
 						<source src="{{video.video_header.url}}" type="video/mp4">
 					</video>
 				</div>
 			{% endfor %}
 			</div>
+			{% if page.videos_header.all.count > 1 %}
 			<div class="switch-wp">
 				<div class="swiper-pagination"></div>
 				<div class="swiper-button-next"></div>
 			</div>
+			{% endif %}
 
 			{% comment %} <div class="switch-wp">
 				<a class="prev switch-vid switch-vid-prev">
@@ -87,6 +89,13 @@
 
 		{% comment %} <div class="article_intro">
 			{{ word_list.count }}
+
+			{% for word in word_list %}
+				<div class="container-word_item reveal" data-reveal="fade-up">
+					<h4>{{ word.mot }}</h4>
+				</div>
+			{% endfor %}
+
 		</div>  {% endcomment %}
 
 		<div class="container-words_cloud">
