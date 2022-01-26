@@ -166,12 +166,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       const pct = normalize(size / scale, minSize, maxSize);
       const cosPct = 0.5 + Math.cos(time * 0.00008 + i) * 0.5;
-      word.style.opacity = pct * cosPct;
+      word.style.opacity = (0.25 + pct * cosPct * 0.75).toFixed(2);
       //word.style.filter = "blur(" + (0.1 + (1.0 - pct) * 2) + "px)";
 
       word.style.transform = `translate(
-		${mapRange(mouseX / window.innerWidth, 0, 1, 10 + size, 10 - size)}px,
-		${mapRange(mouseY / window.innerHeight, 0, 1, 10 + size, 10 - size)}px
+		${mapRange(mouseX / window.innerWidth, 0, 1, 10 + size, 10 - size).toFixed(
+      2,
+    )}px,
+		${mapRange(mouseY / window.innerHeight, 0, 1, 10 + size, 10 - size).toFixed(
+      2,
+    )}px
 		)`;
     });
 
