@@ -111,6 +111,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
       // var separator = document.createElement("span");
       // separator.innerHTML = "";
       // word.after(separator);
+
+      const pct = size / maxSize;
+      word.style.filter = "blur(" + (0.1 + (1.0 - pct) * 2) + "px)";
       word.style.fontSize = `${fontS}rem`;
       word.style.fontVariationSettings = `'wght' ${weight}, 'wdth' ${width}`;
     });
@@ -145,7 +148,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       const pct = size / scale / maxSize;
       const cosPct = 0.5 + Math.cos(time * 0.0008 + i) * 0.5;
       word.style.opacity = pct * cosPct;
-      word.style.filter = "blur(" + (0.1 + (1.0 - pct) * 2) + "px)";
+      //word.style.filter = "blur(" + (0.1 + (1.0 - pct) * 2) + "px)";
 
       word.style.transform = `translate(
 		${mapRange(mouseX / window.innerWidth, 0, 1, 10 + size * 2.0, 10 - size * 2)}px,
