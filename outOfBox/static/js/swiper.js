@@ -1,5 +1,6 @@
 const onUpdateVideoHandler = (video, swiper) => {
   const pct = video.currentTime / video.duration;
+
   if (pct === 1.0) {
     swiper.slideNext(1000);
     video.pause();
@@ -8,7 +9,7 @@ const onUpdateVideoHandler = (video, swiper) => {
 };
 
 var currentUpdate = null;
-
+var currentVideo = null;
 var swiper = new Swiper(".carousel-container", {
   slidesPerView: 1,
   speed: 400,
@@ -25,16 +26,23 @@ var swiper = new Swiper(".carousel-container", {
   },
   on: {
     slideChange: (swiper) => {
-      console.log("swipe");
-
       let vid = swiper.slides[swiper.activeIndex].querySelector("video");
       vid.currentTime = 0;
       vid.play();
 
       currentUpdate = null;
       currentUpdate = onUpdateVideoHandler.bind(swiper, vid, swiper);
-      vid.removeEventListener("timeupdate", currentUpdate, true);
-      vid.addEventListener("timeupdate", currentUpdate, true);
+
+      if (currentVideo) {
+        swiper.slides.forEach((slide) => {
+          let v = slide.querySelector("video");
+          v.ontimeupdate = null;
+          v.pause();
+          v.currentTime = 0;
+        });
+      }
+      vid.ontimeupdate = currentUpdate;
+      currentVideo = vid;
     },
   },
 });
