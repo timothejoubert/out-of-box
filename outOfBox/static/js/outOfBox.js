@@ -114,21 +114,32 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   });
 
-  window.addEventListener("mousemove", (e) => {
+  let mouseX = 0.0,
+    mouseY = 0.0;
+  let blurRate = 0.9;
+  let pageX = 0,
+    pageY = 0;
+
+  const animate = () => {
+    mouseX = blurRate * mouseX + (1.0 - blurRate) * pageX;
+    mouseY = blurRate * mouseY + (1.0 - blurRate) * pageY;
+
     words.map((word, i) => {
       const scale = 16.0;
 
       let size = parseFloat(word.style.fontSize) * scale;
       word.style.transform = `translate(
-		${mapRange(
-      e.pageX / window.innerWidth,
-      0,
-      1,
-      10 + size * 2.0,
-      10 - size * 2,
-    )}px,
-		${mapRange(e.pageY / window.innerHeight, 0, 1, 10 + size, 10 - size)}px
+		${mapRange(mouseX / window.innerWidth, 0, 1, 10 + size * 2.0, 10 - size * 2)}px,
+		${mapRange(mouseY / window.innerHeight, 0, 1, 10 + size, 10 - size)}px
 		)`;
     });
+    requestAnimationFrame(animate);
+  };
+
+  animate();
+
+  window.addEventListener("mousemove", (e) => {
+    pageX = e.pageX;
+    pageY = e.pageY;
   });
 });
