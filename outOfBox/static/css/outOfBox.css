@@ -319,14 +319,17 @@ header {
 .btn_play_mobile{
   position: absolute;
   z-index: 200;
-  width: 40px;
-  /* display: none; */
+  width: 60px;
+  height: 60px;
   opacity: 0;
+  padding: 5px;
+  background-color: var(--dark-color-8);
+  border-radius: 100%;
   transition: all 300ms 500ms;
 }
 .btn_play_mobile svg{
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 .btn_play_mobile path{
   fill: var(--light-color);
@@ -340,6 +343,7 @@ header {
   object-fit: cover;
 }
 .container-img_header img {
+  display: none;
   width: 100%;
   height: 100%;
   object-fit: cover;

@@ -101,16 +101,25 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   let words = [...document.querySelectorAll(".container-words_cloud h4")];
 
-  window.addEventListener("load", () => {
+  function initWordStyle(){
+    console.log("init word style")
     words.map((word, i) => {
-      let fontS = randomInt(1, 4);
+      let fontS = window.innerWidth > 700 ? randomInt(1, 4) : randomInt(0.8, 2);
       let weight = randomInt(100, 900);
       let width = randomInt(60, 160);
-      var separator = document.createElement("span");
-      separator.innerHTML = "";
-      word.after(separator);
+      // var separator = document.createElement("span");
+      // separator.innerHTML = "";
+      // word.after(separator);
       word.style.fontSize = `${fontS}rem`;
       word.style.fontVariationSettings = `'wght' ${weight}, 'wdth' ${width}`;
+    });
+  }
+
+  window.addEventListener("load", initWordStyle);
+  window.addEventListener("resize", () => {
+    words.map((word, i) => {
+      let fontS = window.innerWidth > 700 ? word.style.fontSize : randomInt(0.8, 2);
+      word.style.fontSize = `${fontS}rem`;
     });
   });
 
