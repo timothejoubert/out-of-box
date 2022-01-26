@@ -45,9 +45,11 @@
 				<h2>{{page.line_2_tagline}}</h2>
 			</div>
 		</div>
+		<!--
 		<div class="btn_play_mobile">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z"/></svg>
 		</div>
+		-->
 		<div class="container-img_header carousel-container">
 			<div class="swiper-wrapper">
 			{% for video in page.videos_header.all %}
@@ -55,7 +57,7 @@
 					{% if video.video_header.thumbnail %}
 						<img src="/media/{{video.video_header.thumbnail}}" alt="{{video.video_header.thumbnail}}" >
 					{% endif %}
-					<video poster="/media/{{video.video_header.thumbnail}}" muted {% if page.videos_header.all.count < 2 %}loop{%endif%} >
+					<video poster="/media/{{video.video_header.thumbnail}}" muted {% if page.videos_header.all.count < 2 %}loop{%endif%} playsinline>
 						<source src="{{video.video_header.url}}#t=0.001" type="video/mp4">
 					</video>
 				</div>

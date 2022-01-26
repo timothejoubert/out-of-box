@@ -50,10 +50,10 @@ var swiper = new Swiper(".carousel-container", {
 
 window.addEventListener("DOMContentLoaded", (e) => {
   const el = document.getElementsByClassName("btn_play_mobile")[0];
-  console.log(el);
-  document.getElementsByClassName("btn_play_mobile")[0].onclick = () => {
+  el.onclick = () => {
     let vid = swiper.slides[swiper.activeIndex].querySelector("video");
-    vid.play();
+    //vid.play();
+    el.remove();
   };
 });
 
