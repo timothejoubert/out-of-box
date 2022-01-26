@@ -112,7 +112,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       // separator.innerHTML = "";
       // word.after(separator);
 
-      const pct = size / maxSize;
+      const pct = fontS / maxSize;
       word.style.filter = "blur(" + (0.1 + (1.0 - pct) * 2) + "px)";
       word.style.fontSize = `${fontS}rem`;
       word.style.fontVariationSettings = `'wght' ${weight}, 'wdth' ${width}`;
