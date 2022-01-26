@@ -1,13 +1,20 @@
-/*
+const onUpdateVideoHandler = (video, swiper) => {
+  const pct = video.currentTime / video.duration;
+  if (pct === 1.0) {
+    swiper.slideNext(1000);
+    video.pause();
+    video.currentTime = 0;
+  }
+};
+
+var currentUpdate = null;
+
 var swiper = new Swiper(".carousel-container", {
   slidesPerView: 1,
   speed: 400,
   spaceBetween: 30,
   loop: true,
-  autoplay: {
-    delay: 9000,
-    disableOnInteraction: false,
-  },
+
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -17,15 +24,20 @@ var swiper = new Swiper(".carousel-container", {
     //prevEl: ".swiper-button-prev"
   },
   on: {
-    slideChange: function () {
-      console.log("slide change");
-      let vid = this.slides[this.activeIndex].querySelector("video");
+    slideChange: (swiper) => {
+      console.log("swipe");
+
+      let vid = swiper.slides[swiper.activeIndex].querySelector("video");
       vid.currentTime = 0;
       vid.play();
+
+      currentUpdate = null;
+      currentUpdate = onUpdateVideoHandler.bind(swiper, vid, swiper);
+      vid.removeEventListener("timeupdate", currentUpdate, true);
+      vid.addEventListener("timeupdate", currentUpdate, true);
     },
   },
 });
-*/
 
 // const updateTime = (vid, index) => {
 // 	const pct = vid.currentTime / vid.duration;
