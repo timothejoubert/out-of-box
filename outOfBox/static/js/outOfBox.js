@@ -111,7 +111,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   let words = [...document.querySelectorAll(".container-words_cloud h4")];
 
   const minSize = window.innerWidth > 700 ? 1 : 0.25;
-  const maxSize = window.innerWidth > 700 ? 4 : 1.5;
+  const maxSize = window.innerWidth > 700 ? 8 : 1.5;
   const blurScale = window.innerWidth > 700 ? 3 : 0.0;
   function initWordStyle() {
     words.map((word, i) => {
