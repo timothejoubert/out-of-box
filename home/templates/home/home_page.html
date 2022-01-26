@@ -38,7 +38,8 @@
 
 		<div class="header-headeline" style="opacity:0;">
 			<div class="firstline">
-				<h2>{{page.title_tagline}}</h2>
+				<!--<h2>{{page.title_tagline}}</h2>-->
+				<h2></h2>
 			</div>
 			<div class="secondline">
 				<h2>{{page.line_1_tagline}}</h2>
@@ -50,6 +51,16 @@
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z"/></svg>
 		</div>
 		-->
+		<div class="btn_mute">
+
+			<svg id="mute-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.43,4.1a1,1,0,0,0-1,.12L6.65,8H3A1,1,0,0,0,2,9v6a1,1,0,0,0,1,1H6.65l4.73,3.78A1,1,0,0,0,12,20a.91.91,0,0,0,.43-.1A1,1,0,0,0,13,19V5A1,1,0,0,0,12.43,4.1ZM11,16.92l-3.38-2.7A1,1,0,0,0,7,14H4V10H7a1,1,0,0,0,.62-.22L11,7.08ZM19.91,12l1.8-1.79a1,1,0,0,0-1.42-1.42l-1.79,1.8-1.79-1.8a1,1,0,0,0-1.42,1.42L17.09,12l-1.8,1.79a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l1.79-1.8,1.79,1.8a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"/></svg>
+			<svg id="unmute-icon" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+	 <path d="M12.4,4.1c-0.3-0.1-0.7-0.1-1,0.1L6.7,8H3C2.4,8,2,8.4,2,9v6c0,0.6,0.4,1,1,1h3.7l4.7,3.8c0.2,0.1,0.4,0.2,0.6,0.2
+		 c0.1,0,0.3,0,0.4-0.1c0.3-0.2,0.6-0.5,0.6-0.9V5C13,4.6,12.8,4.3,12.4,4.1z M11,16.9l-3.4-2.7C7.4,14.1,7.2,14,7,14H4v-4h3
+		 c0.2,0,0.4-0.1,0.6-0.2L11,7.1V16.9z"/>
+	 </svg>
+		</div>
 		<div class="container-img_header carousel-container">
 			<div class="swiper-wrapper">
 			{% for video in page.videos_header.all %}

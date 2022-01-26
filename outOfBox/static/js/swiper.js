@@ -37,6 +37,7 @@ var swiper = new Swiper(".carousel-container", {
           let v = slide.querySelector("video");
           v.ontimeupdate = null;
           v.pause();
+          v.muted = videoMuted;
           v.currentTime = 0;
         });
       }
@@ -48,12 +49,26 @@ var swiper = new Swiper(".carousel-container", {
   },
 });
 
+let videoMuted = true;
 window.addEventListener("DOMContentLoaded", (e) => {
+  /*
   const el = document.getElementsByClassName("btn_play_mobile")[0];
   el.onclick = () => {
     let vid = swiper.slides[swiper.activeIndex].querySelector("video");
     //vid.play();
     el.remove();
+  };
+	*/
+
+  const mute = document.getElementsByClassName("btn_mute")[0];
+  mute.onclick = () => {
+    let vid = swiper.slides[swiper.activeIndex].querySelector("video");
+    vid.muted = !vid.muted;
+    videoMuted = vid.muted;
+    const muteicon = document.getElementById("mute-icon");
+    const unmuteicon = document.getElementById("unmute-icon");
+    muteicon.style.display = vid.muted ? "none" : "block";
+    unmuteicon.style.display = vid.muted ? "block" : "none";
   };
 });
 
