@@ -165,7 +165,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let size = parseFloat(word.style.fontSize) * scale;
 
       const pct = normalize(size / scale, minSize, maxSize);
-      const cosPct = 0.5 + Math.cos(time * 0.0008 + i) * 0.5;
+      const cosPct = 0.5 + Math.cos(time * 0.00008 + i) * 0.5;
       word.style.opacity = pct * cosPct;
       //word.style.filter = "blur(" + (0.1 + (1.0 - pct) * 2) + "px)";
 
