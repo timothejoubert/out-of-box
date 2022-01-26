@@ -513,7 +513,6 @@ header {
 /* words */
 .container-words {
   overflow: hidden;
-  max-width: 1400px;
   margin: 200px auto 0 auto;
 }
 .container-words_cloud {
