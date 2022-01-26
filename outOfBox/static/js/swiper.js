@@ -28,7 +28,6 @@ var swiper = new Swiper(".carousel-container", {
     slideChange: (swiper) => {
       let vid = swiper.slides[swiper.activeIndex].querySelector("video");
       vid.currentTime = 0;
-      vid.play();
 
       currentUpdate = null;
       currentUpdate = onUpdateVideoHandler.bind(swiper, vid, swiper);
@@ -41,6 +40,8 @@ var swiper = new Swiper(".carousel-container", {
           v.currentTime = 0;
         });
       }
+      vid.play();
+
       vid.ontimeupdate = currentUpdate;
       currentVideo = vid;
     },
