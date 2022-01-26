@@ -95,31 +95,49 @@ window.addEventListener("DOMContentLoaded", (event) => {
     value = (value - a) / (b - a);
     return c + value * (d - c);
   }
-  function randomInt(min, max) {
-    return Math.random() * (max - min) + min;
+
+  function randomRange(min, max) {
+    return min + Math.random() * (max - min);
+  }
+
+  function normalize(val, max, min) {
+    return (val - min) / (max - min);
+  }
+
+  function clamp(num, min, max) {
+    return Math.min(Math.max(num, min), max);
   }
 
   let words = [...document.querySelectorAll(".container-words_cloud h4")];
 
-  const minSize = 1;
-  const maxSize = window.innerWidth > 700 ? 4 : 2;
+  const minSize = window.innerWidth > 700 ? 1 : 0.25;
+  const maxSize = window.innerWidth > 700 ? 4 : 1.5;
+  const blurScale = window.innerWidth > 700 ? 3 : 0.0;
   function initWordStyle() {
     words.map((word, i) => {
-      let fontS = randomInt(minSize, maxSize);
-      let weight = randomInt(100, 900);
-      let width = randomInt(60, 160);
+      let fontS = randomRange(minSize, maxSize);
+      let weight = randomRange(100, 900);
+      let width = randomRange(60, 160);
       // var separator = document.createElement("span");
       // separator.innerHTML = "";
       // word.after(separator);
 
-      const pct = fontS / maxSize;
-      word.style.filter = "blur(" + (0.1 + (1.0 - pct) * 2) + "px)";
+      const pct = clamp(
+        normalize(fontS, minSize * 1.25, maxSize * 0.75),
+        0.0,
+        1.0,
+      );
+      word.style.filter = "blur(" + pct * blurScale + "px)";
       word.style.fontSize = `${fontS}rem`;
       word.style.fontVariationSettings = `'wght' ${weight}, 'wdth' ${width}`;
     });
   }
 
-  window.addEventListener("load", initWordStyle);
+  initWordStyle();
+
+  //window.addEventListener("load", initWordStyle);
+
+  /*
   window.addEventListener("resize", () => {
     words.map((word, i) => {
       let fontS =
@@ -127,6 +145,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       word.style.fontSize = `${fontS}rem`;
     });
   });
+	*/
 
   let mouseX = 0.0,
     mouseY = 0.0;
@@ -145,13 +164,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       let size = parseFloat(word.style.fontSize) * scale;
 
-      const pct = size / scale / maxSize;
-      const cosPct = 0.5 + Math.cos(time * 0.00008 + i) * 0.5;
+      const pct = normalize(size / scale, minSize, maxSize);
+      const cosPct = 0.5 + Math.cos(time * 0.0008 + i) * 0.5;
       word.style.opacity = pct * cosPct;
       //word.style.filter = "blur(" + (0.1 + (1.0 - pct) * 2) + "px)";
 
       word.style.transform = `translate(
-		${mapRange(mouseX / window.innerWidth, 0, 1, 10 + size * 2.0, 10 - size * 2)}px,
+		${mapRange(mouseX / window.innerWidth, 0, 1, 10 + size, 10 - size)}px,
 		${mapRange(mouseY / window.innerHeight, 0, 1, 10 + size, 10 - size)}px
 		)`;
     });
@@ -161,8 +180,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   animate();
 
-  document.getElementById("wordscloud").addEventListener("mousemove", (e) => {
-    pageX = e.pageX;
-    pageY = e.pageY;
-  });
+  const setPagePos = (event) => {
+    pageX = event.layerX ? event.layerX : event.pageX;
+    pageY = event.layerY ? event.layerY : event.pageY;
+  };
+  document
+    .getElementById("wordscloud")
+    .addEventListener("touchmove", setPagePos, false);
+
+  document
+    .getElementById("wordscloud")
+    .addEventListener("mousemove", setPagePos);
 });
