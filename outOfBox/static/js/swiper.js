@@ -1,3 +1,4 @@
+/*
 var swiper = new Swiper(".carousel-container", {
   slidesPerView: 1,
   speed: 400,
@@ -24,6 +25,7 @@ var swiper = new Swiper(".carousel-container", {
     },
   },
 });
+*/
 
 // const updateTime = (vid, index) => {
 // 	const pct = vid.currentTime / vid.duration;
