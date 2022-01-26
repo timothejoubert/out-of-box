@@ -1,4 +1,4 @@
-
+/*
 var swiper = new Swiper(".carousel-container", {
 	slidesPerView: 1,
 	speed: 400,
@@ -24,13 +24,14 @@ var swiper = new Swiper(".carousel-container", {
 		},
 	},
 });
-  
+*/
+
 // const updateTime = (vid, index) => {
 // 	const pct = vid.currentTime / vid.duration;
 // 	console.log(index, pct);
 // 	if (pct === 1.0){
 // 		swiper.slideNext();
-// 	} 
+// 	}
 // }
 
 // swiper.on("slideChange", function (){
@@ -51,5 +52,3 @@ var swiper = new Swiper(".carousel-container", {
 // 		});
 // 	}
 // });
-
-
