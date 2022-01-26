@@ -101,10 +101,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   let words = [...document.querySelectorAll(".container-words_cloud h4")];
 
-  function initWordStyle(){
-    console.log("init word style")
+  const minSize = 1;
+  const maxSize = window.innerWidth > 700 ? 4 : 2;
+  function initWordStyle() {
     words.map((word, i) => {
-      let fontS = window.innerWidth > 700 ? randomInt(1, 4) : randomInt(0.8, 2);
+      let fontS = randomInt(minSize, maxSize);
       let weight = randomInt(100, 900);
       let width = randomInt(60, 160);
       // var separator = document.createElement("span");
@@ -118,7 +119,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   window.addEventListener("load", initWordStyle);
   window.addEventListener("resize", () => {
     words.map((word, i) => {
-      let fontS = window.innerWidth > 700 ? word.style.fontSize : randomInt(0.8, 2);
+      let fontS =
+        window.innerWidth > 700 ? word.style.fontSize : randomInt(0.8, 2);
       word.style.fontSize = `${fontS}rem`;
     });
   });
@@ -129,25 +131,34 @@ window.addEventListener("DOMContentLoaded", (event) => {
   let pageX = 0,
     pageY = 0;
 
+  let time = 0;
   const animate = () => {
     mouseX = blurRate * mouseX + (1.0 - blurRate) * pageX;
     mouseY = blurRate * mouseY + (1.0 - blurRate) * pageY;
 
     words.map((word, i) => {
+      time++;
       const scale = 16.0;
 
       let size = parseFloat(word.style.fontSize) * scale;
+
+      const pct = size / scale / maxSize;
+      const cosPct = 0.5 + Math.cos(time * 0.0008 + i) * 0.5;
+      word.style.opacity = pct * cosPct;
+      word.style.filter = "blur(" + (0.1 + (1.0 - pct) * 2) + "px)";
+
       word.style.transform = `translate(
 		${mapRange(mouseX / window.innerWidth, 0, 1, 10 + size * 2.0, 10 - size * 2)}px,
 		${mapRange(mouseY / window.innerHeight, 0, 1, 10 + size, 10 - size)}px
 		)`;
     });
+
     requestAnimationFrame(animate);
   };
 
   animate();
 
-  window.addEventListener("mousemove", (e) => {
+  document.getElementById("wordscloud").addEventListener("mousemove", (e) => {
     pageX = e.pageX;
     pageY = e.pageY;
   });
