@@ -127,7 +127,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         0.0,
         1.0,
       );
-      word.style.filter = "blur(" + Marth.ceil(pct * blurScale) + "px)";
+      word.style.filter = "blur(" + Math.ceil(pct * blurScale) + "px)";
       word.style.fontSize = `${fontS}rem`;
       word.style.fontVariationSettings = `'wght' ${weight}, 'wdth' ${width}`;
     });
