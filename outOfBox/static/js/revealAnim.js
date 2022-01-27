@@ -52,7 +52,7 @@ function reveal(e) {
   const reveals = e.currentTarget.nodesReveal;
   reveals.forEach((el) => {
     var windowHeight = window.innerHeight;
-    var revealPoint = 100;
+    var revealPoint = 30;
     var revealTop = el.getBoundingClientRect().top;
     if (revealTop < windowHeight - revealPoint) {
       el.classList.add("reveal-visible");
@@ -90,3 +90,4 @@ window.addEventListener("DOMContentLoaded", (e) => {
   window.nodesReveal = document.querySelectorAll(".reveal");
   window.addEventListener("scroll", reveal);
 });
+window.addEventListener("DOMContentLoaded", reveal);
