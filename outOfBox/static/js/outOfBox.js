@@ -26,6 +26,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     l.on("show.simplelightbox", function () {
       console.log("showing lightbox");
+      console.log(l);
+      console.log(l.isOpen);
+      if (l.isOpen) l.close(); // BOURRIN
     });
 
     l.on("error.simplelightbox", function (e) {
