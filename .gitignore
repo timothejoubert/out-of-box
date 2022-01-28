@@ -5,9 +5,10 @@
 /Vagrantfile.local
 db.sqlite3
 
-
+share/*
 /env/*
-
+*.mp4
+uwsgi_params
 /out-of-box-assets
 
 # Django project
