@@ -13,6 +13,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     return Math.min(Math.max(num, min), max);
   }
 
+  console.log("init SimpleLightbox");
   const lightBoxElements = document.getElementsByClassName("project_item-a");
   Array.from(lightBoxElements).forEach((el) => {
     new SimpleLightbox(el, {
