@@ -24,11 +24,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
       captionSelector: "self",
     });
 
+    console.log(l);
+
     l.on("show.simplelightbox", function () {
       console.log("showing lightbox");
       console.log(l);
       console.log(l.isOpen);
       if (l.isOpen) l.close(); // BOURRIN
+
+      if (document.getElementsByClassName("simple-lightbox").length) {
+        l.close();
+        console.log("closing");
+      }
     });
 
     l.on("error.simplelightbox", function (e) {
