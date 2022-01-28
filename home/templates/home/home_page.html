@@ -213,18 +213,18 @@
 								<div class="container-footer_logo">
 									<img src="{{ img.url }}" alt="img.title">
 								</div>
+								{% for footer in footer_list %}
+								{%if footer.info_contact_second %}
+									<p>{{ footer.info_contact_second|richtext }}</p>
+								{% endif %}
+							{% endfor %}
+							<br/>
 								<p>{{ footer.info_contact|richtext }}</p>
 							</div>
 						{% endfor %}
 					</div>
 					<div class="footer-message">
-						{% for footer in footer_list %}
-							{%if footer.info_contact_second %}
-								<p>{{ footer.info_contact_second|richtext }}</p>
-							{% endif %}
-						{% endfor %}
-						{% comment %} <p>Envie d'en savoir plus ?</p>
-						<p>Dites-nous tout ou passez nous voir !</p> {% endcomment %}
+					
 					</div>
 				</div>
 				<div class="footer-copyright">
