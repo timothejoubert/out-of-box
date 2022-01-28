@@ -1,0 +1,60 @@
+{% load static wagtailuserbar menu_tags %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% comment %} {% block title %}
+                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% endblock %} {% endcomment %}
+            {% block title_suffix %}
+                {% with self.get_site.site_name as site_name %}
+                    {% if site_name %}{{ site_name }}{% endif %}
+                {% endwith %}
+            {% endblock %}
+        </title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="{% static 'assets/favicon.ico' %}" type="image/x-icon">
+        <link rel="icon" href="{% static 'assets/favicon.ico' %}" type="image/x-icon">
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/simple-lightbox.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/outOfBox.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+
+    <body class="no_scroll {% block body_class %}{% endblock %}">
+        
+        {% wagtailuserbar %}
+        <div id="main-container">
+            {% main_menu show_multiple_levels=False template="menu.html" use_absolute_page_urls=True %}
+            
+            {% block content %}{% endblock %}
+        </div>
+
+        {# Global javascript #}
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/utils.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/outOfBox.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/swiper.js' %}"></script>
+        {% comment %} <script type="text/javascript" src="{% static 'js/carousselHeader.js' %}"></script> {% endcomment %}
+        <script type="text/javascript" src="{% static 'js/revealAnim.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/simple-lightbox.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
+        
+
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    
+    </body>
+</html>
