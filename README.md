@@ -14,11 +14,21 @@ Install and clone the repo using virtual environnement. See deploy section above
 
 `python manage.py collectstatic`
 
-
 ## Tech
 
 Install new App :
 python manage.py startapp [name]
+
+## Working with vite template
+
+Edit files in outofbox-js
+Be sure to add symlinks
+cd outofbox-js
+ln -s ../../../outofbox-js vite
+ln -s ../../../outofbox-js/dist dist
+
+When done, build vite :
+vite build
 
 ## How to install on Ubuntu and deploy
 
@@ -39,7 +49,6 @@ python manage.py startapp [name]
 
     `pip install -r requirements.txt`
 
-
 5.  After this point, you can verify that everything works and perform migrations if needed
 
     `python manage.py runserver`
@@ -59,7 +68,8 @@ python manage.py startapp [name]
 9.  Update your DNS to point to your server IP address, and run uWGSI (using socket) to verify the setup.
 
     `uwsgi --socket outofbox.sock --wsgi-file outOfBox/wsgi.py --chmod-socket=666`
-10. Create a service and enable it to make the app run forever and [copy file from here](https://github.com/timothejoubert/out-of-box/blob/main/configs/outofbox.service "copy file from here") 
+
+10. Create a service and enable it to make the app run forever and [copy file from here](https://github.com/timothejoubert/out-of-box/blob/main/configs/outofbox.service "copy file from here")
 
     `sudo nano /etc/systemd/system/outofbox.service`
 
