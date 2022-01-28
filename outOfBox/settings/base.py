@@ -57,10 +57,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wagtail.contrib.modeladmin', 
+    'wagtail.contrib.modeladmin',
     'wagtailmenus',
 
     'wagtail.contrib.styleguide',
+
+    # 'template_debug',
+
 ]
 
 MIDDLEWARE = [
@@ -73,6 +76,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
 ]
 
 ROOT_URLCONF = 'outOfBox.urls'
