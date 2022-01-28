@@ -12,8 +12,6 @@ class ProjetPage(Page):
     projet_nom = models.CharField(max_length=100, null=True, blank=True)
     projet_description = RichTextField(
         features=['bold', 'italic', 'link'], null=True, blank=True)
-    projet_description_complete = RichTextField(
-        features=['bold', 'italic', 'link'], null=True, blank=True)
     projet_image = models.ForeignKey(
         "wagtailimages.Image",
         null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
@@ -25,8 +23,8 @@ class ProjetPage(Page):
             [
             FieldPanel('projet_nom'),
             FieldPanel('projet_description'),
-            FieldPanel('projet_description_complete'),
             ImageChooserPanel("projet_image"),
+            InlinePanel('all_img'),
             FieldPanel('projet_link'),
             ],
             heading="Informations du projet",
@@ -38,3 +36,14 @@ class ProjetPage(Page):
         verbose_name = "template de page projet"
 
 
+class AllImg(Orderable):
+    page = ParentalKey(ProjetPage, related_name='all_img')
+    
+    image_projet = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
+    )
+
+    panels = [
+        ImageChooserPanel("image_projet"),
+    ]
