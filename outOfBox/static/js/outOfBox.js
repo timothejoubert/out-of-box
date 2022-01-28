@@ -15,6 +15,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   console.log("init SimpleLightbox");
   const lightBoxElements = document.getElementsByClassName("project_item-a");
+
+  console.log(Array.from(lightBoxElements).length);
+  console.log(lightBoxElements);
+
   Array.from(lightBoxElements).forEach((el) => {
     const l = new SimpleLightbox(el, {
       captionSelector: "self",
