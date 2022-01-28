@@ -42,17 +42,18 @@
         </div>
 
         {# Global javascript #}
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <script type="text/javascript" src="{% static 'js/utils.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/outOfBox.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/swiper.js' %}"></script>
-        {% comment %} <script type="text/javascript" src="{% static 'js/carousselHeader.js' %}"></script> {% endcomment %}
-        <script type="text/javascript" src="{% static 'js/revealAnim.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/simple-lightbox.min.js' %}"></script>
         
-
         {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
+        <script>
+            var global = global || window;
+        </script> 
+
+        {% if not debug %}
+        <script type="module" src="{% static 'js/vite/main.js' %}"></script>
+        {% else %}
+        <script type="text/javascript" src="{% static 'js/dist/outofbox.es.js' %}"></script>
+        {% endif %}
+
         {% endblock %}
     
     </body>

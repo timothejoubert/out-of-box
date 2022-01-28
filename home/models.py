@@ -14,6 +14,7 @@ from wordsCloud.models import listWords
 from clients.models import clientItem
 from footer.models import Footer
 
+from django.conf import settings
 
 class videoHeader(Orderable):
     page = ParentalKey("HomePage", related_name="videos_header")
@@ -68,6 +69,7 @@ class HomePage(Page):
         context['word_list'] = listWords.objects.all()
         context['client_list'] = clientItem.objects.all()
         context['footer_list'] = Footer.objects.all()
+        context['debug'] = settings.DEBUG
 
         
         return context
