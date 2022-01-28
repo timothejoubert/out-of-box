@@ -66,7 +66,7 @@ class SwiperManager {
   onUpdateVideoHandler(video, swiper) {
     const pct = video.currentTime / video.duration;
     if (pct === 1.0) {
-      this.swiper.slideNext(1000);
+      swiper.slideNext(1000);
       video.pause();
       video.currentTime = 0;
     }

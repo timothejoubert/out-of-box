@@ -72,8 +72,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+
 ]
 
 ROOT_URLCONF = 'outOfBox.urls'
