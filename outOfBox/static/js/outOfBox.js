@@ -13,25 +13,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
     return Math.min(Math.max(num, min), max);
   }
 
-  console.log("init SimpleLightbox");
   const lightBoxElements = document.getElementsByClassName("project_item-a");
-
-  console.log(Array.from(lightBoxElements).length);
-  console.log(lightBoxElements);
 
   Array.from(lightBoxElements).forEach((el) => {
     const l = new SimpleLightbox(el, {
       captionSelector: "self",
     });
 
-    console.log(l);
-
     l.on("show.simplelightbox", function () {
-      console.log("showing lightbox");
-      console.log(l);
-      console.log(l.isOpen);
-      if (l.isOpen) l.close(); // BOURRIN
-
       if (document.getElementsByClassName("simple-lightbox").length) {
         l.close();
         document.getElementsByClassName("simple-lightbox")[0].remove();
