@@ -45,6 +45,8 @@ class SwiperManager {
         },
       },
     });
+
+    this.initMute();
   }
 
   initMute() {
