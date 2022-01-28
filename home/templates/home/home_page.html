@@ -114,11 +114,11 @@
 		<div class="container-project">		
 			{% for projet in projet_pages %}
 			{% if projet.projet_nom %}
-			<div class="container-project_item reveal" data-reveal="fade-up" data-open="modal{{projet.id}}" style="--index: {{ forloop.counter }}">
+			<div class="container-project_item reveal " data-reveal="fade-up" data-open="modal{{projet.id}}" style="--index: {{ forloop.counter }}">
 				{% image projet.projet_image width-500 as img500 %}
 				{% image projet.projet_image original as img %}
 				
-				<a href={{img.url}} title="{{ projet.projet_description|richtext }}">
+				<a class="project_item-a lightbox-{{projet.id}}" href={{img.url}} title="{{ projet.projet_description|richtext }}">
 					<div class="container-project_img">
 						<img src="{{ img500.url }}" alt="{{img500.alt}}" >
 					</div>

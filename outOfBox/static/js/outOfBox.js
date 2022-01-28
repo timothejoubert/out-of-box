@@ -13,9 +13,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
     return Math.min(Math.max(num, min), max);
   }
 
-  var lightbox = new SimpleLightbox('.container-project_item a', { 
-    // nav: false
-    captionSelector: "self",
+  const lightBoxElements = document.getElementsByClassName("project_item-a");
+  Array.from(lightBoxElements).forEach((el) => {
+    new SimpleLightbox(el, {
+      captionSelector: "self",
+    });
   });
 
   // second nav
