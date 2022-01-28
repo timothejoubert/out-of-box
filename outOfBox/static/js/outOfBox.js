@@ -16,8 +16,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
   console.log("init SimpleLightbox");
   const lightBoxElements = document.getElementsByClassName("project_item-a");
   Array.from(lightBoxElements).forEach((el) => {
-    new SimpleLightbox(el, {
+    const l = new SimpleLightbox(el, {
       captionSelector: "self",
+    });
+
+    l.on("show.simplelightbox", function () {
+      console.log("showing lightbox");
+    });
+
+    l.on("error.simplelightbox", function (e) {
+      console.log(e); // some usefull information
     });
   });
 
