@@ -30,8 +30,9 @@ class WordCloud {
         1.0,
       );
 
-      word.style.zIndex = 1 + Math.ceil(pct * this.words.length);
+      word.style.zIndex = 1 + Math.ceil((1.0 - pct) * this.words.length);
       word.style.filter = "blur(" + Math.ceil(pct * this.blurScale) + "px)";
+      word.style.opacity = 1.0;
       word.style.fontSize = `${fontS}rem`;
       word.style.fontVariationSettings = `'wght' ${weight}, 'wdth' ${width}`;
     });
@@ -69,8 +70,9 @@ class WordCloud {
 
       let size = parseFloat(word.style.fontSize) * scale;
       const pct = normalize(size / scale, this.minSize, this.maxSize);
-      const cosPct = 0.5 + Math.cos(this.time * 0.0002 + i) * 0.5;
-      word.style.opacity = (0.25 + pct * cosPct * 0.75).toFixed(2);
+      const cosPct = 0.5 + Math.cos(this.time * 0.02 + i) * 0.5;
+      const col = (0.25 + pct * cosPct * 0.75) * 255;
+      word.style.color = "rgb(" + col + "," + col + "," + col + ")";
       //word.style.filter = "blur(" + (0.1 + (1.0 - pct) * 2) + "px)";
 
       word.style.transform = `translate(

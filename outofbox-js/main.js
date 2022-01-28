@@ -11,6 +11,7 @@ const initLightBox = () => {
     });
 
     l.on("show.simplelightbox", function () {
+      // why
       if (document.getElementsByClassName("simple-lightbox").length) {
         l.close();
         document.getElementsByClassName("simple-lightbox")[0].remove();

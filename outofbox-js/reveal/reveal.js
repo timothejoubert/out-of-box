@@ -2,7 +2,6 @@ class Reveal {
   constructor() {}
 
   init() {
-    console.log("init");
     //convert tagline header to span
     const firstLine = document.querySelector(".firstline h2");
     const secondline = document.querySelectorAll(".secondline h2");
@@ -16,11 +15,15 @@ class Reveal {
     const loaderWp = document.querySelector("#loader_logo");
     loaderWp.classList.add("start");
 
+    this.nodesReveal = document.querySelectorAll(".reveal");
+
     this.startLoad();
-    //this.reveal();
+
+    setTimeout(() => {
+      this.reveal();
+    }, 1000);
 
     //init animation for all section
-    window.nodesReveal = document.querySelectorAll(".reveal");
     window.addEventListener("scroll", (e) => {
       this.reveal(e);
     });
@@ -76,7 +79,7 @@ class Reveal {
 
   //animation for all section
   reveal(e) {
-    const reveals = e.currentTarget.nodesReveal;
+    const reveals = this.nodesReveal;
     reveals.forEach((el) => {
       var windowHeight = window.innerHeight;
       var revealPoint = 30;

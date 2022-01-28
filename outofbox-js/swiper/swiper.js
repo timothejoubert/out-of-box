@@ -35,9 +35,11 @@ class SwiperManager {
               v.ontimeupdate = null;
               v.pause();
               v.muted = this.videoMuted;
-              v.currentTime = 0;
+              //v.currentTime = 0;
             });
           }
+          vid.currentTime = 0;
+
           vid.play();
 
           vid.ontimeupdate = currentUpdate;
@@ -68,7 +70,7 @@ class SwiperManager {
     if (pct === 1.0) {
       swiper.slideNext(1000);
       video.pause();
-      video.currentTime = 0;
+      //video.currentTime = 0;
     }
   }
 }
