@@ -7,7 +7,7 @@ class SwiperManager {
   init() {
     var currentUpdate = null;
     var currentVideo = null;
-    var swiper = new Swiper(".carousel-container", {
+    this.swiper = new Swiper(".carousel-container", {
       slidesPerView: 1,
       speed: 400,
       spaceBetween: 30,
@@ -52,7 +52,8 @@ class SwiperManager {
   initMute() {
     const mute = document.getElementsByClassName("btn_mute")[0];
     mute.onclick = () => {
-      let vid = swiper.slides[swiper.activeIndex].querySelector("video");
+      let vid =
+        this.swiper.slides[this.swiper.activeIndex].querySelector("video");
       vid.muted = !vid.muted;
       this.videoMuted = vid.muted;
       const muteicon = document.getElementById("mute-icon");
@@ -65,7 +66,7 @@ class SwiperManager {
   onUpdateVideoHandler(video, swiper) {
     const pct = video.currentTime / video.duration;
     if (pct === 1.0) {
-      swiper.slideNext(1000);
+      this.swiper.slideNext(1000);
       video.pause();
       video.currentTime = 0;
     }
