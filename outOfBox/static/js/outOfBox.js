@@ -34,7 +34,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       if (document.getElementsByClassName("simple-lightbox").length) {
         l.close();
-        console.log("closing");
+        document.getElementsByClassName("simple-lightbox")[0].remove();
       }
     });
 
