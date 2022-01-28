@@ -438,7 +438,7 @@ header {
   max-width: 1100px;
   margin: 0 auto;
 }
-.container-project_item{
+.container-project_item {
   position: relative;
   width: calc(25% - 20px);
   --index: 0;
@@ -451,7 +451,7 @@ header {
   width: 100%;
   overflow: hidden;
 }
-a.others_img{
+a.others_img {
   position: absolute;
   display: none;
 }
@@ -670,12 +670,12 @@ p.team_job {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   gap: 30px;
 }
 .container-client_item {
-  width: 175px;
+  width: 225px;
 }
 .container-client_item img {
   width: 100%;
@@ -774,7 +774,7 @@ p.team_job {
 .reveal.reveal-visible[data-reveal="scale-up"] .reveal-delay {
   transform: scale(1);
 }
-.link_dev{
+.link_dev {
   display: inline-block;
   width: 15px;
   height: auto;
@@ -782,10 +782,10 @@ p.team_job {
   opacity: 0.5;
   transition: opacity 300ms;
 }
-.link_dev:hover{
+.link_dev:hover {
   opacity: 1;
 }
-.link_dev svg{
+.link_dev svg {
   width: 100%;
   height: auto;
 }
