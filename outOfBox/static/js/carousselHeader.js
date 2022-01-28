@@ -100,7 +100,6 @@
   }
 
   function loadVid(slide) {
-    console.log("function load vid");
     initDots(slide);
     clearTimeout(timerEnd);
 
@@ -113,7 +112,6 @@
   }
 
   function moveNext() {
-    console.log("function moveNext slide");
     if (!moving) {
       if (slide === totalItems - 1) {
         slide = 0;

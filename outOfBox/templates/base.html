@@ -1,5 +1,5 @@
 {% load static wagtailuserbar menu_tags %}
-
+{% load compress %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
@@ -21,11 +21,14 @@
         <link rel="icon" href="{% static 'assets/favicon.ico' %}" type="image/x-icon">
 
         {# Global stylesheets #}
+        
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+        {% compress css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/simple-lightbox.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/outOfBox.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+        {% endcompress %}
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -43,6 +46,8 @@
 
         {# Global javascript #}
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        {% compress js %}
+
         <script type="text/javascript" src="{% static 'js/utils.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/outOfBox.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/swiper.js' %}"></script>
@@ -50,7 +55,8 @@
         <script type="text/javascript" src="{% static 'js/revealAnim.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/simple-lightbox.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
-        
+        {% endcompress %}
+
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
