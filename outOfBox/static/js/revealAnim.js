@@ -80,8 +80,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
   //header animation
   loaderWp.classList.add("start");
-
-  console.log("wait for video ready");
   //video.addEventListener('loadeddata', function() {
   startLoad();
   //}, false)
