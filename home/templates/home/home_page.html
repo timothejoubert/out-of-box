@@ -147,7 +147,7 @@
 		<div class="container-client">
 			{% for client in client_list %}
 
-				{% image client.image_client width-150 as img %}
+				{% image client.image_client width-250 as img %}
 				<div class="container-client_item reveal" data-reveal="fade-up">
 					<img src="{{ img.url }}" alt="img.title" title={{ client.nom_entreprise }}>
 				</div>
