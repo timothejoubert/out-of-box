@@ -5,10 +5,19 @@ import SwiperManager from "./swiper/swiper.js";
 import SimpleLightbox from "./node_modules/simplelightbox/dist/simple-lightbox.esm.js";
 const initLightBox = () => {
   const lightBoxElements = document.getElementsByClassName("project_item-a");
+
+  const l = new SimpleLightbox(".project_item-a", {
+    captionSelector: "self",
+  });
+
+  /*
+  console.log(lightBoxElements);
   Array.from(lightBoxElements).forEach((el) => {
     const l = new SimpleLightbox(el, {
       captionSelector: "self",
     });
+
+    console.log(l);
 
     l.on("show.simplelightbox", function () {
       // why
@@ -22,6 +31,7 @@ const initLightBox = () => {
       console.log(e); // some usefull information
     });
   });
+  */
 };
 
 // ----------------------- nav

@@ -117,8 +117,9 @@
 			<div class="container-project_item reveal " data-reveal="fade-up"  style="--index: {{ forloop.counter }}">
 				{% image projet.projet_image width-500 as img500 %}
 				{% image projet.projet_image original as img %}
-				
-				<a class="project_item-a lightbox-{{projet.id}}" href={{img.url}} title="{{ projet.projet_description|richtext }}">
+
+				{% if projet.all_img.all|length == 0 %}
+				<a class="project_item-a lightbox-{{projet.id}}" rel="lightbox-{{projet.id}}" href={{img.url}} title="{{ projet.projet_description|richtext }}">
 					<div class="container-project_img">
 						<img src="{{ img500.url }}" alt="{{img500.alt}}" >
 					</div>
@@ -127,11 +128,34 @@
 						<h3>{{ projet.projet_nom }}</h3>
 					</div>
 				</a>
-				{% comment %} all img's project {% endcomment %}
+				{% else %}
+				
+				
 				{% for img_projet in projet.all_img.all %}
-					{% image img_projet.image_projet original as img_p %}
-					<a href={{ img_p.url }} class="others_img" title="{{ projet.projet_description|richtext }}"><img src="{{ img_p.url }}" alt="{{img_p.alt}}"></a>
+				
+				{% image img_projet.image_projet original as img_p %}
+				{% if forloop.counter0 == 0 %}
+				
+				<a class="project_item-a lightbox-{{projet.id}}" rel="lightbox-{{projet.id}}" href={{img_p.url}} title="{{ projet.projet_description|richtext }}">
+					<div class="container-project_img">
+						<img src="{{ img500.url }}" alt="{{img500.alt}}" >
+					</div>
+
+					<div class="container-project_info">
+						<h3>{{ projet.projet_nom }}</h3>
+					</div>
+				</a>
+				{% else %}
+				<a rel="lightbox-{{projet.id}}" href={{ img_p.url }} class="project_item-a others_img" title="{{ projet.projet_description|richtext }}"><img src="{{ img_p.url }}" alt="{{img_p.alt}}"></a>
+
+				{% endif %}
+
+				
 				{% endfor %}
+				{% endif %}
+				
+			
+				
 				<span class="click_project">
 					<svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.849199 22.8075L0.115084 23.5416L1.58331 25.0099L2.31743 24.2757L0.849199 22.8075ZM24.9826 1.18052C24.9826 0.607136 24.5178 0.142321 23.9444 0.142321H14.6007C14.0273 0.142321 13.5625 0.607136 13.5625 1.18052C13.5625 1.75389 14.0273 2.21871 14.6007 2.21871H22.9062V10.5243C22.9062 11.0976 23.371 11.5625 23.9444 11.5625C24.5178 11.5625 24.9826 11.0976 24.9826 10.5243V1.18052ZM2.31743 24.2757L24.6785 1.91463L23.2103 0.446401L0.849199 22.8075L2.31743 24.2757Z"/></svg>
 				</span>
