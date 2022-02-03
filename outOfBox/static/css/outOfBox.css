@@ -789,3 +789,8 @@ p.team_job {
   width: 100%;
   height: auto;
 }
+
+.linkedin-img {
+  width: 16px !important;
+  margin-top: 10px;
+}
