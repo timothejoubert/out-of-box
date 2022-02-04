@@ -53,13 +53,13 @@ vite build
 
     `python manage.py runserver`
 
-6.  Make sure that wsgi is running from the uWgsi endpoint if everything is working properly
+6.  (optional) Make sure that wsgi is running from the uWgsi endpoint if everything is working properly
 
     `uwsgi --http :5000 --wsgi-file outOfBox/wsgi.py`
 
 7.  Enable nginx configuration by creating a configuration file, and then copying and editing the sample configuration file available here [sample configuration file here](https://github.com/timothejoubert/out-of-box/blob/main/configs/nginx)
 
-    `sudo nano /etc/nginc/sites-available/outofbox.com `
+    `sudo nano /etc/nginx/sites-available/outofbox.com `
 
 8.  Make sure all paths and domain names on the configuration file are correct, then restart NGINX
 
