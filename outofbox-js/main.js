@@ -1,5 +1,6 @@
 import { mapRange, randomRange, normalize, clamp } from "./utils/Math-Utils.js";
-import WordCloud from "./words/wordcloud.js";
+// import WordCloud from "./words/wordcloud.js";
+import Marquee from "./words/marquee.js";
 import Reveal from "./reveal/reveal.js";
 import SwiperManager from "./swiper/swiper.js";
 import SimpleLightbox from "./node_modules/simplelightbox/dist/simple-lightbox.esm.js";
@@ -100,8 +101,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
     hideCardInfo();
   });
 
-  const wc = new WordCloud();
-  wc.init();
+  //wordcloud
+  //const wc = new WordCloud();
+  //wc.init();
+
+  // let marquees = [...document.querySelectorAll(".marquee-row")];
+  // marquees.map((marquee, i) => {
+  //   new Marquee(marquee, i);
+  // });
+  const marquee = new Marquee(document.querySelector(".marquee-row"), 0);
 
   const r = new Reveal();
   r.init();

@@ -30,7 +30,8 @@ class Reveal {
   }
 
   spanConverter(container) {
-    const [...letters] = container.innerHTML;
+    if (!container) return;
+    const [...letters] = container?.innerHTML;
     container.innerHTML = "";
     letters.forEach((letter, i) => {
       const span = document.createElement("span");
@@ -68,7 +69,7 @@ class Reveal {
     document.querySelector("#main-container").classList.add("loading_stop");
 
     const firstLine = document.querySelector(".firstline h2");
-    firstLine.classList.add("reveal-visible");
+    firstLine?.classList.add("reveal-visible");
 
     const secondline = document.querySelectorAll(".secondline h2");
     secondline.forEach((el) => {

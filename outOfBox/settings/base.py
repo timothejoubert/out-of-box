@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wagtail.contrib.modeladmin', 
+    'wagtail.contrib.modeladmin',
     'wagtailmenus',
 
     'wagtail.contrib.styleguide',
@@ -73,7 +73,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    'htmlmin.middleware.HtmlMinifyMiddleware',
 
 ]
 
@@ -177,4 +176,3 @@ WAGTAIL_SITE_NAME = "outOfBox"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
-

@@ -1,7 +1,6 @@
 @media only screen and (max-width: 1200px) {
   .container-word_item:nth-child(3n + 1):nth-last-child(-n + 3),
-  .container-word_item:nth-child(3n + 1):nth-last-child(-n + 3)
-    ~ .container-word_item {
+  .container-word_item:nth-child(3n + 1):nth-last-child(-n + 3) ~ .container-word_item {
     grid-column: inherit;
   }
   .container-footer_info {
@@ -21,6 +20,9 @@
     flex-direction: column;
     align-items: center;
   }
+  .container-footer_item * {
+    text-align: center;
+  }
   .footer-contact {
     margin: 30px 0;
   }
@@ -30,16 +32,44 @@
   .footer-copyright {
     text-align: center;
   }
-  .container-project_item{
+  .container-project_item {
     width: calc(33% - 20px);
   }
 }
 
 @media only screen and (max-width: 1100px) {
-  .container-user_info{
+  /*projets*/
+  .container-project {
+    flex-direction: row;
+    gap: 20px;
+  }
+  .project_item-a {
+    position: relative;
+    width: calc(50% - 10px);
+  }
+  .container-project_info {
+    position: absolute;
+    min-width: inherit;
+    width: 100%;
+    bottom: 0;
+    background-color: var(--dark-color-8);
+  }
+  .container-project_info h3 {
+    min-width: inherit;
+    margin-right: 15px;
+  }
+  .container-project_img {
+    position: relative;
+    opacity: 1;
+    transform: inherit;
+    width: 100%;
+    max-width: inherit;
+  }
+  /*equipe*/
+  .container-user_info {
     padding: 0 4px;
   }
-  p.team_name{
+  p.team_name {
     font-size: 0.9rem;
   }
   .container-projects {
@@ -80,7 +110,6 @@
 }
 
 @media only screen and (max-width: 900px) {
-
   .modal {
     width: calc(80vw);
   }
@@ -111,8 +140,8 @@
 @media only screen and (max-width: 830px) {
   .container-project_item {
     width: calc(50% - 20px);
-  } 
-  .container-project_info h3{
+  }
+  .container-project_info h3 {
     font-size: 1rem;
   }
   .container-project_item > a {
@@ -120,6 +149,16 @@
   }
   .container-words_cloud h4 {
     font-size: 1.4rem;
+  }
+  .container-project_info {
+    padding: 5px;
+  }
+
+  .container-project_info h3,
+  .container-project_info h4 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: 10px;
   }
 }
 @media (max-height: 720px) {
@@ -276,7 +315,7 @@
     flex: 1;
     padding: 3px 4px;
   }
-  .container-user .container-img-user::after{
+  .container-user .container-img-user::after {
     background-color: rgba(0, 0, 0, 0.2);
   }
   .loading_stop .btn_play_mobile {
@@ -289,23 +328,20 @@
   .container-client_item {
     width: 145px;
   }
+  .user_info_hide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .container-project {
     gap: 10px;
   }
-  .container-project_item {
-    width: 48%;
-  }
-  .container-project_item > a {
-    height: 120px;
-  }
   .container-users {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .container-user_info .user_reseaux > a {
-    display: block;
   }
   article,
   #footer,
@@ -328,9 +364,6 @@
   }
 }
 @media only screen and (max-width: 500px) {
-  .container-project_item > a {
-    height: 100px;
-  }
   p.team_name {
     font-size: 0.8rem;
   }
@@ -339,6 +372,12 @@
   .secondline h2 span {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+  .project_item-a {
+    width: 100%;
+  }
+  .user_reseaux a {
+    font-size: 0.8rem;
   }
 }
 @media only screen and (max-width: 400px) {
@@ -353,9 +392,6 @@
   }
   .container-client_item {
     width: 50%;
-  }
-  .container-words_cloud {
-    grid-template-columns: repeat(1, 1fr);
   }
   .secondline h2 span {
     font-size: 0.8rem;
