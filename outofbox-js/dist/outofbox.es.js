@@ -4,74 +4,34 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-function mapRange(value, a, b, c, d) {
-  value = (value - a) / (b - a);
-  return c + value * (d - c);
-}
-function randomRange(min, max) {
-  return min + Math.random() * (max - min);
-}
-function normalize(val, max, min) {
-  return (val - min) / (max - min);
-}
-function clamp(num, min, max) {
-  return Math.min(Math.max(num, min), max);
-}
-class WordCloud {
-  constructor() {
-    this.mouseX = 0, this.mouseY = 0;
-    this.blurRate = 0.92;
-    this.pageX = window.innerWidth * 0.5;
-    this.pageY = window.innerHeight * 0.5;
-    this.time = 0;
-    this.minSize = window.innerWidth > 700 ? 3 : 1;
-    this.maxSize = window.innerWidth > 700 ? 8 : 3;
-    this.blurScale = window.innerWidth > 700 ? 2 : 0;
-    this.words = [...document.querySelectorAll(".container-words_cloud h4")];
+class Marquee {
+  constructor(selector, index2) {
+    this.parentSelector = selector;
+    this.clone = this.parentSelector.innerHTML;
+    this.firstElement = this.parentSelector.children[0];
+    this.index = index2;
+    const speed = parseFloat(this.parentSelector.getAttribute("data-speed"));
+    typeof speed == "number" ? this.speed = speed : this.speed = 1.5;
+    this.i = 0;
+    this.stopMove = false;
+    this.parentSelector.insertAdjacentHTML("beforeend", this.clone);
+    this.parentSelector.insertAdjacentHTML("beforeend", this.clone);
+    this.parentSelector.addEventListener("mouseenter", () => {
+      this.stopMove = true;
+      this.parentSelector.style.transition = "none";
+    });
+    this.parentSelector.addEventListener("mouseleave", () => {
+      this.stopMove = false;
+    });
+    this.step();
   }
-  init() {
-    this.words.map((word, i) => {
-      let fontS = randomRange(this.minSize, this.maxSize);
-      let weight = randomRange(100, 900);
-      let width = randomRange(60, 160);
-      const pct = clamp(normalize(fontS, this.minSize * 1.25, this.maxSize * 0.75), 0, 1);
-      word.style.zIndex = 1 + Math.ceil((1 - pct) * this.words.length);
-      word.style.filter = "blur(" + Math.ceil(pct * this.blurScale) + "px)";
-      word.style.opacity = 1;
-      word.style.fontSize = `${fontS}rem`;
-      word.style.fontVariationSettings = `'wght' ${weight}, 'wdth' ${width}`;
-    });
-    document.getElementById("wordscloud").addEventListener("touchmove", (e) => {
-      this.setPagePos(e);
-    }, false);
-    document.getElementById("wordscloud").addEventListener("mousemove", (e) => {
-      this.setPagePos(e);
-    });
-    this.animate();
-  }
-  setPagePos(event2) {
-    this.pageX = event2.layerX ? window.innerWidth - event2.layerX : event2.pageX;
-    this.pageY = event2.layerY ? event2.layerY : event2.pageY;
-  }
-  animate() {
-    this.mouseX = this.blurRate * this.mouseX + (1 - this.blurRate) * this.pageX;
-    this.mouseY = this.blurRate * this.mouseY + (1 - this.blurRate) * this.pageY;
-    this.time++;
-    this.words.map((word, i) => {
-      const scale = 16;
-      let size = parseFloat(word.style.fontSize) * scale;
-      const pct = normalize(size / scale, this.minSize, this.maxSize);
-      const cosPct = 0.5 + Math.cos(this.time * 8e-3 + i) * 0.5;
-      const col = (0.25 + pct * cosPct * 0.75) * 255;
-      word.style.color = "rgb(" + col + "," + col + "," + col + ")";
-      word.style.transform = `translate(
-		${mapRange(this.mouseX / window.innerWidth * 1.5, 0, 1, 10 + size, 10 - size).toFixed(2)}px,
-		${mapRange(this.mouseY / window.innerHeight, 0, 1, 10 + size, 10 - size).toFixed(2)}px
-		)`;
-    });
-    requestAnimationFrame(() => {
-      this.animate();
-    });
+  step() {
+    this.index % 2 ? this.parentSelector.style.transform = `translateX(-${this.i}px)` : this.parentSelector.style.transform = `translateX(${this.i - this.firstElement.clientWidth}px)`;
+    if (this.i > this.firstElement.clientWidth * 2) {
+      this.i = 0;
+    }
+    this.stopMove ? this.i = this.i : this.i = this.i + this.speed;
+    window.requestAnimationFrame(this.step.bind(this));
   }
 }
 class Reveal {
@@ -96,7 +56,9 @@ class Reveal {
     });
   }
   spanConverter(container) {
-    const [...letters] = container.innerHTML;
+    if (!container)
+      return;
+    const [...letters] = container == null ? void 0 : container.innerHTML;
     container.innerHTML = "";
     letters.forEach((letter, i) => {
       const span = document.createElement("span");
@@ -128,7 +90,7 @@ class Reveal {
     document.querySelector(".reseaux-icon").style.opacity = 1;
     document.querySelector("#main-container").classList.add("loading_stop");
     const firstLine = document.querySelector(".firstline h2");
-    firstLine.classList.add("reveal-visible");
+    firstLine == null ? void 0 : firstLine.classList.add("reveal-visible");
     const secondline = document.querySelectorAll(".secondline h2");
     secondline.forEach((el) => {
       el.classList.add("reveal-visible");
@@ -4545,8 +4507,7 @@ window.addEventListener("DOMContentLoaded", (event2) => {
   document.fonts.ready.then(() => {
     hideCardInfo();
   });
-  const wc = new WordCloud();
-  wc.init();
+  new Marquee(document.querySelector(".marquee-row"), 0);
   const r = new Reveal();
   r.init();
   const s = new SwiperManager();
