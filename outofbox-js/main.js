@@ -101,6 +101,45 @@ window.addEventListener("DOMContentLoaded", (event) => {
     hideCardInfo();
   });
 
+  const projects = document.querySelectorAll(".container-project_info");
+  const imgs = document.querySelectorAll(".container-project_img");
+
+  const darkColor = getComputedStyle(document.documentElement).getPropertyValue(
+    "--dark-color",
+  );
+  const lightColor = getComputedStyle(
+    document.documentElement,
+  ).getPropertyValue("--light-color");
+
+  const hideAllImages = () => {
+    imgs.forEach((e) => {
+      e.style.opacity = 0.0;
+    });
+
+    projects.forEach((e) => {
+      e.style.color = lightColor;
+      e.style.backgroundColor = darkColor;
+    });
+  };
+
+  projects.forEach((p) => {
+    p.addEventListener("mouseover", (event) => {
+      hideAllImages();
+
+      p.style.color = darkColor;
+      p.style.backgroundColor = lightColor;
+
+      const img = p.parentNode.getElementsByClassName(
+        "container-project_img",
+      )[0];
+      img.style.opacity = 1.0;
+    });
+  });
+
+  hideAllImages();
+  imgs[0].style.opacity = 1.0;
+  projects[0].style.color = darkColor;
+  projects[0].style.backgroundColor = lightColor;
   //wordcloud
   //const wc = new WordCloud();
   //wc.init();

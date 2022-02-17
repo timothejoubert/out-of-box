@@ -4507,6 +4507,32 @@ window.addEventListener("DOMContentLoaded", (event2) => {
   document.fonts.ready.then(() => {
     hideCardInfo();
   });
+  const projects = document.querySelectorAll(".container-project_info");
+  const imgs = document.querySelectorAll(".container-project_img");
+  const darkColor = getComputedStyle(document.documentElement).getPropertyValue("--dark-color");
+  const lightColor = getComputedStyle(document.documentElement).getPropertyValue("--light-color");
+  const hideAllImages = () => {
+    imgs.forEach((e) => {
+      e.style.opacity = 0;
+    });
+    projects.forEach((e) => {
+      e.style.color = lightColor;
+      e.style.backgroundColor = darkColor;
+    });
+  };
+  projects.forEach((p) => {
+    p.addEventListener("mouseover", (event3) => {
+      hideAllImages();
+      p.style.color = darkColor;
+      p.style.backgroundColor = lightColor;
+      const img = p.parentNode.getElementsByClassName("container-project_img")[0];
+      img.style.opacity = 1;
+    });
+  });
+  hideAllImages();
+  imgs[0].style.opacity = 1;
+  projects[0].style.color = darkColor;
+  projects[0].style.backgroundColor = lightColor;
   new Marquee(document.querySelector(".marquee-row"), 0);
   const r = new Reveal();
   r.init();
