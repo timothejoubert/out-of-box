@@ -56,7 +56,6 @@
     background-color: var(--dark-color-8);
   }
   .container-project_info h3 {
-    min-width: inherit;
     margin-right: 15px;
   }
   .container-project_img {
@@ -294,7 +293,9 @@
     width: 100%;
   }
   #projets {
+    /*
     padding: 100px 50px 50px 50px;
+    */
     overflow-x: hidden;
   }
   #myVideo {
@@ -303,7 +304,8 @@
   article,
   #footer,
   #wordscloud {
-    padding: 150px 30px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .container-user {
     display: flex;
@@ -347,7 +349,8 @@
   article,
   #footer,
   #wordscloud {
-    padding: 150px 10px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .firstline h2 span {
     font-size: 3rem;
@@ -360,9 +363,11 @@
     font-size: 1.2rem;
     padding: calc(var(--space) * 2px);
   }
+  /*
   #projets {
     padding: 120px 10px;
   }
+  */
 }
 @media only screen and (max-width: 500px) {
   p.team_name {
