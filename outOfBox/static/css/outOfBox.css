@@ -499,7 +499,13 @@ header {
 }
 .container-project_info h3 {
   display: inline-block;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  min-width: 250px;
+}
+
+.container-project_info h4 {
+  font-size: 1.5rem;
   font-weight: 500;
   min-width: 250px;
 }
