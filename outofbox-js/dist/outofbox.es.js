@@ -13,16 +13,8 @@ class Marquee {
     const speed = parseFloat(this.parentSelector.getAttribute("data-speed"));
     typeof speed == "number" ? this.speed = speed : this.speed = 1.5;
     this.i = 0;
-    this.stopMove = false;
     this.parentSelector.insertAdjacentHTML("beforeend", this.clone);
     this.parentSelector.insertAdjacentHTML("beforeend", this.clone);
-    this.parentSelector.addEventListener("mouseenter", () => {
-      this.stopMove = true;
-      this.parentSelector.style.transition = "none";
-    });
-    this.parentSelector.addEventListener("mouseleave", () => {
-      this.stopMove = false;
-    });
     this.step();
   }
   step() {
@@ -30,7 +22,7 @@ class Marquee {
     if (this.i > this.firstElement.clientWidth * 2) {
       this.i = 0;
     }
-    this.stopMove ? this.i = this.i : this.i = this.i + this.speed;
+    this.i += this.speed;
     window.requestAnimationFrame(this.step.bind(this));
   }
 }

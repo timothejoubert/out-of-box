@@ -70,8 +70,18 @@ li {
 }
 article {
   /* padding: 150px 50px; */
-  padding: 140px 140px 140px 40px;
+  padding: 40px 40px 40px 40px;
   border: 1px var(--dark-color) solid;
+}
+.article_title {
+  padding: 0px 40px 0px 40px;
+}
+.article_title_projects {
+  padding: 0px 40px 0px 40px;
+}
+
+.article_title h1 {
+  font-size: 48px;
 }
 .article_intro {
   margin-bottom: 30px;
@@ -424,6 +434,15 @@ header {
   opacity: 1;
 }
 
+.container-title {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 /* projects */
 .container-projects {
   background-color: var(--dark-color);
@@ -448,12 +467,11 @@ header {
   position: absolute;
   display: flex;
   left: 0;
-  top: 50%;
   max-width: 540px;
   width: calc(42%);
   opacity: 0;
   transition: opacity 100ms;
-  transform: translateY(-50%);
+
   pointer-events: none;
   user-select: none;
   transition: opacity 0.25s ease-in-out;
@@ -528,7 +546,7 @@ a.others_img {
 /* words */
 .container-words {
   overflow: hidden;
-  margin: 200px auto 60px auto;
+  margin: 0px auto 40px auto;
   padding: 0 !important;
 }
 .container-words_cloud {
@@ -547,8 +565,8 @@ a.others_img {
 .marquee-row {
   display: flex;
   flex-wrap: no-wrap;
-  border-top: 3px solid var(--light-color-3);
-  border-bottom: 3px solid var(--light-color-3);
+  border-top: 3px solid var(--light-color);
+  border-bottom: 3px solid var(--light-color);
 
   width: fit-content;
   cursor: default;
@@ -560,14 +578,14 @@ a.others_img {
   border-bottom: 3px solid var(--light-color-3);
 } */
 .marquee-row > * {
-  font-family: "Anybody";
+  font-family: "Futura-PT";
   font-size: 3rem;
   font-variation-settings: "wght" 400, "wdth" 90;
   color: var(--light-color);
 
   white-space: nowrap;
   text-transform: uppercase;
-  opacity: 0.3;
+  opacity: 1;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: -moz-none;
@@ -751,9 +769,14 @@ p.team_job {
   transform: scale(1.1);
 }
 
+hr {
+  margin-top: 60px;
+
+  margin-bottom: 20px;
+}
 /* contact */
 #footer {
-  padding: 50px 150px 50px 50px;
+  padding: 80px 0px 80px 0px;
 }
 .container-footer_info {
   display: flex;

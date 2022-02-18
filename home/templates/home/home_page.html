@@ -86,8 +86,16 @@
 		</div>
 	</article>
 
+	
+
+	<article class="article_title container-projects-title article_title_projects" id="title">
+		<div class="container-title">
+		<h1>Projets</h1>
+	</div>
+	</article>
 	<article class="container-projects" id="projets">
 
+	
 		<div class="container-project">		
 			{% for projet in projet_pages %}
 			{% if projet.projet_nom %}
@@ -145,6 +153,13 @@
 		</div>
 	</article>
 
+	<article class="article_title " id="title">
+		<div class="container-title">
+			<hr>
+
+		<h1>Equipe</h1>
+	</div>
+	</article>
 	<article class="container-team" id="equipe">
 
 		<div class="container-users reveal">
@@ -180,6 +195,18 @@
 			{% endfor %}
 		</div>
 	</article> 
+
+	<article class="article_title " id="title">
+		<div class="container-title">
+			<hr>
+
+			{% for footer in footer_list %}
+			{%if footer.info_contact_second %}
+				<h1>{{ footer.info_contact_second|richtext }}</h1>
+			{% endif %}
+		{% endfor %}
+	</div>
+	</article>
 
 	<article class="container-footer" id="footer">
 
