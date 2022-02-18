@@ -467,6 +467,7 @@ header {
   position: absolute;
   display: flex;
   left: 0;
+  top: 0;
   max-width: 540px;
   width: calc(42%);
   opacity: 0;
