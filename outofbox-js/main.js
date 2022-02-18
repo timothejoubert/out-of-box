@@ -122,24 +122,43 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   };
 
-  projects.forEach((p) => {
-    p.addEventListener("mouseover", (event) => {
-      hideAllImages();
+  const initImages = () => {
+    projects.forEach((p) => {
+      p.addEventListener("mouseover", (event) => {
+        if (window.innerWidth > 1100) {
+          hideAllImages();
 
-      p.style.color = darkColor;
-      p.style.backgroundColor = lightColor;
+          p.style.color = darkColor;
+          p.style.backgroundColor = lightColor;
 
-      const img = p.parentNode.getElementsByClassName(
-        "container-project_img",
-      )[0];
-      img.style.opacity = 1.0;
+          const img = p.parentNode.getElementsByClassName(
+            "container-project_img",
+          )[0];
+          img.style.opacity = 1.0;
+        }
+      });
     });
+
+    hideAllImages();
+    imgs[0].style.opacity = 1.0;
+    projects[0].style.color = darkColor;
+    projects[0].style.backgroundColor = lightColor;
+  };
+
+  if (window.innerWidth > 1100) {
+    initImages();
+  }
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1100) {
+      initImages();
+    } else {
+      imgs.forEach((e) => {
+        e.style.opacity = 1.0;
+      });
+    }
   });
 
-  hideAllImages();
-  imgs[0].style.opacity = 1.0;
-  projects[0].style.color = darkColor;
-  projects[0].style.backgroundColor = lightColor;
   //wordcloud
   //const wc = new WordCloud();
   //wc.init();

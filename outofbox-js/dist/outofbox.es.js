@@ -4512,19 +4512,35 @@ window.addEventListener("DOMContentLoaded", (event2) => {
       e.style.backgroundColor = darkColor;
     });
   };
-  projects.forEach((p) => {
-    p.addEventListener("mouseover", (event3) => {
-      hideAllImages();
-      p.style.color = darkColor;
-      p.style.backgroundColor = lightColor;
-      const img = p.parentNode.getElementsByClassName("container-project_img")[0];
-      img.style.opacity = 1;
+  const initImages = () => {
+    projects.forEach((p) => {
+      p.addEventListener("mouseover", (event3) => {
+        if (window.innerWidth > 1100) {
+          hideAllImages();
+          p.style.color = darkColor;
+          p.style.backgroundColor = lightColor;
+          const img = p.parentNode.getElementsByClassName("container-project_img")[0];
+          img.style.opacity = 1;
+        }
+      });
     });
+    hideAllImages();
+    imgs[0].style.opacity = 1;
+    projects[0].style.color = darkColor;
+    projects[0].style.backgroundColor = lightColor;
+  };
+  if (window.innerWidth > 1100) {
+    initImages();
+  }
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1100) {
+      initImages();
+    } else {
+      imgs.forEach((e) => {
+        e.style.opacity = 1;
+      });
+    }
   });
-  hideAllImages();
-  imgs[0].style.opacity = 1;
-  projects[0].style.color = darkColor;
-  projects[0].style.backgroundColor = lightColor;
   new Marquee(document.querySelector(".marquee-row"), 0);
   const r = new Reveal();
   r.init();
