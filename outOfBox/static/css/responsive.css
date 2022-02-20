@@ -1,7 +1,9 @@
 @media only screen and (max-width: 1200px) {
+  .container-project_img {
+    width: 40%;
+  }
   .container-word_item:nth-child(3n + 1):nth-last-child(-n + 3),
-  .container-word_item:nth-child(3n + 1):nth-last-child(-n + 3)
-    ~ .container-word_item {
+  .container-word_item:nth-child(3n + 1):nth-last-child(-n + 3) ~ .container-word_item {
     grid-column: inherit;
   }
   .container-footer_info {
@@ -33,9 +35,6 @@
   .footer-copyright {
     text-align: center;
   }
-  .container-project_item {
-    width: calc(33% - 20px);
-  }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -51,12 +50,17 @@
   .container-project_info {
     position: absolute;
     min-width: inherit;
+    justify-content: space-between;
     width: 100%;
     bottom: 0;
     background-color: var(--dark-color-8);
   }
   .container-project_info h3 {
     margin-right: 15px;
+    min-width: inherit;
+  }
+  .container-project_info h4 {
+    min-width: inherit;
   }
   .container-project_img {
     position: relative;
@@ -64,6 +68,9 @@
     transform: inherit;
     width: 100%;
     max-width: inherit;
+  }
+  .click_project {
+    display: none;
   }
   /*equipe*/
   .container-user_info {
@@ -138,27 +145,21 @@
   }
 }
 @media only screen and (max-width: 830px) {
+  .container-words_cloud h4 {
+    font-size: 1rem;
+  }
   .container-project_item {
     width: calc(50% - 20px);
-  }
-  .container-project_info h3 {
-    font-size: 1rem;
   }
   .container-project_item > a {
     width: 100%;
   }
-  .container-words_cloud h4 {
-    font-size: 1.4rem;
+  .container-project_info h3,
+  .container-project_info h4 {
+    font-size: 1rem;
   }
   .container-project_info {
     padding: 5px;
-  }
-
-  .container-project_info h3,
-  .container-project_info h4 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-right: 10px;
   }
 }
 @media (max-height: 720px) {
@@ -338,7 +339,12 @@
     height: 100%;
   }
 }
-
+@media only screen and (min-width: 700px) {
+  #projets,
+  #equipe {
+    padding-right: 140px;
+  }
+}
 @media only screen and (max-width: 600px) {
   .container-project {
     gap: 10px;
@@ -373,17 +379,17 @@
   p.team_name {
     font-size: 0.8rem;
   }
-}
-@media only screen and (max-width: 420px) {
-  .secondline h2 span {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
   .project_item-a {
     width: 100%;
   }
   .user_reseaux a {
     font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .secondline h2 span {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 @media only screen and (max-width: 400px) {

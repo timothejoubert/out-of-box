@@ -11,6 +11,7 @@ share/*
 uwsgi_params
 /out-of-box-assets
 
+
 # Django project
 /media/
 /static/
@@ -38,3 +39,5 @@ node_modules/
 coverage
 .python-version
 
+outOfBox/static/js/vite
+outOfBox/static/js/dist

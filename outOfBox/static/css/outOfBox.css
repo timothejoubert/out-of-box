@@ -467,11 +467,12 @@ header {
   position: absolute;
   display: flex;
   left: 0;
-  top: 0;
+  top: 50%;
   max-width: 540px;
-  width: calc(42%);
+  width: 45%;
   opacity: 0;
   transition: opacity 100ms;
+  transform: translateY(-50%);
 
   pointer-events: none;
   user-select: none;
@@ -495,18 +496,18 @@ header {
   align-items: center;
   width: 50%;
   min-width: 530px;
-  padding: 5px 10px;
+  padding: 3px 10px;
 }
 .container-project_info h3 {
   display: inline-block;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 500;
-  min-width: 250px;
+  min-width: 260px;
 }
 
 .container-project_info h4 {
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: 300;
   min-width: 250px;
 }
 
@@ -610,13 +611,7 @@ a.others_img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to left,
-    var(--dark-color) 0%,
-    transparent 35%,
-    transparent 85%,
-    var(--dark-color) 100%
-  );
+  background: linear-gradient(to left, var(--dark-color) 0%, transparent 35%, transparent 85%, var(--dark-color) 100%);
   z-index: 10;
   pointer-events: none;
 }
