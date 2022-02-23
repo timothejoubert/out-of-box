@@ -68,110 +68,101 @@ const closeNavOnClick = () => {
   });
 };
 
-// equipe
-
+// equipe card hover
 const hideCardInfo = () => {
+  const cardEquipeInfo = document.querySelectorAll(".container-user_info");
   if (window.innerWidth > 700) {
-    const cardEquipeInfo = document.querySelectorAll(".container-user_info");
-
-    cardEquipeInfo.forEach((el) => {
+    cardEquipeInfo.forEach((el, i) => {
       const infoHeight = el.querySelector(".user_info_hide").offsetHeight;
       el.style.transform = `translateY(${infoHeight}px)`;
     });
   }
 };
 
-const onResizeHandler = () => {
-  closeNav();
-  closeNavOnClick();
-  hideCardInfo();
+//projects hover
+const projects = document.querySelectorAll(".container-project_info");
+const imgs = document.querySelectorAll(".container-project_img");
+const darkColor = getComputedStyle(document.documentElement).getPropertyValue(
+  "--dark-color"
+);
+const lightColor = getComputedStyle(document.documentElement).getPropertyValue(
+  "--light-color"
+);
+
+const hideAllImages = () => {
+  imgs.forEach((e) => {
+    e.style.opacity = 0.0;
+  });
+
+  projects.forEach((e) => {
+    e.style.color = lightColor;
+    e.style.backgroundColor = darkColor;
+  });
 };
+const initImages = () => {
+  projects.forEach((p) => {
+    p.addEventListener("mouseover", (event) => {
+      if (window.innerWidth > 1100) {
+        hideAllImages();
 
-window.addEventListener("DOMContentLoaded", (event) => {
-  initLightBox();
+        p.style.color = darkColor;
+        p.style.backgroundColor = lightColor;
 
-  initBurger();
-  closeNavOnClick();
-  window.addEventListener("resize", () => {
-    onResizeHandler();
+        const img = p.parentNode.getElementsByClassName(
+          "container-project_img"
+        )[0];
+        img.style.opacity = 1.0;
+      }
+    });
   });
 
-  //equipe hover
-  document.fonts.ready.then(() => {
-    hideCardInfo();
-  });
-
-  const projects = document.querySelectorAll(".container-project_info");
-  const imgs = document.querySelectorAll(".container-project_img");
-
-  const darkColor = getComputedStyle(document.documentElement).getPropertyValue(
-    "--dark-color",
-  );
-  const lightColor = getComputedStyle(
-    document.documentElement,
-  ).getPropertyValue("--light-color");
-
-  const hideAllImages = () => {
-    imgs.forEach((e) => {
-      e.style.opacity = 0.0;
-    });
-
-    projects.forEach((e) => {
-      e.style.color = lightColor;
-      e.style.backgroundColor = darkColor;
-    });
-  };
-
-  const initImages = () => {
-    projects.forEach((p) => {
-      p.addEventListener("mouseover", (event) => {
-        if (window.innerWidth > 1100) {
-          hideAllImages();
-
-          p.style.color = darkColor;
-          p.style.backgroundColor = lightColor;
-
-          const img = p.parentNode.getElementsByClassName(
-            "container-project_img",
-          )[0];
-          img.style.opacity = 1.0;
-        }
-      });
-    });
-
-    hideAllImages();
-    imgs[0].style.opacity = 1.0;
-    projects[0].style.color = darkColor;
-    projects[0].style.backgroundColor = lightColor;
-  };
-
+  hideAllImages();
+  imgs[0].style.opacity = 1.0;
+  projects[0].style.color = darkColor;
+  projects[0].style.backgroundColor = lightColor;
+};
+const displayImgState = () => {
   if (window.innerWidth > 1100) {
     initImages();
+  } else {
+    imgs.forEach((e) => {
+      e.style.opacity = 1.0;
+    });
   }
+};
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 1100) {
-      initImages();
-    } else {
-      imgs.forEach((e) => {
-        e.style.opacity = 1.0;
-      });
-    }
-  });
+// event DOM load
+window.addEventListener("DOMContentLoaded", (event) => {
+  initLightBox();
+  initBurger();
+  closeNavOnClick();
 
-  //wordcloud
-  //const wc = new WordCloud();
-  //wc.init();
+  //projet
+  displayImgState();
 
-  // let marquees = [...document.querySelectorAll(".marquee-row")];
-  // marquees.map((marquee, i) => {
-  //   new Marquee(marquee, i);
-  // });
-  const marquee = new Marquee(document.querySelector(".marquee-row"), 0);
+  //marquee
+  new Marquee(document.querySelector(".marquee-row"), 0);
 
   const r = new Reveal();
   r.init();
 
   const s = new SwiperManager();
   s.init();
+
+  //events loadFont
+  document.fonts.onloadingdone = function (fontFaceSetEvent) {
+    console.log(
+      fontFaceSetEvent.fontfaces,
+      "futura load : " + document.fonts.check("0.9rem Futura-PT")
+    );
+    window.setTimeout(hideCardInfo, 200);
+  };
+});
+
+//event resize
+window.addEventListener("resize", () => {
+  closeNav();
+  closeNavOnClick();
+  hideCardInfo();
+  displayImgState();
 });

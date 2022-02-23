@@ -338,6 +338,9 @@
     justify-content: space-between;
     height: 100%;
   }
+  .title_footer h1 {
+    font-size: 28px;
+  }
 }
 @media only screen and (min-width: 700px) {
   #projets,
@@ -384,6 +387,9 @@
   }
   .user_reseaux a {
     font-size: 0.8rem;
+  }
+  .title_footer h1 {
+    font-size: 22px;
   }
 }
 @media only screen and (max-width: 420px) {

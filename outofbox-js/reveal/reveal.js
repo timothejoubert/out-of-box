@@ -76,6 +76,8 @@ class Reveal {
       el.classList.add("reveal-visible");
     });
     document.getElementsByTagName("body")[0].classList.remove("no_scroll");
+
+    document.querySelector(".btn_mute").classList.remove("hide-mute");
   }
 
   //animation for all section
