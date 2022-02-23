@@ -86,15 +86,12 @@
 		</div>
 	</article>
 
-	
 
-	<article class="article_title container-projects-title article_title_projects" id="title">
+	<article class="container-projects" id="projets">
+
 		<div class="container-title">
 			<h1>Projets</h1>
 		</div>
-	</article>
-	<article class="container-projects" id="projets">
-
 	
 		<div class="container-project">		
 			{% for projet in projet_pages %}
@@ -106,6 +103,7 @@
 				<a class="project_item-a lightbox-{{projet.id}} reveal" rel="lightbox-{{projet.id}}" href={{img.url}} >
 					<div class="container-project_img">
 						<img src="{{ img500.url }}" alt="{{img500.alt}}" ></img>
+						<p>{{ projet.projet_description|richtext }}</p>
 					</div>
 
 					<div class="container-project_info">
@@ -127,6 +125,7 @@
 					<a class="project_item-a lightbox-{{projet.id}}" rel="lightbox-{{projet.id}}" href={{img_p.url}}>
 						<div class="container-project_img">
 							<img src="{{ img500.url }}" alt="{{img500.alt}}" />
+							<p>{{ projet.projet_description|richtext }}</p>
 						</div>
 
 						<div class="container-project_info">
@@ -153,13 +152,13 @@
 		</div>
 	</article>
 
-	<article class="article_title " id="title">
+
+	<article class="container-team" id="equipe">
+
 		<div class="container-title">
 			<hr>
 			<h1>Equipe</h1>
 		</div>
-	</article>
-	<article class="container-team" id="equipe">
 
 		<div class="container-users reveal">
 			{% for user in equipe_list %}
@@ -195,7 +194,7 @@
 		</div>
 	</article> 
 
-	<article class="article_title " id="title">
+	<article class="container-footer" id="footer">
 		<div class="container-title title_footer">
 			<hr>
 			{% for footer in footer_list %}
@@ -203,10 +202,7 @@
 				<h1>{{ footer.info_contact_second|richtext }}</h1>
 			{% endif %}
 		{% endfor %}
-	</div>
-	</article>
-
-	<article class="container-footer" id="footer">
+		</div>
 
 		<div class="container-footer_info">
 			<div class="container-footer_left">

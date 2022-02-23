@@ -155,7 +155,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       fontFaceSetEvent.fontfaces,
       "futura load : " + document.fonts.check("0.9rem Futura-PT")
     );
-    window.setTimeout(hideCardInfo, 200);
+    // window.setTimeout(hideCardInfo, 200);
   };
 });
 
@@ -163,6 +163,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 window.addEventListener("resize", () => {
   closeNav();
   closeNavOnClick();
-  hideCardInfo();
+  // hideCardInfo();
   displayImgState();
 });

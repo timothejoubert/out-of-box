@@ -69,9 +69,11 @@ li {
   list-style: none;
 }
 article {
+  width: calc(100vw - 120px);
+  padding: 0 40px;
   /* padding: 150px 50px; */
-  padding: 40px 40px 40px 40px;
-  border: 1px var(--dark-color) solid;
+  /* padding: 40px 40px 40px 40px;
+  border: 1px var(--dark-color) solid; */
 }
 .article_title {
   padding-bottom: 20px;
@@ -80,8 +82,14 @@ article {
   padding: 0px 40px 0px 40px;
 }
 
-.article_title h1 {
+.container-title h1 {
   font-size: 48px;
+  text-transform: uppercase;
+  color: var(--light-color);
+  padding: 30px 0;
+}
+.container-title hr {
+  margin-top: 40px;
 }
 .article_intro {
   margin-bottom: 30px;
@@ -441,7 +449,6 @@ header {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -449,7 +456,6 @@ header {
 .container-projects {
   background-color: var(--dark-color);
   color: var(--light-color-6);
-  padding-bottom: 200px;
 }
 .container-project {
   position: relative;
@@ -457,7 +463,6 @@ header {
   flex-direction: column;
   align-items: flex-end;
   flex-wrap: wrap;
-  max-width: 1100px;
   margin: 0 auto;
 }
 .project_item-a {
@@ -468,21 +473,18 @@ header {
 .container-project_img {
   position: absolute;
   display: flex;
+  flex-direction: column;
   left: 0;
-  top: 50%;
+  top: 0;
   max-width: 540px;
-  width: 45%;
+  width: 35%;
   opacity: 0;
   transition: opacity 100ms;
-  transform: translateY(-50%);
-
+  /* transform: translateY(-50%); */
   pointer-events: none;
   user-select: none;
   transition: opacity 0.25s ease-in-out;
 }
-/*
-.project_item-a:hover 
-*/
 
 .container-project_img {
   opacity: 1;
@@ -496,17 +498,23 @@ header {
   position: relative;
   display: flex;
   align-items: center;
-  width: 50%;
+  width: calc(65% - 20px);
   min-width: 530px;
-  padding: 3px 10px;
+  padding: 3px 0;
+}
+@media only screen and (min-width: 1100px) {
+  .container-project_info {
+    border-bottom: 1px solid var(--light-color);
+  }
 }
 .container-project_info h3 {
   display: inline-block;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  min-width: 260px;
+  min-width: 50%;
+  padding-left: 5px;
+  text-transform: uppercase;
 }
-
 .container-project_info h4 {
   font-size: 1.1rem;
   font-weight: 300;
@@ -556,7 +564,6 @@ a.others_img {
 /* words */
 .container-words {
   overflow: hidden;
-  margin: 0px auto 40px auto;
   padding: 0 !important;
 }
 .container-words_cloud {
@@ -575,22 +582,20 @@ a.others_img {
 .marquee-row {
   display: flex;
   flex-wrap: no-wrap;
-  border-top: 1px solid var(--light-color);
+  /* border-top: 1px solid var(--light-color); */
   border-bottom: 1px solid var(--light-color);
 
   width: fit-content;
   cursor: default;
-  font-size: 3rem;
-  padding: 10px 0 5px 0;
+  padding: 80px 0 60px 0;
   transition: none !important;
 }
-/* .marquee-row:last-child {
-  border-bottom: 3px solid var(--light-color-3);
-} */
+
 .marquee-row > * {
   font-family: "Futura-PT";
-  font-size: 3rem;
-  font-variation-settings: "wght" 400, "wdth" 90;
+  font-size: 1.2rem;
+  /* font-variation-settings: "wght" 400, "wdth" 90; */
+  font-weight: 300;
   color: var(--light-color);
 
   white-space: nowrap;
@@ -613,7 +618,7 @@ a.others_img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to left, var(--dark-color) 0%, transparent 35%, transparent 85%, var(--dark-color) 100%);
+  background: linear-gradient(to left, var(--dark-color) 0%, transparent 30%, transparent 70%, var(--dark-color) 100%);
   z-index: 10;
   pointer-events: none;
 }
@@ -621,8 +626,7 @@ a.others_img {
 .container-users {
   display: grid;
   grid-template-columns: repeat(4, minmax(150px, 1fr));
-  max-width: 1100px;
-  gap: 10px;
+  gap: 20px;
   margin: 0 auto;
 }
 .container-user {
@@ -773,19 +777,13 @@ p.team_job {
   transform: scale(1.1);
 }
 
-hr {
-  margin-top: 60px;
-
-  margin-bottom: 20px;
-}
-/* contact */
+/* footer */
 #footer {
-  padding: 80px 0px 80px 0px;
+  padding-bottom: 40px;
 }
 .container-footer_info {
   display: flex;
   justify-content: space-between;
-  max-width: 1100px;
   margin: 0 auto;
 }
 .container-footer_left {
