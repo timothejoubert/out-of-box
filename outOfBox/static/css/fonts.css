@@ -6,26 +6,26 @@
 
 @font-face {
   font-family: "Futura-PT";
-  src: url("/static/fonts/futuraPTLight.otf") format("truetype");
+  src: url("/static/fonts/FuturaPTLight.otf") format("truetype");
   font-weight: 300;
 }
 @font-face {
   font-family: "Futura-PT";
-  src: url("/static/fonts/futuraPTMedium.otf") format("truetype");
+  src: url("/static/fonts/FuturaPTMedium.otf") format("truetype");
   font-weight: 500;
 }
 @font-face {
   font-family: "Futura-PT";
-  src: url("/static/fonts/futuraPTBold.otf") format("truetype");
+  src: url("/static/fonts/FuturaPTBold.otf") format("truetype");
   font-weight: 600;
 }
 @font-face {
   font-family: "Futura-PT";
-  src: url("/static/fonts/futuraPTExtraBold.otf") format("truetype");
+  src: url("/static/fonts/FuturaPTExtraBold.otf") format("truetype");
   font-weight: 700;
 }
 @font-face {
   font-family: "Futura-PT";
-  src: url("/static/fonts/futuraPTHeavy.otf") format("truetype");
+  src: url("/static/fonts/FuturaPTHeavy.otf") format("truetype");
   font-weight: 800;
 }

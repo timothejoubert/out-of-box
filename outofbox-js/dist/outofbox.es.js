@@ -88,6 +88,7 @@ class Reveal {
       el.classList.add("reveal-visible");
     });
     document.getElementsByTagName("body")[0].classList.remove("no_scroll");
+    document.querySelector(".btn_mute").classList.remove("hide-mute");
   }
   reveal(e) {
     const reveals = this.nodesReveal;
@@ -4475,75 +4476,61 @@ const closeNavOnClick = () => {
     }
   });
 };
-const hideCardInfo = () => {
-  if (window.innerWidth > 700) {
-    const cardEquipeInfo = document.querySelectorAll(".container-user_info");
-    cardEquipeInfo.forEach((el) => {
-      const infoHeight = el.querySelector(".user_info_hide").offsetHeight;
-      el.style.transform = `translateY(${infoHeight}px)`;
+const projects = document.querySelectorAll(".container-project_info");
+const imgs = document.querySelectorAll(".container-project_img");
+const darkColor = getComputedStyle(document.documentElement).getPropertyValue("--dark-color");
+const lightColor = getComputedStyle(document.documentElement).getPropertyValue("--light-color");
+const hideAllImages = () => {
+  imgs.forEach((e) => {
+    e.style.opacity = 0;
+  });
+  projects.forEach((e) => {
+    e.style.color = lightColor;
+    e.style.backgroundColor = darkColor;
+  });
+};
+const initImages = () => {
+  projects.forEach((p) => {
+    p.addEventListener("mouseover", (event2) => {
+      if (window.innerWidth > 1100) {
+        hideAllImages();
+        p.style.color = darkColor;
+        p.style.backgroundColor = lightColor;
+        const img = p.parentNode.getElementsByClassName("container-project_img")[0];
+        img.style.opacity = 1;
+      }
+    });
+  });
+  hideAllImages();
+  imgs[0].style.opacity = 1;
+  projects[0].style.color = darkColor;
+  projects[0].style.backgroundColor = lightColor;
+};
+const displayImgState = () => {
+  if (window.innerWidth > 1100) {
+    initImages();
+  } else {
+    imgs.forEach((e) => {
+      e.style.opacity = 1;
     });
   }
-};
-const onResizeHandler = () => {
-  closeNav();
-  closeNavOnClick();
-  hideCardInfo();
 };
 window.addEventListener("DOMContentLoaded", (event2) => {
   initLightBox();
   initBurger();
   closeNavOnClick();
-  window.addEventListener("resize", () => {
-    onResizeHandler();
-  });
-  document.fonts.ready.then(() => {
-    hideCardInfo();
-  });
-  const projects = document.querySelectorAll(".container-project_info");
-  const imgs = document.querySelectorAll(".container-project_img");
-  const darkColor = getComputedStyle(document.documentElement).getPropertyValue("--dark-color");
-  const lightColor = getComputedStyle(document.documentElement).getPropertyValue("--light-color");
-  const hideAllImages = () => {
-    imgs.forEach((e) => {
-      e.style.opacity = 0;
-    });
-    projects.forEach((e) => {
-      e.style.color = lightColor;
-      e.style.backgroundColor = darkColor;
-    });
-  };
-  const initImages = () => {
-    projects.forEach((p) => {
-      p.addEventListener("mouseover", (event3) => {
-        if (window.innerWidth > 1100) {
-          hideAllImages();
-          p.style.color = darkColor;
-          p.style.backgroundColor = lightColor;
-          const img = p.parentNode.getElementsByClassName("container-project_img")[0];
-          img.style.opacity = 1;
-        }
-      });
-    });
-    hideAllImages();
-    imgs[0].style.opacity = 1;
-    projects[0].style.color = darkColor;
-    projects[0].style.backgroundColor = lightColor;
-  };
-  if (window.innerWidth > 1100) {
-    initImages();
-  }
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 1100) {
-      initImages();
-    } else {
-      imgs.forEach((e) => {
-        e.style.opacity = 1;
-      });
-    }
-  });
+  displayImgState();
   new Marquee(document.querySelector(".marquee-row"), 0);
   const r = new Reveal();
   r.init();
   const s = new SwiperManager();
   s.init();
+  document.fonts.onloadingdone = function(fontFaceSetEvent) {
+    console.log(fontFaceSetEvent.fontfaces, "futura load : " + document.fonts.check("0.9rem Futura-PT"));
+  };
+});
+window.addEventListener("resize", () => {
+  closeNav();
+  closeNavOnClick();
+  displayImgState();
 });
