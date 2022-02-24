@@ -72,7 +72,7 @@ const closeNavOnClick = () => {
 const hideCardInfo = () => {
   const cardEquipeInfo = document.querySelectorAll(".container-user_info");
   if (window.innerWidth > 700) {
-    cardEquipeInfo.forEach((el, i) => {
+    cardEquipeInfo.forEach((el) => {
       const infoHeight = el.querySelector(".user_info_hide").offsetHeight;
       el.style.transform = `translateY(${infoHeight}px)`;
     });
@@ -107,6 +107,7 @@ const initImages = () => {
 
         p.style.color = darkColor;
         p.style.backgroundColor = lightColor;
+        // p.querySelector("h3").style.paddingLeft = "10px";
 
         const img = p.parentNode.getElementsByClassName(
           "container-project_img"

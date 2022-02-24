@@ -84,6 +84,7 @@ article {
 
 .container-title h1 {
   font-size: 48px;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--light-color);
   padding: 30px 0;
@@ -102,7 +103,7 @@ nav {
   justify-content: space-between;
   width: 100%;
   padding: 20px 130px 20px 30px;
-  z-index: 10;
+  z-index: 11;
   transform: translateY(-100%);
   opacity: 0;
   transition: transform 500ms, opacity 500ms;
@@ -485,7 +486,9 @@ header {
   user-select: none;
   transition: opacity 0.25s ease-in-out;
 }
-
+.container-project_img p {
+  font-weight: 300;
+}
 .container-project_img {
   opacity: 1;
 }
@@ -493,6 +496,7 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  margin-bottom: 7px;
 }
 .container-project_info {
   position: relative;
@@ -510,7 +514,7 @@ header {
 .container-project_info h3 {
   display: inline-block;
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 400;
   min-width: 50%;
   padding-left: 5px;
   text-transform: uppercase;
@@ -587,7 +591,7 @@ a.others_img {
 
   width: fit-content;
   cursor: default;
-  padding: 80px 0 60px 0;
+  padding: 50px 0;
   transition: none !important;
 }
 
@@ -721,8 +725,10 @@ p.team_job {
 .container-user_info path {
   stroke: var(--dark-color);
 }
-.container-user img {
+.container-img-user img {
   width: 100%;
+  min-height: 240px;
+  object-fit: cover;
   transition: transform 200ms;
 }
 .container-user:hover .container-img-user img {
@@ -825,13 +831,27 @@ p.team_job {
   width: 450px;
   height: 250px;
 }
-.gmap_canvas {
+.gmap_canvas,
+.img-maps {
   overflow: hidden;
   background: none !important;
   width: 450px;
   height: 250px;
 }
-
+.img-maps {
+  display: block;
+}
+.img-maps img {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+.img-maps:hover img {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
 /* animation header*/
 .loading_stop #second-nav {
   transform: translateX(0);

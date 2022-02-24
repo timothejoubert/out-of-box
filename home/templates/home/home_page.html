@@ -90,7 +90,7 @@
 	<article class="container-projects" id="projets">
 
 		<div class="container-title">
-			<h1>Projets</h1>
+			<h1>Références</h1>
 		</div>
 	
 		<div class="container-project">		
@@ -244,10 +244,19 @@
 				</div>
 			</div>
 			<div class="container-footer_map">
+
 				<div class="mapouter">
-					<div class="gmap_canvas">
+					{% for footer in footer_list %}
+					{% if footer.img_map %}
+						<a class="img-maps" href="http://maps.google.com/?q=46 Quai Joseph Gillet, Lyon" target="_blank">
+							{% image footer.img_map width-500 as imgMap %}
+							<img src="{{ imgMap.url }}" alt="imgMap.title">
+						</a>
+						{%endif%}
+					{% endfor %}
+					  {% comment %} <div class="gmap_canvas">
 						<iframe width="450" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=46%20Quai%20Joseph%20Gillet,%2069004%20Lyon&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-					</div>
+					</div>  {% endcomment %}
 				</div>
 			</div>
 		</div>
