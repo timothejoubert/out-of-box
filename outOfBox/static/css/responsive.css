@@ -161,6 +161,22 @@
   .container-project_info {
     padding: 5px;
   }
+  /* equipe */
+
+  .container-user {
+    display: flex;
+    flex-direction: column;
+  }
+  .container-user_info {
+    transform: translateY(0) !important;
+    position: relative;
+    justify-content: flex-start;
+    flex: 1;
+    padding: 3px 4px;
+  }
+  .container-user .container-img-user::after {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 }
 @media (max-height: 720px) {
   #second-nav .reseaux-icon {
@@ -290,6 +306,7 @@
   .container-footer_map,
   .mapouter,
   .gmap_canvas,
+  .img-maps,
   .container-footer_map iframe {
     width: 100%;
   }
@@ -305,20 +322,6 @@
     padding-left: 20px;
     padding-right: 20px;
     width: 100%;
-  }
-  .container-user {
-    display: flex;
-    flex-direction: column;
-  }
-  .container-user_info {
-    transform: translateY(0) !important;
-    position: relative;
-    justify-content: flex-start;
-    flex: 1;
-    padding: 3px 4px;
-  }
-  .container-user .container-img-user::after {
-    background-color: rgba(0, 0, 0, 0.2);
   }
   .loading_stop .btn_play_mobile {
     display: block;
