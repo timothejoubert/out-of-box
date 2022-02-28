@@ -457,7 +457,7 @@ header {
 .container-projects {
   background-color: var(--dark-color);
   color: var(--light-color-6);
-  min-height: 600px;
+  min-height: 700px;
 }
 .container-project {
   position: relative;
