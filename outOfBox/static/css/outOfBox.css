@@ -537,6 +537,7 @@ header {
 }
 */
 .click_project {
+  display: none;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -549,6 +550,8 @@ header {
   transition: all 300ms;
 }
 .click_project svg {
+  display: none;
+
   width: 10px;
   height: 10px;
   fill: var(--light-color);
@@ -592,7 +595,7 @@ a.others_img {
 
   width: fit-content;
   cursor: default;
-  padding: 50px 0;
+  padding: 50px 0 100px 0;
   transition: none !important;
 }
 
@@ -639,6 +642,7 @@ a.others_img {
   grid-template-columns: repeat(4, minmax(150px, 1fr));
   gap: 20px;
   margin: 0 auto;
+  padding-bottom: 50px;
 }
 .container-user {
   overflow: hidden;
@@ -835,15 +839,13 @@ p.team_job {
 .mapouter {
   position: relative;
   text-align: right;
-  width: 450px;
-  height: 250px;
+  width: 250px;
 }
 .gmap_canvas,
 .img-maps {
   overflow: hidden;
   background: none !important;
-  width: 450px;
-  height: 250px;
+  width: 250px;
 }
 .img-maps {
   display: block;
