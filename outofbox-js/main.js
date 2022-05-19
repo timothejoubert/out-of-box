@@ -83,15 +83,17 @@ const hideCardInfo = () => {
 const projects = document.querySelectorAll(".container-project_info");
 const imgs = document.querySelectorAll(".container-project_img");
 const darkColor = getComputedStyle(document.documentElement).getPropertyValue(
-  "--dark-color"
+  "--dark-color",
 );
 const lightColor = getComputedStyle(document.documentElement).getPropertyValue(
-  "--light-color"
+  "--light-color",
 );
 
 const hideAllImages = () => {
   imgs.forEach((e) => {
     e.style.opacity = 0.0;
+    e.style.zIndex = 2;
+    e.style.pointerEvents = "none";
   });
 
   projects.forEach((e) => {
@@ -99,6 +101,8 @@ const hideAllImages = () => {
     e.style.backgroundColor = darkColor;
   });
 };
+
+console.log("hello");
 const initImages = () => {
   projects.forEach((p) => {
     p.addEventListener("mouseover", (event) => {
@@ -108,11 +112,12 @@ const initImages = () => {
         p.style.color = darkColor;
         p.style.backgroundColor = lightColor;
         // p.querySelector("h3").style.paddingLeft = "10px";
-
         const img = p.parentNode.getElementsByClassName(
-          "container-project_img"
+          "container-project_img",
         )[0];
         img.style.opacity = 1.0;
+        img.style.zIndex = 99;
+        img.style.pointerEvents = "all";
       }
     });
   });
@@ -154,7 +159,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   document.fonts.onloadingdone = function (fontFaceSetEvent) {
     console.log(
       fontFaceSetEvent.fontfaces,
-      "futura load : " + document.fonts.check("0.9rem Futura-PT")
+      "futura load : " + document.fonts.check("0.9rem Futura-PT"),
     );
     // window.setTimeout(hideCardInfo, 200);
   };

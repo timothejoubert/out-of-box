@@ -4483,12 +4483,15 @@ const lightColor = getComputedStyle(document.documentElement).getPropertyValue("
 const hideAllImages = () => {
   imgs.forEach((e) => {
     e.style.opacity = 0;
+    e.style.zIndex = 2;
+    e.style.pointerEvents = "none";
   });
   projects.forEach((e) => {
     e.style.color = lightColor;
     e.style.backgroundColor = darkColor;
   });
 };
+console.log("hello");
 const initImages = () => {
   projects.forEach((p) => {
     p.addEventListener("mouseover", (event2) => {
@@ -4498,6 +4501,8 @@ const initImages = () => {
         p.style.backgroundColor = lightColor;
         const img = p.parentNode.getElementsByClassName("container-project_img")[0];
         img.style.opacity = 1;
+        img.style.zIndex = 99;
+        img.style.pointerEvents = "all";
       }
     });
   });
