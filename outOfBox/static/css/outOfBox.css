@@ -116,6 +116,10 @@ nav {
   width: 42px;
   margin-right: 10px;
 }
+
+.logo h1 {
+  font-weight: 400;
+}
 .main-nav {
   display: flex;
   justify-content: flex-end;
