@@ -102,7 +102,6 @@ const hideAllImages = () => {
   });
 };
 
-console.log("hello");
 const initImages = () => {
   projects.forEach((p) => {
     p.addEventListener("mouseover", (event) => {

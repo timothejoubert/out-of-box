@@ -474,6 +474,7 @@ header {
 .project_item-a {
   display: flex;
   justify-content: flex-end;
+  width: calc(62.5% - 10px);
 }
 .container-project_img {
   position: absolute;
@@ -506,7 +507,7 @@ header {
   position: relative;
   display: flex;
   align-items: center;
-  width: calc(65% - 20px);
+  width: 100%;
   min-width: 530px;
   padding: 3px 0;
 }

@@ -35,11 +35,16 @@ class SwiperManager {
               v.ontimeupdate = null;
               v.pause();
               v.muted = this.videoMuted;
+              //console.log("trying to mute here");
+
               //v.currentTime = 0;
             });
           }
           vid.currentTime = 0;
 
+          //console.log("playing here");
+          //vid.muted = true;
+          //vid.volume = 0;
           vid.play();
 
           vid.ontimeupdate = currentUpdate;

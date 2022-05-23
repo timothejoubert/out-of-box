@@ -53,7 +53,7 @@
 			{% for video in page.videos_header.all %}
 				<div class="carousel-item-wp item swiper-slide" >
 				
-					<video poster="/media/{{video.video_header.thumbnail}}" muted {% if page.videos_header.all.count < 2 %}loop{%endif%} playsinline>
+					<video poster="/media/{{video.video_header.thumbnail}}" autoplay muted playsinline {% if page.videos_header.all.count < 2 %}loop{%endif%} >
 						<source src="{{video.video_header.url}}#t=0.001" type="video/mp4">
 					</video>
 				</div>
@@ -170,11 +170,12 @@
 					</div>
 
 					<div class="container-user_info">
-						{% if user.nom_user %}
-						<p class="team_name">{{ user.nom_user }}</p>
-						{% endif %}
+					
 						<div class="user_info_hide">
 							{% if user.nom_user %}
+							<p class="team_name">{{ user.nom_user }}</p>
+							{% endif %}
+							{% if user.role_user %}
 							<p class="team_job">{{ user.role_user }}</p>
 							{% endif %}
 							<div class="user_reseaux">
@@ -238,7 +239,7 @@
 				<div class="mapouter">
 					{% for footer in footer_list %}
 					{% if footer.img_map %}
-						<a class="img-maps" href="http://maps.google.com/?q=46 Quai Joseph Gillet, Lyon" target="_blank">
+						<a class="img-maps" href="https://www.google.com/maps/place/Out+of+Box/@45.779877,4.8084484,15z/data=!4m2!3m1!1s0x0:0x1c2838808c5704a9?sa=X&ved=2ahUKEwiWw9324fX3AhV88rsIHXUBBGUQ_BJ6BAhaEAU" target="_blank">
 							{% image footer.img_map width-500 as imgMap %}
 							<img src="{{ imgMap.url }}" alt="imgMap.title">
 						</a>
