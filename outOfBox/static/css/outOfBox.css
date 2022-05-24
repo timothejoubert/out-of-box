@@ -650,6 +650,7 @@ a.others_img {
 }
 .container-user {
   overflow: hidden;
+  position: relative;
 }
 .container-user.horizontal {
   grid-column: span 2;
