@@ -220,9 +220,15 @@
 								<p>{{ footer.info_contact|richtext }}</p>
 							</div>
 						{% endfor %}
+						<br>
+						<a href='static/legal.html' 
+						target="popup" 
+  					onclick="window.open('static/legal.html','popup','width=600,height=600'); return false;">
+
+						Mentions légales</a>
 					</div>
 					<div class="footer-message">
-					
+				
 					</div>
 				</div>
 				<div class="footer-copyright">
@@ -234,6 +240,7 @@
 					</p> 
 				</div>
 			</div>
+		
 			<div class="container-footer_map">
 
 				<div class="mapouter">
@@ -250,7 +257,30 @@
 					</div>  {% endcomment %}
 				</div>
 			</div>
+		
 		</div>
 	</article>
+	<!---
+	<article class="container-footer" >
+		<div class="container-footer">
+			Mentions Légales<br><br>
+
+OUT OF BOX<br>
+5 quai Hippolyte Jaÿr<br>
+69009 Lyon<br>
+04 78 54 20 11<br>
+contact@outofbox.fr<br><br>
+APE XXXXX – RCS LYON : SIRET 482 356 771<br>
+SARL au capital de 100 000 €<br>
+TVA intracommunautaire FR75482356771<br>
+<br>
+CE SITE EST HÉBERGÉ PAR :<br>
+OVH Groupe SA,<br>
+RCS de Lille : SIRET 537 407 926
+2, rue Kellermann, 59100 Roubaix.
+01 46 07 23 41
+		</div>
+	</article>
+-->
 
 {% endblock %}
