@@ -41,6 +41,7 @@ this.swiper = new Swiper(".carousel-container", {
           v.currentTime = 0;
         });
       }
+
       vid.play();
 
       vid.ontimeupdate = currentUpdate;
@@ -48,6 +49,7 @@ this.swiper = new Swiper(".carousel-container", {
     },
   },
 });
+console.log("hello there");
 
 let videoMuted = true;
 window.addEventListener("DOMContentLoaded", (e) => {

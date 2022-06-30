@@ -71,14 +71,7 @@ class Reveal {
     }, 1e3);
   }
   videoAnimEnd() {
-    const video = document.querySelector(".carousel-container video");
-    if (window.innerWidth > 700) {
-      video.play().then(() => {
-        console.log("video is playing");
-      }).catch((error) => {
-        console.log("error, video is not playing " + error);
-      });
-    }
+    console.log("hello");
     document.querySelector(".reseaux-icon").style.opacity = 1;
     document.querySelector("#main-container").classList.add("loading_stop");
     const firstLine = document.querySelector(".firstline h2");
@@ -3224,7 +3217,21 @@ class SwiperManager {
             });
           }
           vid.currentTime = 0;
-          vid.play();
+          vid.controls = false;
+          vid.playsinline = true;
+          vid.muted = true;
+          vid.setAttribute("muted", "");
+          vid.autoplay = false;
+          setTimeout(() => {
+            const promise = vid.play();
+            console.log(vid);
+            if (promise.then) {
+              promise.then(() => {
+              }).catch((e) => {
+                console.log(e);
+              });
+            }
+          }, 1);
           vid.ontimeupdate = currentUpdate;
           currentVideo = vid;
         }
@@ -3246,8 +3253,7 @@ class SwiperManager {
   }
   onUpdateVideoHandler(video, swiper) {
     const pct = video.currentTime / video.duration;
-    console.log(pct);
-    if (pct === 0.99) {
+    if (pct > 0.98) {
       swiper.slideNext(1e3);
       video.pause();
     }

@@ -54,6 +54,8 @@ class Reveal {
   }
 
   videoAnimEnd() {
+    console.log("hello");
+    /*
     const video = document.querySelector(".carousel-container video");
     if (window.innerWidth > 700) {
       video
@@ -65,6 +67,7 @@ class Reveal {
           console.log("error, video is not playing " + error);
         });
     }
+    */
     document.querySelector(".reseaux-icon").style.opacity = 1;
     document.querySelector("#main-container").classList.add("loading_stop");
 

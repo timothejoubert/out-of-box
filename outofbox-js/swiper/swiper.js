@@ -43,9 +43,30 @@ class SwiperManager {
           vid.currentTime = 0;
 
           //console.log("playing here");
-          //vid.muted = true;
-          //vid.volume = 0;
-          vid.play();
+          vid.controls = false;
+          vid.playsinline = true;
+          vid.muted = true;
+          vid.setAttribute("muted", ""); // leave no stones unturned :)
+          vid.autoplay = true;
+
+          setTimeout(() => {
+            // player.play() might return a promise but it's not guaranteed crossbrowser.
+            const promise = vid.play();
+            console.log(vid);
+            // let's play safe to ensure that if we do have a promise
+            if (promise.then) {
+              promise
+                .then(() => {})
+                .catch((e) => {
+                  console.log(e);
+                  // if promise fails, hide the video and fallback to <img> tag
+                  //.current.style.display = "none";
+                  //setShouldUseImage(true);
+                });
+            }
+          }, 1);
+
+          // vid.play();
 
           vid.ontimeupdate = currentUpdate;
           currentVideo = vid;
@@ -72,7 +93,7 @@ class SwiperManager {
 
   onUpdateVideoHandler(video, swiper) {
     const pct = video.currentTime / video.duration;
-    console.log(pct);
+    //console.log(pct);
     if (pct > 0.98) {
       swiper.slideNext(1000);
       video.pause();
