@@ -3246,7 +3246,8 @@ class SwiperManager {
   }
   onUpdateVideoHandler(video, swiper) {
     const pct = video.currentTime / video.duration;
-    if (pct === 1) {
+    console.log(pct);
+    if (pct === 0.99) {
       swiper.slideNext(1e3);
       video.pause();
     }
@@ -4491,7 +4492,6 @@ const hideAllImages = () => {
     e.style.backgroundColor = darkColor;
   });
 };
-console.log("hello");
 const initImages = () => {
   projects.forEach((p) => {
     p.addEventListener("mouseover", (event2) => {
