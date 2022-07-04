@@ -134,7 +134,7 @@
 
   // Initialise carousel
   function initCarousel() {
-    console.log("init carousel");
+   / console.log("init carousel");
     // if one or multiple vid
     if (items.length > 1) {
       setInitialClasses();
@@ -160,6 +160,6 @@
   };
   waitLoaded().then(() => {
     initCarousel();
-    console.log("init");
+    //console.log("init");
   });
 })(document);
