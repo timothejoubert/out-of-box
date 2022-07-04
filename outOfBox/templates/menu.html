@@ -25,14 +25,11 @@
 
 	<ul class="main-nav">
 		
-		<li class="">
-			<a href="#projets">Nos références</a>
-		</li>
-		
+	
+
 		{% for item in menu_items %}
-				<li class="{{ item.active_class}}">
+				<li >
 					<a href="#{{ item.handle }}">{{ item.text }}</a>
-					{% comment %} <a href="#{{ item.href }}">{{ item.text }}</a> {% endcomment %}
 				</li>
 		{% endfor %}
 	</ul>
