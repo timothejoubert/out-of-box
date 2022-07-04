@@ -52,7 +52,7 @@
     min-width: inherit;
     justify-content: space-between;
     width: 100%;
-    bottom: 0;
+    bottom: 5px;
     background-color: var(--dark-color-8);
   }
   .container-project_info h3 {
@@ -159,7 +159,7 @@
     font-size: 1rem;
   }
   .container-project_info {
-    padding: 5px;
+    padding: 10px 5px 10px 5px;
   }
   /* equipe */
 
